@@ -3,192 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ozias Extérieur | Votre propriété, notre priorité</title>
+    <title>Ozias Extérieur | Excellence en Entretien Résidentiel</title>
     <style>
-        /* --- VARIABLES DE DESIGN --- */
+        /* --- VARIABLES DE DESIGN CORPORATIF --- */
         :root {
-            --vert-principal: #1e5c3b;
-            --vert-accent: #2e8b57;
-            --anthracite: #2d3134;
-            --gris-pale: #f4f6f7;
+            --vert-prestige: #133b23;
+            --vert-accent: #1e5c3b;
+            --vert-lime-discret: #8ca986;
+            --anthracite: #1a1d20;
+            --texte-corps: #333c4d;
+            --gris-fond: #f8f9fa;
+            --gris-bordure: #e9ecef;
             --blanc: #ffffff;
-            --ombre: rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease-in-out;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-lg: 0 15px 40px rgba(19, 59, 35, 0.08);
         }
 
-        /* --- RESET & BASICS --- */
+        /* --- CONFIGURATION DE BASE --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--blanc);
-            color: var(--anthracite);
-            line-height: 1.6;
+            color: var(--texte-corps);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 88%;
+            max-width: 1140px;
             margin: 0 auto;
         }
 
-        /* --- HEADER --- */
+        /* --- EN-TÊTE (NAVIGATION) --- */
         header {
-            background-color: var(--blanc);
-            box-shadow: 0 2px 10px var(--ombre);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gris-bordure);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             color: var(--anthracite);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .logo span {
-            color: var(--vert-principal);
+            color: var(--vert-prestige);
+            font-weight: 400;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 35px;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--anthracite);
+            color: var(--texte-corps);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 15px;
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--vert-principal);
+            color: var(--vert-prestige);
         }
 
-        .btn-cta {
-            background-color: var(--vert-principal);
+        .btn-nav {
+            background-color: var(--vert-prestige);
             color: var(--blanc) !important;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 10px 24px;
+            border-radius: 4px;
             font-weight: 600 !important;
-            transition: background 0.3s !important;
+            box-shadow: var(--shadow-sm);
         }
 
-        .btn-cta:hover {
+        .btn-nav:hover {
             background-color: var(--vert-accent);
+            transform: translateY(-1px);
         }
 
-        /* --- HERO SECTION --- */
+        /* --- SECTION HERO --- */
         .hero {
-            background: linear-gradient(135deg, var(--gris-pale) 0%, #e8ebe0 100%);
-            padding: 100px 0;
+            background: linear-gradient(180deg, #f1f4f1 0%, var(--blanc) 100%);
+            padding: 120px 0 90px 0;
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            color: var(--anthracite);
-            margin-bottom: 10px;
-            font-weight: 800;
+        .hero-tagline {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--vert-accent);
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
-        .hero p {
-            font-size: 20px;
-            color: var(--vert-principal);
-            margin-bottom: 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hero h1 {
+            font-size: 52px;
+            color: var(--anthracite);
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--vert-prestige);
         }
 
         .hero .sub-text {
-            color: var(--anthracite);
-            font-size: 18px;
-            text-transform: none;
-            max-width: 600px;
+            color: #5a6578;
+            font-size: 19px;
+            max-width: 700px;
             margin: 0 auto 40px auto;
             font-weight: 400;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--vert-prestige);
+            color: var(--blanc);
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--vert-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--vert-prestige);
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--vert-prestige);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(19, 59, 35, 0.04);
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTION VALEURS / ENGAGEMENT --- */
+        .features {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--gris-bordure);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-item h4 {
+            font-size: 18px;
+            color: var(--anthracite);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
         /* --- SERVICES --- */
         .services {
-            padding: 80px 0;
+            padding: 100px 0;
+            background-color: var(--blanc);
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 50px;
-            position: relative;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background-color: var(--vert-principal);
-            margin: 10px auto 0 auto;
-            border-radius: 2px;
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--anthracite);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #6c757d;
+            font-size: 16px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
         }
 
         .service-card {
             background-color: var(--blanc);
             padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px var(--ombre);
-            border-top: 5px solid var(--vert-principal);
-            transition: transform 0.3s;
+            border-radius: 6px;
+            border: 1px solid var(--gris-bordure);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+            border-color: var(--vert-lime-discret);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--vert-prestige);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-card h3 {
             margin-bottom: 15px;
-            font-size: 22px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--anthracite);
         }
 
         .service-card p {
-            color: #666;
-            font-size: 15px;
+            color: #5a6578;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         /* --- ESTIMATEUR INTERACTIF --- */
         .calculator-section {
-            background-color: var(--gris-pale);
-            padding: 80px 0;
+            background-color: var(--gris-fond);
+            padding: 100px 0;
+            border-top: 1px solid var(--gris-bordure);
+            border-bottom: 1px solid var(--gris-bordure);
+        }
+
+        .calc-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .calc-info h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--anthracite);
+            margin-bottom: 20px;
+        }
+
+        .calc-info p {
+            color: #5a6578;
+            margin-bottom: 20px;
         }
 
         .calc-wrapper {
             background-color: var(--blanc);
-            max-width: 700px;
-            margin: 0 auto;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 25px var(--ombre);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gris-bordure);
         }
 
         .calc-group {
@@ -198,96 +331,152 @@
         .calc-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--anthracite);
         }
 
         .calc-group input[type="number"], .calc-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 14px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
             font-size: 16px;
+            transition: var(--transition);
+            background-color: var(--blanc);
+        }
+
+        .calc-group input[type="number"]:focus, .calc-group select:focus {
+            outline: none;
+            border-color: var(--vert-prestige);
+            box-shadow: 0 0 0 3px rgba(19, 59, 35, 0.1);
         }
 
         .checkbox-group {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
+            margin-top: 10px;
         }
 
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
+            font-size: 15px;
         }
 
         .checkbox-item input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--vert-principal);
+            width: 20px;
+            height: 20px;
+            accent-color: var(--vert-prestige);
+            cursor: pointer;
         }
 
         .total-box {
-            background-color: var(--gris-pale);
-            padding: 20px;
-            border-radius: 5px;
+            background-color: #f1f4f1;
+            padding: 30px;
+            border-radius: 4px;
             text-align: center;
             margin-top: 30px;
-            border-left: 5px solid var(--vert-principal);
+            border-top: 4px solid var(--vert-prestige);
         }
 
         .total-box h4 {
-            font-size: 18px;
+            font-size: 14px;
             text-transform: uppercase;
-            color: #666;
+            color: #6c757d;
+            letter-spacing: 1px;
         }
 
         .total-price {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--vert-principal);
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--vert-prestige);
             margin: 5px 0;
         }
 
-        /* --- FOOTER / CONTACT --- */
+        /* --- SECTION FAQ --- */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--blanc);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--anthracite);
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: #5a6578;
+        }
+
+        /* --- PIED DE PAGE (FOOTER) --- */
         footer {
             background-color: var(--anthracite);
             color: var(--blanc);
-            padding: 60px 0 30px 0;
+            padding: 80px 0 40px 0;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
         }
 
         .footer-box h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 18px;
+            margin-bottom: 25px;
             color: var(--blanc);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .footer-box p {
-            color: #bbb;
-            margin-bottom: 10px;
+            color: #a0aec0;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .footer-box strong {
+            color: var(--blanc);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #444;
-            color: #888;
+            padding-top: 40px;
+            border-top: 1px solid #2d3748;
+            color: #718096;
             font-size: 14px;
         }
 
-        /* --- RESPONSIVE --- */
+        /* --- AJUSTEMENTS MOBILES --- */
+        @media (max-width: 900px) {
+            .calc-container { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Pour garder ça simple sans menu burger complexe */
-            .hero h1 { font-size: 32px; }
-            .calc-wrapper { padding: 20px; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 38px; }
+            .hero .sub-text { font-size: 17px; }
+            .hero-buttons { flex-direction: column; gap: 10px; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -298,101 +487,160 @@
             <div class="logo">OZIAS <span>EXTÉRIEUR</span></div>
             <ul class="nav-links">
                 <li><a href="#services">Nos Services</a></li>
-                <li><a href="#estimateur">Estimer mon Prix</a></li>
-                <li><a href="#contact" class="btn-cta">Contact Direct</a></li>
+                <li><a href="#estimateur">Estimer un Projet</a></li>
+                <li><a href="#faq">F.A.Q.</a></li>
+                <li><a href="#contact" class="btn-nav">Nous Joindre</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>OZIAS EXTÉRIEUR</h1>
-            <p>Votre propriété, notre priorité.</p>
-            <p class="sub-text">Nettoyage à haute pression, entretien expert de piscine, tonte de pelouse et lavage de vitres résidentielles à Otterburn Park, Mont-Saint-Hilaire et Belœil.</p>
-            <a href="#estimateur" class="btn-cta" style="padding: 15px 30px; font-size: 18px;">Calculer mon estimation</a>
+            <span class="hero-tagline">Solutions Résidentielles Clé en Main</span>
+            <h1>Votre propriété, <span>notre priorité.</span></h1>
+            <p class="sub-text">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park, Mont-Saint-Hilaire et Belœil.</p>
+            <div class="hero-buttons">
+                <a href="#estimateur" class="btn-primary">Calculer un devis en ligne</a>
+                <a href="#contact" class="btn-secondary">Parler à un technicien</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>Technologie de Pointe</h4>
+                    <p>Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Sécurité Absolue</h4>
+                    <p>Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étanchéité.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Rigueur & Propreté</h4>
+                    <p>Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Nos Services Étoiles</h2>
+            <div class="section-header">
+                <h2>Une Offre de Service Complète</h2>
+                <p>Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.</p>
+            </div>
+            
             <div class="services-grid">
-                
                 <div class="service-card">
                     <h3>Lavage Haute Pression</h3>
-                    <p>Décapage en profondeur de pavé uni (mousse, mauvaises herbes, saleté incrustée) et lavage d'entrées d'asphalte avec notre unité mobile haute performance de 3100 PSI.</p>
+                    <p>Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>Entretien de Piscine</h3>
-                    <p>Analyse complète, balancement du pH, traitements-choc et prévention de l'éclosion d'algues. Gardez votre eau cristalline et sécuritaire tout l'été.</p>
+                    <h3>Gestion & Traitement de Piscine</h3>
+                    <p>Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>Tonte de Pelouse</h3>
-                    <p>Coupe régulière et précise, coupe-bordure minutieux sur les contours et nettoyage complet des résidus sur vos allées de pavé après notre passage.</p>
+                    <h3>Architecture de Pelouse</h3>
+                    <p>Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>Lavage de Vitres</h3>
-                    <p>Limité au rez-de-chaussée et sous-sol pour une efficacité maximale. Nettoyage sécuritaire basse pression ("soft wash"), frottage doux et finition à la raclette sans aucune trace.</p>
+                    <h3>Lavage de Vitres Architecturales</h3>
+                    <p>Limité exclusivement au rez-de-chaussée et sous-sol pour maintenir un standard de sécurité optimal. Finition manuelle à la raclette, garantie sans traces.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
     <section id="estimateur" class="calculator-section">
         <div class="container">
-            <h2 class="section-title">Estimez le coût de vos travaux</h2>
-            <div class="calc-wrapper">
+            <div class="calc-container">
                 
-                <div class="calc-group">
-                    <label for="surface-type">Type de surface à nettoyer (Driveway)</label>
-                    <select id="surface-type" onchange="calculerTotal()">
-                        <option value="aucun">Aucun lavage de surface</option>
-                        <option value="asphalte">Entrée en Asphalte (Lavage simple)</option>
-                        <option value="pave">Pavé Uni / Dalles (Décapage complet)</option>
-                    </select>
+                <div class="calc-info">
+                    <h2>Générez un Devis Préliminaire</h2>
+                    <p>Sélectionnez les services requis pour configurer une estimation instantanée de votre projet d'entretien.</p>
+                    <p>Notre tarification est transparente, fixe et calculée au plus juste selon les dimensions réelles de votre propriété.</p>
                 </div>
 
-                <div class="calc-group" id="area-group" style="display:none;">
-                    <label for="surface-area">Superficie approximative (en pieds carrés)</label>
-                    <input type="number" id="surface-area" value="0" min="0" oninput="calculerTotal()">
-                    <span style="font-size: 12px; color: #666;">Astuce : Une entrée standard de 4 voitures fait environ 600 pi².</span>
-                </div>
+                <div class="calc-wrapper">
+                    <div class="calc-group">
+                        <label for="surface-type">Lavage de Surface (Entrée / Driveway)</label>
+                        <select id="surface-type" onchange="calculerTotal()">
+                            <option value="aucun">Aucun lavage de surface</option>
+                            <option value="asphalte">Entrée en Asphalte</option>
+                            <option value="pave">Pavé Uni / Dalles Premium</option>
+                        </select>
+                    </div>
 
-                <div class="calc-group">
-                    <label>Services Complémentaires</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-item">
-                            <input type="checkbox" id="add-sable" onchange="calculerTotal()"> Ajout de sable polymère (uniquement pour le pavé uni)
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" id="add-char" onchange="calculerTotal()"> Lavage de voiture extérieur Premium (À la main & mousse active) (+55 CAD)
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> Lavage des vitres extérieures (Rez-de-chaussée/Sous-sol) (+40 CAD)
-                        </label>
+                    <div class="calc-group" id="area-group" style="display:none;">
+                        <label for="surface-area">Superficie estimée (en pieds carrés)</label>
+                        <input type="number" id="surface-area" value="0" min="0" oninput="calculerTotal()">
+                    </div>
+
+                    <div class="calc-group">
+                        <label>Options & Services Spécialisés</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="add-sable" onchange="calculerTotal()"> Application de sable polymère (Pavé uni seulement)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="add-char" onchange="calculerTotal()"> Nettoyage auto Premium à la main (Mousse active) (+55 CAD)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> Lavage de vitres extérieures (Rez-de-chaussée) (+40 CAD)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="bacs-qty">Désinfection Haute Pression de Bacs Roulants</label>
+                        <select id="bacs-qty" onchange="calculerTotal()">
+                            <option value="0">Aucun bac</option>
+                            <option value="1">1 bac (15 CAD)</option>
+                            <option value="2">2 bacs (25 CAD)</option>
+                            <option value="3">3 bacs (30 CAD)</option>
+                        </select>
+                    </div>
+
+                    <div class="total-box">
+                        <h4>Montant Estimé</h4>
+                        <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
+                        <p style="font-size: 12px; color: #6c757d; margin-top: 5px;">*Seuil de déplacement minimum requis de 75 $ par intervention.</p>
                     </div>
                 </div>
 
-                <div class="calc-group">
-                    <label for="bacs-qty">Désinfection de bacs roulants (Poubelle, Recyclage, Compost)</label>
-                    <select id="bacs-qty" onchange="calculerTotal()">
-                        <option value="0">Aucun bac</option>
-                        <option value="1">1 bac (15 CAD)</option>
-                        <option value="2">2 bacs (25 CAD)</option>
-                        <option value="3">3 bacs (30 CAD)</option>
-                    </select>
-                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="total-box">
-                    <h4>Estimation de votre tarif</h4>
-                    <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
-                    <p style="font-size: 13px; color: #777; margin-top: 5px;">*Déplacement minimum requis de 75 $ total pour les travaux.</p>
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Foire Aux Questions</h2>
+                <p>Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>La pression de 3100 PSI peut-elle endommager mes fenêtres ?</h3>
+                    <p>Absolument pas. Nous n'utilisons jamais la haute pression sur le verre ou les cadrages. Nous appliquons une méthode de lavage doux ("soft wash") à basse pression couplée à un nettoyage mécanique manuel et un rinçage à distance sécuritaire.</p>
                 </div>
-
+                <div class="faq-item">
+                    <h3>Comment fonctionne votre protocole anti-algues pour les piscines ?</h3>
+                    <p>Notre technicien spécialisé possède une expérience directe dans le traitement des eaux résidentielles. Il procède par analyse chimique des paramètres du pH, de l'alcalinité et applique des traitements préventifs ciblés pour couper la prolifération des spores avant les vagues de chaleur.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Pourquoi vous limitez-vous aux fenêtres du rez-de-chaussée ?</h3>
+                    <p>Pour des raisons de sécurité strictes et d'efficacité opérationnelle. Travailler les deux pieds ancrés au sol nous évite l'utilisation d'échelles complexes et risquées, ce qui nous permet de vous offrir un tarif beaucoup plus compétitif et un travail plus rapide.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
+                    <p>L'estimateur fournit un calcul préliminaire très précis. Avant de débuter les travaux, nous validons toujours le prix final avec vous par message texte ou sur place pour s'assurer qu'il n'y ait aucune surprise.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -401,24 +649,24 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-box">
-                    <h3>Ozias Extérieur</h3>
-                    <p>Service d'entretien résidentiel d'élite dirigé par des jeunes motivés et minutieux de votre région.</p>
+                    <h3>OZIAS EXTÉRIEUR</h3>
+                    <p>Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.</p>
                 </div>
                 <div class="footer-box">
-                    <h3>Zone de Service</h3>
-                    <p>📍 Otterburn Park</p>
+                    <h3>Territoire Couvert</h3>
+                    <p>📍 Otterburn Park (Centre névralgique)</p>
                     <p>📍 Mont-Saint-Hilaire</p>
-                    <p>📍 Belœil / McMasterville</p>
+                    <p>📍 Belœil & McMasterville</p>
                 </div>
                 <div class="footer-box">
-                    <h3>Contactez-nous</h3>
-                    <p>📱 <strong>Texto / Tél :</strong> [Ton Numéro Ici]</p>
-                    <p>✉️ <strong>Courriel :</strong> [Ton Courriel Ici]</p>
-                    <p style="font-size: 13px; color: #99px; margin-top:10px;">Envoyez-nous une photo de votre terrain pour un prix final instantané !</p>
+                    <h3>Demande d'Intervention</h3>
+                    <p>📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935</p>
+                    <p>✉️ <strong>Courriel :</strong> felix.ciboulette.labbe@gmail.com</p>
+                    <p style="font-size: 13px; color: #718096; margin-top: 15px;">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Ozias Extérieur. Tous droits réservés.
+                &copy; 2026 Ozias Extérieur. Tous droits réservés. Gestion de Propriété Élite.
             </div>
         </div>
     </footer>
@@ -427,7 +675,6 @@
         function calculerTotal() {
             let total = 0;
             
-            // 1. Gestion du type de surface et affichage de la case superficie
             const typeSurface = document.getElementById('surface-type').value;
             const areaGroup = document.getElementById('area-group');
             const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
@@ -437,20 +684,17 @@
             } else {
                 areaGroup.style.display = 'block';
                 
-                // Calcul du prix au pi²
                 if (typeSurface === 'asphalte') {
-                    total += areaInput * 0.20; // 0.20$/pi² moyenne
+                    total += areaInput * 0.20;
                 } else if (typeSurface === 'pave') {
-                    total += areaInput * 0.50; // 0.50$/pi² moyenne
+                    total += areaInput * 0.50;
                     
-                    // Option Sable polymère (uniquement dispo si pavé uni est sélectionné)
                     if (document.getElementById('add-sable').checked) {
-                        total += areaInput * 0.35; // 0.35$/pi² pour le sable
+                        total += areaInput * 0.35;
                     }
                 }
             }
 
-            // Désactiver la case sable polymère si ce n'est pas du pavé uni
             if (typeSurface !== 'pave') {
                 document.getElementById('add-sable').checked = false;
                 document.getElementById('add-sable').disabled = true;
@@ -458,22 +702,18 @@
                 document.getElementById('add-sable').disabled = false;
             }
 
-            // 2. Ajout des forfaits fixes
             if (document.getElementById('add-char').checked) total += 55;
             if (document.getElementById('add-vitres').checked) total += 40;
 
-            // 3. Ajout des bacs roulants
             const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
             if (qtyBacs === 1) total += 15;
             if (qtyBacs === 2) total += 25;
             if (qtyBacs === 3) total += 30;
 
-            // 4. Règle du déplacement minimum (uniquement si le client a sélectionné quelque chose)
             if (total > 0 && total < 75) {
                 total = 75;
             }
 
-            // Affichage du prix arrondi
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
     </script>
