@@ -498,7 +498,7 @@
         <div class="container">
             <span class="hero-tagline">Solutions Résidentielles Clé en Main</span>
             <h1>Votre propriété, <span>notre priorité.</span></h1>
-            <p class="sub-text">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park, Mont-Saint-Hilaire et Belœil.</p>
+            <p class="sub-text">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park et Mont-Saint-Hilaire.</p>
             <div class="hero-buttons">
                 <a href="#estimateur" class="btn-primary">Calculer un devis en ligne</a>
                 <a href="#contact" class="btn-secondary">Parler à un technicien</a>
@@ -588,6 +588,9 @@
                                 <input type="checkbox" id="add-sable" onchange="calculerTotal()"> Application de sable polymère (Pavé uni seulement)
                             </label>
                             <label class="checkbox-item">
+                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> Analyse et traitement de piscine (Service anti-algues complet) (+75 CAD)
+                            </label>
+                            <label class="checkbox-item">
                                 <input type="checkbox" id="add-char" onchange="calculerTotal()"> Nettoyage auto Premium à la main (Mousse active) (+55 CAD)
                             </label>
                             <label class="checkbox-item">
@@ -616,106 +619,3 @@
             </div>
         </div>
     </section>
-
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Foire Aux Questions</h2>
-                <p>Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>La pression de 3100 PSI peut-elle endommager mes fenêtres ?</h3>
-                    <p>Absolument pas. Nous n'utilisons jamais la haute pression sur le verre ou les cadrages. Nous appliquons une méthode de lavage doux ("soft wash") à basse pression couplée à un nettoyage mécanique manuel et un rinçage à distance sécuritaire.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Comment fonctionne votre protocole anti-algues pour les piscines ?</h3>
-                    <p>Notre technicien spécialisé possède une expérience directe dans le traitement des eaux résidentielles. Il procède par analyse chimique des paramètres du pH, de l'alcalinité et applique des traitements préventifs ciblés pour couper la prolifération des spores avant les vagues de chaleur.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Pourquoi vous limitez-vous aux fenêtres du rez-de-chaussée ?</h3>
-                    <p>Pour des raisons de sécurité strictes et d'efficacité opérationnelle. Travailler les deux pieds ancrés au sol nous évite l'utilisation d'échelles complexes et risquées, ce qui nous permet de vous offrir un tarif beaucoup plus compétitif et un travail plus rapide.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
-                    <p>L'estimateur fournit un calcul préliminaire très précis. Avant de débuter les travaux, nous validons toujours le prix final avec vous par message texte ou sur place pour s'assurer qu'il n'y ait aucune surprise.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-box">
-                    <h3>OZIAS EXTÉRIEUR</h3>
-                    <p>Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.</p>
-                </div>
-                <div class="footer-box">
-                    <h3>Territoire Couvert</h3>
-                    <p>📍 Otterburn Park (Centre névralgique)</p>
-                    <p>📍 Mont-Saint-Hilaire</p>
-                    <p>📍 Belœil & McMasterville</p>
-                </div>
-                <div class="footer-box">
-                    <h3>Demande d'Intervention</h3>
-                    <p>📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935</p>
-                    <p>✉️ <strong>Courriel :</strong> felix.ciboulette.labbe@gmail.com</p>
-                    <p style="font-size: 13px; color: #718096; margin-top: 15px;">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 Ozias Extérieur. Tous droits réservés. Gestion de Propriété Élite.
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function calculerTotal() {
-            let total = 0;
-            
-            const typeSurface = document.getElementById('surface-type').value;
-            const areaGroup = document.getElementById('area-group');
-            const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
-            
-            if (typeSurface === 'aucun') {
-                areaGroup.style.display = 'none';
-            } else {
-                areaGroup.style.display = 'block';
-                
-                if (typeSurface === 'asphalte') {
-                    total += areaInput * 0.20;
-                } else if (typeSurface === 'pave') {
-                    total += areaInput * 0.50;
-                    
-                    if (document.getElementById('add-sable').checked) {
-                        total += areaInput * 0.35;
-                    }
-                }
-            }
-
-            if (typeSurface !== 'pave') {
-                document.getElementById('add-sable').checked = false;
-                document.getElementById('add-sable').disabled = true;
-            } else {
-                document.getElementById('add-sable').disabled = false;
-            }
-
-            if (document.getElementById('add-char').checked) total += 55;
-            if (document.getElementById('add-vitres').checked) total += 40;
-
-            const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
-            if (qtyBacs === 1) total += 15;
-            if (qtyBacs === 2) total += 25;
-            if (qtyBacs === 3) total += 30;
-
-            if (total > 0 && total < 75) {
-                total = 75;
-            }
-
-            document.getElementById('total-amount').innerText = total.toFixed(2);
-        }
-    </script>
-</body>
-</html>
