@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozias Extérieur | Votre propriété, notre priorité</title>
+    <style>
+        /* --- VARIABLES DE DESIGN --- */
+        :root {
+            --vert-principal: #1e5c3b;
+            --vert-accent: #2e8b57;
+            --anthracite: #2d3134;
+            --gris-pale: #f4f6f7;
+            --blanc: #ffffff;
+            --ombre: rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- RESET & BASICS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--anthracite);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--blanc);
+            box-shadow: 0 2px 10px var(--ombre);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--anthracite);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--vert-principal);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--anthracite);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--vert-principal);
+        }
+
+        .btn-cta {
+            background-color: var(--vert-principal);
+            color: var(--blanc) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600 !important;
+            transition: background 0.3s !important;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--vert-accent);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, var(--gris-pale) 0%, #e8ebe0 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--anthracite);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--vert-principal);
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero .sub-text {
+            color: var(--anthracite);
+            font-size: 18px;
+            text-transform: none;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-weight: 400;
+        }
+
+        /* --- SERVICES --- */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--vert-principal);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--blanc);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px var(--ombre);
+            border-top: 5px solid var(--vert-principal);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* --- ESTIMATEUR INTERACTIF --- */
+        .calculator-section {
+            background-color: var(--gris-pale);
+            padding: 80px 0;
+        }
+
+        .calc-wrapper {
+            background-color: var(--blanc);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 25px var(--ombre);
+        }
+
+        .calc-group {
+            margin-bottom: 25px;
+        }
+
+        .calc-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .calc-group input[type="number"], .calc-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--vert-principal);
+        }
+
+        .total-box {
+            background-color: var(--gris-pale);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 30px;
+            border-left: 5px solid var(--vert-principal);
+        }
+
+        .total-box h4 {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .total-price {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--vert-principal);
+            margin: 5px 0;
+        }
+
+        /* --- FOOTER / CONTACT --- */
+        footer {
+            background-color: var(--anthracite);
+            color: var(--blanc);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-box h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--blanc);
+        }
+
+        .footer-box p {
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Pour garder ça simple sans menu burger complexe */
+            .hero h1 { font-size: 32px; }
+            .calc-wrapper { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">OZIAS <span>EXTÉRIEUR</span></div>
+            <ul class="nav-links">
+                <li><a href="#services">Nos Services</a></li>
+                <li><a href="#estimateur">Estimer mon Prix</a></li>
+                <li><a href="#contact" class="btn-cta">Contact Direct</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>OZIAS EXTÉRIEUR</h1>
+            <p>Votre propriété, notre priorité.</p>
+            <p class="sub-text">Nettoyage à haute pression, entretien expert de piscine, tonte de pelouse et lavage de vitres résidentielles à Otterburn Park, Mont-Saint-Hilaire et Belœil.</p>
+            <a href="#estimateur" class="btn-cta" style="padding: 15px 30px; font-size: 18px;">Calculer mon estimation</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services Étoiles</h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <h3>Lavage Haute Pression</h3>
+                    <p>Décapage en profondeur de pavé uni (mousse, mauvaises herbes, saleté incrustée) et lavage d'entrées d'asphalte avec notre unité mobile haute performance de 3100 PSI.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Entretien de Piscine</h3>
+                    <p>Analyse complète, balancement du pH, traitements-choc et prévention de l'éclosion d'algues. Gardez votre eau cristalline et sécuritaire tout l'été.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Tonte de Pelouse</h3>
+                    <p>Coupe régulière et précise, coupe-bordure minutieux sur les contours et nettoyage complet des résidus sur vos allées de pavé après notre passage.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Lavage de Vitres</h3>
+                    <p>Limité au rez-de-chaussée et sous-sol pour une efficacité maximale. Nettoyage sécuritaire basse pression ("soft wash"), frottage doux et finition à la raclette sans aucune trace.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="estimateur" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Estimez le coût de vos travaux</h2>
+            <div class="calc-wrapper">
+                
+                <div class="calc-group">
+                    <label for="surface-type">Type de surface à nettoyer (Driveway)</label>
+                    <select id="surface-type" onchange="calculerTotal()">
+                        <option value="aucun">Aucun lavage de surface</option>
+                        <option value="asphalte">Entrée en Asphalte (Lavage simple)</option>
+                        <option value="pave">Pavé Uni / Dalles (Décapage complet)</option>
+                    </select>
+                </div>
+
+                <div class="calc-group" id="area-group" style="display:none;">
+                    <label for="surface-area">Superficie approximative (en pieds carrés)</label>
+                    <input type="number" id="surface-area" value="0" min="0" oninput="calculerTotal()">
+                    <span style="font-size: 12px; color: #666;">Astuce : Une entrée standard de 4 voitures fait environ 600 pi².</span>
+                </div>
+
+                <div class="calc-group">
+                    <label>Services Complémentaires</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="add-sable" onchange="calculerTotal()"> Ajout de sable polymère (uniquement pour le pavé uni)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="add-char" onchange="calculerTotal()"> Lavage de voiture extérieur Premium (À la main & mousse active) (+55 CAD)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> Lavage des vitres extérieures (Rez-de-chaussée/Sous-sol) (+40 CAD)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="calc-group">
+                    <label for="bacs-qty">Désinfection de bacs roulants (Poubelle, Recyclage, Compost)</label>
+                    <select id="bacs-qty" onchange="calculerTotal()">
+                        <option value="0">Aucun bac</option>
+                        <option value="1">1 bac (15 CAD)</option>
+                        <option value="2">2 bacs (25 CAD)</option>
+                        <option value="3">3 bacs (30 CAD)</option>
+                    </select>
+                </div>
+
+                <div class="total-box">
+                    <h4>Estimation de votre tarif</h4>
+                    <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
+                    <p style="font-size: 13px; color: #777; margin-top: 5px;">*Déplacement minimum requis de 75 $ total pour les travaux.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-box">
+                    <h3>Ozias Extérieur</h3>
+                    <p>Service d'entretien résidentiel d'élite dirigé par des jeunes motivés et minutieux de votre région.</p>
+                </div>
+                <div class="footer-box">
+                    <h3>Zone de Service</h3>
+                    <p>📍 Otterburn Park</p>
+                    <p>📍 Mont-Saint-Hilaire</p>
+                    <p>📍 Belœil / McMasterville</p>
+                </div>
+                <div class="footer-box">
+                    <h3>Contactez-nous</h3>
+                    <p>📱 <strong>Texto / Tél :</strong> [Ton Numéro Ici]</p>
+                    <p>✉️ <strong>Courriel :</strong> [Ton Courriel Ici]</p>
+                    <p style="font-size: 13px; color: #99px; margin-top:10px;">Envoyez-nous une photo de votre terrain pour un prix final instantané !</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Ozias Extérieur. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calculerTotal() {
+            let total = 0;
+            
+            // 1. Gestion du type de surface et affichage de la case superficie
+            const typeSurface = document.getElementById('surface-type').value;
+            const areaGroup = document.getElementById('area-group');
+            const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
+            
+            if (typeSurface === 'aucun') {
+                areaGroup.style.display = 'none';
+            } else {
+                areaGroup.style.display = 'block';
+                
+                // Calcul du prix au pi²
+                if (typeSurface === 'asphalte') {
+                    total += areaInput * 0.20; // 0.20$/pi² moyenne
+                } else if (typeSurface === 'pave') {
+                    total += areaInput * 0.50; // 0.50$/pi² moyenne
+                    
+                    // Option Sable polymère (uniquement dispo si pavé uni est sélectionné)
+                    if (document.getElementById('add-sable').checked) {
+                        total += areaInput * 0.35; // 0.35$/pi² pour le sable
+                    }
+                }
+            }
+
+            // Désactiver la case sable polymère si ce n'est pas du pavé uni
+            if (typeSurface !== 'pave') {
+                document.getElementById('add-sable').checked = false;
+                document.getElementById('add-sable').disabled = true;
+            } else {
+                document.getElementById('add-sable').disabled = false;
+            }
+
+            // 2. Ajout des forfaits fixes
+            if (document.getElementById('add-char').checked) total += 55;
+            if (document.getElementById('add-vitres').checked) total += 40;
+
+            // 3. Ajout des bacs roulants
+            const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
+            if (qtyBacs === 1) total += 15;
+            if (qtyBacs === 2) total += 25;
+            if (qtyBacs === 3) total += 30;
+
+            // 4. Règle du déplacement minimum (uniquement si le client a sélectionné quelque chose)
+            if (total > 0 && total < 75) {
+                total = 75;
+            }
+
+            // Affichage du prix arrondi
+            document.getElementById('total-amount').innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
