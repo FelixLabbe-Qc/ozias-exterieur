@@ -313,7 +313,21 @@
 
         .calc-info p {
             color: #5a6578;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+
+        .calc-info ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .calc-info ul li {
+            font-size: 15px;
+            color: #5a6578;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .calc-wrapper {
@@ -498,7 +512,7 @@
         <div class="container">
             <span class="hero-tagline">Solutions Résidentielles Clé en Main</span>
             <h1>Votre propriété, <span>notre priorité.</span></h1>
-            <p class="sub-text">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park, Mont-Saint-Hilaire et Belœil.</p>
+            <p class="sub-text">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park et Mont-Saint-Hilaire.</p>
             <div class="hero-buttons">
                 <a href="#estimateur" class="btn-primary">Calculer un devis en ligne</a>
                 <a href="#contact" class="btn-secondary">Parler à un technicien</a>
@@ -563,7 +577,14 @@
                 <div class="calc-info">
                     <h2>Générez un Devis Préliminaire</h2>
                     <p>Sélectionnez les services requis pour configurer une estimation instantanée de votre projet d'entretien.</p>
-                    <p>Notre tarification est transparente, fixe et calculée au plus juste selon les dimensions réelles de votre propriété.</p>
+                    <p>Notre tarification est transparente, fixe et calculée selon les dimensions et besoins réels de votre propriété :</p>
+                    <ul>
+                        <li>🔹 <strong>Asphalte :</strong> 0,20 $ / pi²</li>
+                        <li>🔹 <strong>Pavé Uni :</strong> 0,50 $ / pi²</li>
+                        <li>🔹 <strong>Entretien de Piscine :</strong> 75,00 $ / visite</li>
+                        <li>🔹 <strong>Nettoyage Auto Premium :</strong> 55,00 $ / auto</li>
+                        <li>🔹 <strong>Lavage de Vitres (RDC) :</strong> 40,00 $ / intervention</li>
+                    </ul>
                 </div>
 
                 <div class="calc-wrapper">
@@ -585,7 +606,7 @@
                         <label>Options & Services Spécialisés</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-sable" onchange="calculerTotal()"> Application de sable polymère (Pavé uni seulement)
+                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> Analyse et traitement de piscine (Service anti-algues complet) (+75 CAD)
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" id="add-char" onchange="calculerTotal()"> Nettoyage auto Premium à la main (Mousse active) (+55 CAD)
@@ -656,7 +677,6 @@
                     <h3>Territoire Couvert</h3>
                     <p>📍 Otterburn Park (Centre névralgique)</p>
                     <p>📍 Mont-Saint-Hilaire</p>
-                    <p>📍 Belœil & McMasterville</p>
                 </div>
                 <div class="footer-box">
                     <h3>Demande d'Intervention</h3>
@@ -688,20 +708,11 @@
                     total += areaInput * 0.20;
                 } else if (typeSurface === 'pave') {
                     total += areaInput * 0.50;
-                    
-                    if (document.getElementById('add-sable').checked) {
-                        total += areaInput * 0.35;
-                    }
                 }
             }
 
-            if (typeSurface !== 'pave') {
-                document.getElementById('add-sable').checked = false;
-                document.getElementById('add-sable').disabled = true;
-            } else {
-                document.getElementById('add-sable').disabled = false;
-            }
-
+            // AJOUT DES SERVICES FIXES
+            if (document.getElementById('add-piscine').checked) total += 75;
             if (document.getElementById('add-char').checked) total += 55;
             if (document.getElementById('add-vitres').checked) total += 40;
 
