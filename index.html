@@ -585,11 +585,11 @@
                     <h2>Générez un Devis Préliminaire</h2>
                     <p>Sélectionnez un de nos forfaits ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
                     
-                    <h3>🔥 Forfaits Combos Populaires :</h3>
+                    <h3>🔥 Forfaits Combos Professionnels :</h3>
                     <ul>
-                        <li>📦 <strong>Pure Clarté (89 $) :</strong> Lavage complet des vitres (2 étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 16 $)</span></li>
-                        <li>📦 <strong>Prestige Extérieur (375 $) :</strong> Nettoyage complet d'entrée + Lavage des vitres (2 étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 60 $)</span></li>
-                        <li>📦 <strong>Sainte Paix (425 $/mois) :</strong> Abonnement récurrent incluant 4 tontes de pelouse et 4 entretiens complets de piscine. <span style="color:#1e5c3b; font-weight:700;">(Économisez 55 $)</span></li>
+                        <li>📦 <strong>Combo "Clarté Totale" (79 $) :</strong> Lavage complet des vitres (2 étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 26 $)</span></li>
+                        <li>📦 <strong>Combo "Ozias Élite" (349 $) :</strong> Nettoyage complet d'entrée de cour + Lavage des vitres (2 étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 86 $)</span></li>
+                        <li>📦 <strong>Combo Mensuel "Sainte Paix" (348 $/mois) :</strong> Abonnement estival récurrent incluant 4 tontes de pelouse et 4 entretiens complets de piscine. <span style="color:#1e5c3b; font-weight:700;">(Économisez 132 $)</span></li>
                     </ul>
 
                     <h3>Tarifs Individuels :</h3>
@@ -598,7 +598,7 @@
                         <li>🔹 Pavé Uni : 0,50 $ / pi²</li>
                         <li>🔹 Entretien de Piscine : 75,00 $ / visite</li>
                         <li>🔹 Nettoyage Auto Premium : 55,00 $ / auto</li>
-                        <li>🔹 Lavage de Vitres (Maison complète) : 80,00 $</li>
+                        <li>🔹 Lavage de Vitres (Maison complète, 2 étages) : 80,00 $</li>
                     </ul>
                 </div>
 
@@ -607,9 +607,9 @@
                         <label for="combo-select">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
                             <option value="carte">-- Services à la carte --</option>
-                            <option value="clarte">Combo "Pure Clarté" (89.00 $ CAD)</option>
-                            <option value="prestige">Combo "Prestige Extérieur" (375.00 $ CAD)</option>
-                            <option value="paix">Combo Mensuel "Sainte Paix" (425.00 $ CAD)</option>
+                            <option value="clarte">Combo "Clarté Totale" (79.00 $ CAD)</option>
+                            <option value="elite">Combo "Ozias Élite" (349.00 $ CAD)</option>
+                            <option value="paix">Combo Mensuel "Sainte Paix" (348.00 $ CAD)</option>
                         </select>
                     </div>
 
@@ -683,7 +683,7 @@
                 </div>
                 <div class="faq-item">
                     <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
-                    <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance de pointe couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
+                    <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
@@ -722,16 +722,16 @@
         function appliquerCombo() {
             const combo = document.getElementById('combo-select').value;
             
-            // Réinitialiser les éléments du formulaire pour refléter le combo visuellement
+            // Forcer l'état des cases selon le forfait choisi
             if (combo === 'clarte') {
                 document.getElementById('surface-type').value = 'aucun';
                 document.getElementById('add-piscine').checked = false;
                 document.getElementById('add-char').checked = false;
                 document.getElementById('add-vitres').checked = true;
                 document.getElementById('bacs-qty').value = '2';
-            } else if (combo === 'prestige') {
-                document.getElementById('surface-type').value = 'pave'; // Simule un pavé moyen inclus
-                document.getElementById('surface-area').value = '600'; // Surface fixe pour le calcul visuel du combo
+            } else if (combo === 'elite') {
+                document.getElementById('surface-type').value = 'pave';
+                document.getElementById('surface-area').value = '600'; // Surface moyenne pour illustration visuelle
                 document.getElementById('add-piscine').checked = false;
                 document.getElementById('add-char').checked = true;
                 document.getElementById('add-vitres').checked = true;
@@ -751,15 +751,15 @@
             const combo = document.getElementById('combo-select').value;
             let total = 0;
             
-            // Si un combo est sélectionné, on applique un prix fixe direct
+            // Si un forfait est sélectionné, on applique son prix fixe
             if (combo === 'clarte') {
-                total = 89.00;
+                total = 79.00;
                 document.getElementById('area-group').style.display = 'none';
-            } else if (combo === 'prestige') {
-                total = 375.00;
+            } else if (combo === 'elite') {
+                total = 349.00;
                 document.getElementById('area-group').style.display = 'block';
             } else if (combo === 'paix') {
-                total = 425.00;
+                total = 348.00;
                 document.getElementById('area-group').style.display = 'none';
             } else {
                 // CALCULS À LA CARTE STANDARD
@@ -778,27 +778,27 @@
                     }
                 }
 
-                // Ajout des options à la carte
+                // Options individuelles
                 if (document.getElementById('add-piscine').checked) total += 75;
                 if (document.getElementById('add-char').checked) total += 55;
-                if (document.getElementById('add-vitres').checked) total += 80; // Prix mis à jour pour 2 étages complets
+                if (document.getElementById('add-vitres').checked) total += 80;
 
                 const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
                 if (qtyBacs === 1) total += 15;
                 if (qtyBacs === 2) total += 25;
                 if (qtyBacs === 3) total += 30;
 
-                // Application du frais minimum si à la carte
+                // Forcer le tarif minimal de déplacement si à la carte
                 if (total > 0 && total < 75) {
                     total = 75;
                 }
             }
 
-            // Mettre à jour l'affichage
+            // Affichage du montant
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // Initialisation initiale
+        // Exécution automatique au chargement
         calculerTotal();
     </script>
 </body>
