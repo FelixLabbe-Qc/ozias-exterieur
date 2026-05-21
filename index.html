@@ -530,6 +530,14 @@
             font-size: 14px;
         }
 
+        .footer-box .badge-desc {
+            font-style: italic;
+            color: #8ca986;
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
         /* --- AJUSTEMENTS MOBILES --- */
         @media (max-width: 950px) {
             nav { flex-direction: column; gap: 15px; }
@@ -604,7 +612,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 id="srv-head-title">Une Offre de Service Complète</h2>
-                <p id="srv-head-desc">We manage all your outdoor needs to give you absolute peace of mind throughout the season.</p>
+                <p id="srv-head-desc">Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.</p>
             </div>
             
             <div class="services-grid">
@@ -712,6 +720,7 @@
                 <div class="footer-box">
                     <h3>OZIAS EXTÉRIEUR</h3>
                     <p id="foot-desc">Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.</p>
+                    <div class="badge-desc" id="local-badge-txt">Fièrement créé et géré par des jeunes d'ici</div>
                 </div>
                 <div class="footer-box">
                     <h3 id="foot-territory-title">Territoire Couvert</h3>
@@ -719,7 +728,7 @@
                     <p>📍 Mont-Saint-Hilaire</p>
                 </div>
                 <div class="footer-box">
-                    <h3 id="foot-contact-title">Demande d'Intervention</h3>
+                    <h3 id="foot-contact-title">Demande d'Intervention / Question</h3>
                     <p>📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935</p>
                     <p>✉️ <strong>Courriel :</strong> felix.ciboulette.labbe@gmail.com</p>
                     <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="foot-notice">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
@@ -778,8 +787,9 @@
                 footDesc: "Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.",
                 footTerritoryTitle: "Territoire Couvert",
                 footCenter: "Centre névralgique",
-                footContactTitle: "Demande d'Intervention",
+                footContactTitle: "Demande d'Intervention / Question",
                 footNotice: "Pour accélérer le traitement, joignez une photo des surfaces par message texte.",
+                localBadgeTxt: "Fièrement créé et géré par des jeunes d'ici",
                 footCopyright: "&copy; 2026 Ozias Extérieur. Tous droits réservés. Gestion de Propriété Élite.",
                 
                 calcLeftInfo: `
@@ -834,7 +844,7 @@
                     </div>
                     <div class="faq-item">
                         <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
-                        <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance de pointe couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
+                        <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
@@ -886,8 +896,9 @@
                 footDesc: "A high-end residential property maintenance division dedicated to maximizing the value and longevity of Richelieu Valley estates.",
                 footTerritoryTitle: "Service Area",
                 footCenter: "Headquarters",
-                footContactTitle: "Service Request",
+                footContactTitle: "Service Request / Questions",
                 footNotice: "To speed up your request, please text us a picture of the surfaces.",
+                localBadgeTxt: "Proudly created and managed by local youth",
                 footCopyright: "&copy; 2026 Ozias Outdoor. All rights reserved. Elite Property Management.",
                 
                 calcLeftInfo: `
@@ -1004,6 +1015,7 @@
             document.getElementById('foot-center').innerText = traductions[lang].footCenter;
             document.getElementById('foot-contact-title').innerText = traductions[lang].footContactTitle;
             document.getElementById('foot-notice').innerText = traductions[lang].footNotice;
+            document.getElementById('local-badge-txt').innerText = traductions[lang].localBadgeTxt;
             document.getElementById('foot-copyright').innerHTML = traductions[lang].footCopyright;
             
             // Remplacer les blocs HTML complexes et les menus déroulants
@@ -1112,5 +1124,4 @@
         }
     </script>
 </body>
-</html>
 </html>
