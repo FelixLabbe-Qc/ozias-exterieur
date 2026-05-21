@@ -316,9 +316,16 @@
             margin-bottom: 15px;
         }
 
+        .calc-info h3 {
+            font-size: 18px;
+            color: var(--vert-prestige);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
         .calc-info ul {
             list-style: none;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .calc-info ul li {
@@ -576,18 +583,38 @@
                 
                 <div class="calc-info">
                     <h2>Générez un Devis Préliminaire</h2>
-                    <p>Sélectionnez les services requis pour configurer une estimation instantanée de votre projet d'entretien.</p>
-                    <p>Notre tarification est transparente, fixe et calculée selon les dimensions et besoins réels de votre propriété :</p>
+                    <p>Sélectionnez un de nos forfaits ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
+                    
+                    <h3>🔥 Forfaits Combos Populaires :</h3>
                     <ul>
-                        <li>🔹 <strong>Asphalte :</strong> 0,20 $ / pi²</li>
-                        <li>🔹 <strong>Pavé Uni :</strong> 0,50 $ / pi²</li>
-                        <li>🔹 <strong>Entretien de Piscine :</strong> 75,00 $ / visite</li>
-                        <li>🔹 <strong>Nettoyage Auto Premium :</strong> 55,00 $ / auto</li>
-                        <li>🔹 <strong>Lavage de Vitres (RDC) :</strong> 40,00 $ / intervention</li>
+                        <li>📦 <strong>Pure Clarté (89 $) :</strong> Lavage complet des vitres (2 étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 16 $)</span></li>
+                        <li>📦 <strong>Prestige Extérieur (375 $) :</strong> Nettoyage complet d'entrée + Lavage des vitres (2 étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 60 $)</span></li>
+                        <li>📦 <strong>Sainte Paix (425 $/mois) :</strong> Abonnement récurrent incluant 4 tontes de pelouse et 4 entretiens complets de piscine. <span style="color:#1e5c3b; font-weight:700;">(Économisez 55 $)</span></li>
+                    </ul>
+
+                    <h3>Tarifs Individuels :</h3>
+                    <ul>
+                        <li>🔹 Asphalte : 0,20 $ / pi²</li>
+                        <li>🔹 Pavé Uni : 0,50 $ / pi²</li>
+                        <li>🔹 Entretien de Piscine : 75,00 $ / visite</li>
+                        <li>🔹 Nettoyage Auto Premium : 55,00 $ / auto</li>
+                        <li>🔹 Lavage de Vitres (Maison complète) : 80,00 $</li>
                     </ul>
                 </div>
 
                 <div class="calc-wrapper">
+                    <div class="calc-group">
+                        <label for="combo-select">Forfaits Combos Économiques</label>
+                        <select id="combo-select" onchange="appliquerCombo()">
+                            <option value="carte">-- Services à la carte --</option>
+                            <option value="clarte">Combo "Pure Clarté" (89.00 $ CAD)</option>
+                            <option value="prestige">Combo "Prestige Extérieur" (375.00 $ CAD)</option>
+                            <option value="paix">Combo Mensuel "Sainte Paix" (425.00 $ CAD)</option>
+                        </select>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid var(--gris-bordure); margin-bottom: 20px;">
+
                     <div class="calc-group">
                         <label for="surface-type">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
@@ -606,13 +633,13 @@
                         <label>Options & Services Spécialisés</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> Analyse et traitement de piscine (Service anti-algues complet) (+75 CAD)
+                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> Analyse et traitement de piscine (Service anti-algues) (+75 CAD)
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" id="add-char" onchange="calculerTotal()"> Nettoyage auto Premium à la main (Mousse active) (+55 CAD)
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> Lavage de vitres extérieures (Rez-de-chaussée) (+40 CAD)
+                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> Lavage de vitres extérieures (Maison complète, 2 étages) (+80 CAD)
                             </label>
                         </div>
                     </div>
@@ -630,7 +657,7 @@
                     <div class="total-box">
                         <h4>Montant Estimé</h4>
                         <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
-                        <p style="font-size: 12px; color: #6c757d; margin-top: 5px;">*Seuil de déplacement minimum requis de 75 $ par intervention.</p>
+                        <p style="font-size: 12px; color: #6c757d; margin-top: 5px;" id="minimum-notice">*Seuil de déplacement minimum requis de 75 $ par intervention.</p>
                     </div>
                 </div>
 
@@ -655,8 +682,8 @@
                     <p>Notre technicien spécialisé possède une expérience directe dans le traitement des eaux résidentielles. Il procède par analyse chimique des paramètres du pH, de l'alcalinité et applique des traitements préventifs ciblés pour couper la prolifération des spores avant les vagues de chaleur.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Pourquoi vous limitez-vous aux fenêtres du rez-de-chaussée ?</h3>
-                    <p>Pour des raisons de sécurité strictes et d'efficacité opérationnelle. Travailler les deux pieds ancrés au sol nous évite l'utilisation d'échelles complexes et risquées, ce qui nous permet de vous offrir un tarif beaucoup plus compétitif et un travail plus rapide.</p>
+                    <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
+                    <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance de pointe couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
@@ -692,41 +719,87 @@
     </footer>
 
     <script>
+        function appliquerCombo() {
+            const combo = document.getElementById('combo-select').value;
+            
+            // Réinitialiser les éléments du formulaire pour refléter le combo visuellement
+            if (combo === 'clarte') {
+                document.getElementById('surface-type').value = 'aucun';
+                document.getElementById('add-piscine').checked = false;
+                document.getElementById('add-char').checked = false;
+                document.getElementById('add-vitres').checked = true;
+                document.getElementById('bacs-qty').value = '2';
+            } else if (combo === 'prestige') {
+                document.getElementById('surface-type').value = 'pave'; // Simule un pavé moyen inclus
+                document.getElementById('surface-area').value = '600'; // Surface fixe pour le calcul visuel du combo
+                document.getElementById('add-piscine').checked = false;
+                document.getElementById('add-char').checked = true;
+                document.getElementById('add-vitres').checked = true;
+                document.getElementById('bacs-qty').value = '0';
+            } else if (combo === 'paix') {
+                document.getElementById('surface-type').value = 'aucun';
+                document.getElementById('add-piscine').checked = true;
+                document.getElementById('add-char').checked = false;
+                document.getElementById('add-vitres').checked = false;
+                document.getElementById('bacs-qty').value = '0';
+            }
+            
+            calculerTotal();
+        }
+
         function calculerTotal() {
+            const combo = document.getElementById('combo-select').value;
             let total = 0;
             
-            const typeSurface = document.getElementById('surface-type').value;
-            const areaGroup = document.getElementById('area-group');
-            const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
-            
-            if (typeSurface === 'aucun') {
-                areaGroup.style.display = 'none';
+            // Si un combo est sélectionné, on applique un prix fixe direct
+            if (combo === 'clarte') {
+                total = 89.00;
+                document.getElementById('area-group').style.display = 'none';
+            } else if (combo === 'prestige') {
+                total = 375.00;
+                document.getElementById('area-group').style.display = 'block';
+            } else if (combo === 'paix') {
+                total = 425.00;
+                document.getElementById('area-group').style.display = 'none';
             } else {
-                areaGroup.style.display = 'block';
+                // CALCULS À LA CARTE STANDARD
+                const typeSurface = document.getElementById('surface-type').value;
+                const areaGroup = document.getElementById('area-group');
+                const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
                 
-                if (typeSurface === 'asphalte') {
-                    total += areaInput * 0.20;
-                } else if (typeSurface === 'pave') {
-                    total += areaInput * 0.50;
+                if (typeSurface === 'aucun') {
+                    areaGroup.style.display = 'none';
+                } else {
+                    areaGroup.style.display = 'block';
+                    if (typeSurface === 'asphalte') {
+                        total += areaInput * 0.20;
+                    } else if (typeSurface === 'pave') {
+                        total += areaInput * 0.50;
+                    }
+                }
+
+                // Ajout des options à la carte
+                if (document.getElementById('add-piscine').checked) total += 75;
+                if (document.getElementById('add-char').checked) total += 55;
+                if (document.getElementById('add-vitres').checked) total += 80; // Prix mis à jour pour 2 étages complets
+
+                const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
+                if (qtyBacs === 1) total += 15;
+                if (qtyBacs === 2) total += 25;
+                if (qtyBacs === 3) total += 30;
+
+                // Application du frais minimum si à la carte
+                if (total > 0 && total < 75) {
+                    total = 75;
                 }
             }
 
-            // AJOUT DES SERVICES FIXES
-            if (document.getElementById('add-piscine').checked) total += 75;
-            if (document.getElementById('add-char').checked) total += 55;
-            if (document.getElementById('add-vitres').checked) total += 40;
-
-            const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
-            if (qtyBacs === 1) total += 15;
-            if (qtyBacs === 2) total += 25;
-            if (qtyBacs === 3) total += 30;
-
-            if (total > 0 && total < 75) {
-                total = 75;
-            }
-
+            // Mettre à jour l'affichage
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
+        
+        // Initialisation initiale
+        calculerTotal();
     </script>
 </body>
 </html>
