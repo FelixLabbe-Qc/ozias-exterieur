@@ -82,14 +82,14 @@
             gap: 25px;
         }
 
-        .nav-links {
+        .nav-right ul {
             display: flex;
             list-style: none;
             gap: 35px;
             align-items: center;
         }
 
-        .nav-links a {
+        .nav-right ul a {
             text-decoration: none;
             color: var(--texte-corps);
             font-weight: 500;
@@ -97,7 +97,7 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover {
+        .nav-right ul a:hover {
             color: var(--vert-prestige);
         }
 
@@ -226,7 +226,7 @@
 
         /* --- SECTION ENGAGEMENTS & VALEURS --- */
         .features {
-            padding: 60px 0;
+            padding: 70px 0;
             border-bottom: 1px solid var(--gris-bordure);
             background-color: var(--blanc);
         }
@@ -236,6 +236,13 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 36px;
+            color: var(--vert-accent);
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
         .feature-item h4 {
@@ -253,7 +260,7 @@
         /* --- BLOCS DE SERVICES DÉTAILLÉS --- */
         .services {
             padding: 100px 0;
-            background-color: var(--blanc);
+            background-color: var(--fond-gris);
         }
 
         .section-header {
@@ -335,10 +342,8 @@
 
         /* --- ESTIMATEUR INTERACTIF AVEC BLOCS DE TEXTE --- */
         .calculator-section {
-            background-color: var(--gris-fond);
+            background-color: var(--blanc);
             padding: 100px 0;
-            border-top: 1px solid var(--gris-bordure);
-            border-bottom: 1px solid var(--gris-bordure);
         }
 
         .calc-container {
@@ -382,9 +387,9 @@
         }
 
         .calc-wrapper {
-            background-color: var(--blanc);
+            background-color: var(--gris-fond);
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--gris-bordure);
         }
@@ -464,7 +469,6 @@
             margin: 5px 0;
         }
 
-        /* BADGE ET ENCADRÉ JAUNE POUR L'AVERTISSEMENT DE TERRAIN */
         .terrain-warning {
             font-size: 13px;
             color: #b7791f;
@@ -476,10 +480,10 @@
             font-weight: 500;
         }
 
-        /* --- SECTION FOIRE AUX QUESTIONS (FAQ EXPLICATIVE) --- */
+        /* --- SECTION FOIRE AUX QUESTIONS (FAQ) --- */
         .faq-section {
             padding: 100px 0;
-            background-color: var(--blanc);
+            background-color: var(--gris-fond);
         }
 
         .faq-grid {
@@ -501,7 +505,7 @@
             color: #5a6578;
         }
 
-        /* --- CORPS ET GRID DU FOOTER (PIED DE PAGE) --- */
+        /* --- COBRPS ET GRID DU FOOTER --- */
         footer {
             background-color: var(--anthracite);
             color: var(--blanc);
@@ -541,7 +545,6 @@
             font-size: 14px;
         }
 
-        /* STYLISATION DU PARAGRAPHE GAUCHE AVEC SURLIGNAGE VERT DE LA PROXIMITÉ LOCALE */
         .footer-box .badge-desc {
             font-style: italic;
             color: var(--vert-lime-discret);
@@ -607,16 +610,19 @@
         <div class="container">
             <div class="features-grid">
                 <div class="feature-item">
+                    <div style="font-size: 35px; color: var(--vert-accent); margin-bottom: 15px;"><i class="fa-solid fa-microchip"></i></div>
                     <h4 id="feat-1-title">Technologie de Pointe</h4>
-                    <p id="feat-1-desc">Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.</p>
+                    <p id="feat-1-desc">Unités de lavage haute performance 3100 PSI and canons à mousse active respectueux des matériaux.</p>
                 </div>
                 <div class="feature-item">
-                    <h4>Sécurité Absolue</h4>
-                    <p>Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étanchéité.</p>
+                    <div style="font-size: 35px; color: var(--vert-accent); margin-bottom: 15px;"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4 id="feat-2-title">Sécurité Absolue</h4>
+                    <p id="feat-2-desc">Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étanchéité.</p>
                 </div>
                 <div class="feature-item">
-                    <h4>Rigueur & Propreté</h4>
-                    <p>Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.</p>
+                    <div style="font-size: 35px; color: var(--vert-accent); margin-bottom: 15px;"><i class="fa-solid fa-broom"></i></div>
+                    <h4 id="feat-3-title">Rigueur & Propreté</h4>
+                    <p id="feat-3-desc">Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.</p>
                 </div>
             </div>
         </div>
@@ -638,19 +644,19 @@
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-water"></i></div>
-                    <h3 id="srv-2-title">Gestion & Traitement de Piscine</h3>
+                    <h3 id="srv-2-title">Gestion de Piscine</h3>
                     <p id="srv-2-desc">Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
-                    <h3 id="srv-3-title">Architecture de Pelouse</h3>
+                    <h3 id="srv-3-title">Tonte de pelouse</h3>
                     <p id="srv-3-desc">Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
-                    <h3 id="srv-4-title">Lavage de Vitres Architecturales</h3>
+                    <h3 id="srv-4-title">Lavage de vitres</h3>
                     <p id="srv-4-desc">Nettoyage complet de vos fenêtres extérieures, incluant les étages supérieurs. Nous utilisons des perches télescopiques professionnelles pour un fini impeccable sans traces, en toute sécurité depuis le sol.</p>
                 </div>
             </div>
@@ -694,7 +700,7 @@
                                 <input type="checkbox" id="add-char" onchange="calculerTotal()"> <span id="opt-2">Nettoyage auto Premium à la main (Mousse active) (+55 CAD)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> <span id="opt-3">Lavage de vitres extérieures (Maison complète, incluant étages) (+80 CAD)</span>
+                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> <span id="opt-3">Lavage de vitres (Maison complète, incluant étages) (+80 CAD)</span>
                             </label>
                         </div>
                     </div>
@@ -762,6 +768,7 @@
             fr: {
                 lnkServices: "Nos Services",
                 lnkCalc: "Estimer un Projet",
+                lnkFaq: "F.A.Q.",
                 lnkContact: "Nous Joindre / Question",
                 heroTagline: "Solutions Résidentielles Clé en Main",
                 heroTitle: "Votre propriété, <span>notre priorité.</span>",
@@ -771,16 +778,20 @@
                 
                 feat1Title: "Technologie de Pointe",
                 feat1Desc: "Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.",
+                feat2Title: "Sécurité Absolue",
+                feat2Desc: "Techniques adaptées (\"soft wash\") pour protéger vos vitres, cadrages et joints d'étanchéité.",
+                feat3Title: "Rigueur & Propreté",
+                feat3Desc: "Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.",
                 
                 srvHeadTitle: "Une Offre de Service Complète",
                 srvHeadDesc: "Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.",
                 srv1Title: "Lavage Haute Pression",
                 srv1Desc: "Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.",
-                srv2Title: "Gestion & Traitement de Piscine",
+                srv2Title: "Gestion de Piscine",
                 srv2Desc: "Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.",
-                srv3Title: "Architecture de Pelouse",
+                srv3Title: "Tonte de pelouse",
                 srv3Desc: "Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.",
-                srv4Title: "Lavage de Vitres Architecturales",
+                srv4Title: "Lavage de vitres",
                 srv4Desc: "Nettoyage complet de vos fenêtres extérieures, incluant les étages supérieurs. Nous utilisons des perches télescopiques professionnelles pour un fini impeccable sans traces, en toute sécurité depuis le sol.",
                 
                 lblCombo: "Forfaits Combos Économiques",
@@ -789,7 +800,7 @@
                 lblOptions: "Options & Services Spécialisés",
                 opt1: "Analyse et traitement de piscine (Service anti-algues) (+75 CAD)",
                 opt2: "Nettoyage auto Premium à la main (Mousse active) (+55 CAD)",
-                opt3: "Lavage de vitres extérieures (Maison complète, incluant étages) (+80 CAD)",
+                opt3: "Lavage de vitres (Maison complète, incluant étages) (+80 CAD)",
                 lblBacs: "Désinfection Haute Pression de Bacs Roulants",
                 lblTotalBox: "Montant Estimé",
                 minNotice: "*Seuil de déplacement minimum requis de 15 $ par intervention.",
@@ -808,8 +819,8 @@
                     <p>Sélectionnez un de nos forfaits combos ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
                     <h3>🔥 Forfaits Combos Professionnels :</h3>
                     <ul>
-                        <li>📦 <strong>Combo "Clarté Totale" (79 $) :</strong> Lavage complet des vitres (incluant les étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 26 $)</span></li>
-                        <li>📦 <strong>Combo "Ozias Élite" (349 $) :</strong> Nettoyage complet d'entrée de cour + Lavage complet des vitres (incluant les étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 86 $)</span></li>
+                        <li>📦 <strong>Combo "Clarté Totale" (79 $) :</strong> Lavage de vitres (incluant les étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 26 $)</span></li>
+                        <li>📦 <strong>Combo "Ozias Élite" (349 $) :</strong> Nettoyage complet d'entrée de cour + Lavage de vitres (incluant les étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 86 $)</span></li>
                         <li>📦 <strong>Combo Mensuel "Sainte Paix" (348 $/mois) :</strong> Abonnement estival récurrent incluant 4 tontes de pelouse nettes et 4 entretiens de piscine complets. <span style="color:#1e5c3b; font-weight:700;">(Économisez 132 $)</span></li>
                     </ul>
                     <h3>Tarifs Individuels :</h3>
@@ -818,7 +829,7 @@
                         <li>🔹 Pavé Uni : 0,50 $ / pi²</li>
                         <li>🔹 Entretien de Piscine : 75,00 $ / visite</li>
                         <li>🔹 Nettoyage Auto Premium : 55,00 $ / auto</li>
-                        <li>🔹 Vitres architecturales complètes : 80,00 $</li>
+                        <li>🔹 Lavage de vitres complet : 80,00 $</li>
                     </ul>
                 `,
                 
@@ -846,12 +857,12 @@
                 faqHeadDesc: "Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.",
                 faqItems: `
                     <div class="faq-item">
-                        <h3>La pression de 3100 PSI peut-elle endommager les vitres architecturales ?</h3>
+                        <h3>La pression de 3100 PSI peut-elle endommager les vitres ?</h3>
                         <p>Absolument pas. Nous n'utilisons jamais la haute pression sur le verre ou les cadrages délicats de vos fenêtres. Nous appliquons une méthode de lavage doux ("soft wash") à basse pression couplée à un nettoyage mécanique manuel et un rinçage à distance sécuritaire qui protège l'étanchéité.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Comment fonctionne votre protocole anti-algues pour la gestion des piscines ?</h3>
-                        <p>Notre technicien spécialisé procède à une analyse rigoureuse des paramètres chimiques de l'eau (pH, alcalinité, stabilisateur). Il applique des traitements préventifs ciblés et des chocs réguliers pour couper net la prolifération des spores d'algues avant les vagues de chaleur.</p>
+                        <p>Notre technicien spécialisé procède à une analyse chimique rigoureuse des paramètres de l'eau (pH, alcalinité, stabilisateur). Il applique des traitements préventifs ciblés et des chocs réguliers pour couper la prolifération des spores d'algues avant les vagues de chaleur.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
@@ -866,6 +877,7 @@
             en: {
                 lnkServices: "Our Services",
                 lnkCalc: "Quote Estimator",
+                lnkFaq: "F.A.Q.",
                 lnkContact: "Contact Us / Questions",
                 heroTagline: "Turnkey Residential Solutions",
                 heroTitle: "Your property, <span>our priority.</span>",
@@ -875,16 +887,20 @@
                 
                 feat1Title: "Advanced Technology",
                 feat1Desc: "High-performance 3100 PSI pressure units and material-safe active foam cannons.",
+                feat2Title: "Absolute Safety",
+                feat2Desc: "Tailored low-pressure ('soft wash') techniques to completely protect windows, frames, and sealants.",
+                feat3Title: "Rigorous Cleansing",
+                feat3Desc: "Zero debris left behind. Comprehensive structural sweep after lawn mowing and edge trimming.",
                 
                 srvHeadTitle: "A Complete Service Range",
                 srvHeadDesc: "We manage all your outdoor needs to give you absolute peace of mind throughout the season.",
                 srv1Title: "Pressure Washing",
                 srv1Desc: "Complete restoration of interlocking pavers and concrete slabs. Deep extraction of moss, embedded dirt, and oil stains on asphalt.",
-                srv2Title: "Pool Care & Management",
+                srv2Title: "Pool Management",
                 srv2Desc: "Chemical water analysis, rigorous pH balancing, shock treatments, and strict prevention protocols against algae growth.",
-                srv3Title: "Lawn Architecture",
+                srv3Title: "Lawn mowing",
                 srv3Desc: "Sharp weekly mowing, meticulous line trimming along perimeters, and clean blow-off of all paved surfaces.",
-                srv4Title: "Architectural Window Washing",
+                srv4Title: "Window washing",
                 srv4Desc: "Complete cleaning of your exterior windows, including upper floors. We use professional telescopic water-fed poles for a streak-free finish, working safely from the ground.",
                 
                 lblCombo: "Discounted Combo Bundles",
@@ -893,7 +909,7 @@
                 lblOptions: "Specialized Options & Add-ons",
                 opt1: "Water Testing & Pool Treatment (Anti-Algae Service) (+75 CAD)",
                 opt2: "Premium Hand Car Wash (Active Foam Bath) (+55 CAD)",
-                opt3: "Exterior Window Washing (Full House, including upper floors) (+80 CAD)",
+                opt3: "Window Washing (Full House, including upper floors) (+80 CAD)",
                 lblBacs: "High-Pressure Bin Disinfection",
                 lblTotalBox: "Estimated Total",
                 minNotice: "*Minimum service dispatch fee of $15 per intervention.",
@@ -912,8 +928,8 @@
                     <p>Select one of our popular bundles or configure your customized services a la carte for an instant estimate.</p>
                     <h3>🔥 Popular Value Bundles:</h3>
                     <ul>
-                        <li>📦 <strong>"Total Clarity" Bundle ($79):</strong> Full exterior window washing (including upper floors) + High-pressure sanitation of 2 rolling bins. <span style="color:#1e5c3b; font-weight:700;">(Save $26)</span></li>
-                        <li>📦 <strong>"Ozias Elite" Bundle ($349):</strong> Driveway pressure wash + Full exterior window washing (including upper floors) + Premium hand car wash. <span style="color:#1e5c3b; font-weight:700;">(Save $86)</span></li>
+                        <li>📦 <strong>"Total Clarity" Bundle ($79):</strong> Window washing (including upper floors) + High-pressure sanitation of 2 rolling bins. <span style="color:#1e5c3b; font-weight:700;">(Save $26)</span></li>
+                        <li>📦 <strong>"Ozias Elite" Bundle ($349):</strong> Driveway pressure wash + Full window washing (including upper floors) + Premium hand car wash. <span style="color:#1e5c3b; font-weight:700;">(Save $86)</span></li>
                         <li>📦 <strong>Monthly "Peace of Mind" ($348/mo):</strong> Recurring summer subscription including 4 sharp lawn mowings and 4 full pool care visits. <span style="color:#1e5c3b; font-weight:700;">(Save $132)</span></li>
                     </ul>
                     <h3>Individual A La Carte Rates:</h3>
@@ -922,7 +938,7 @@
                         <li>🔹 Interlocking Pavers: $0.50 / sq. ft.</li>
                         <li>🔹 Full Pool Maintenance: $75.00 / visit</li>
                         <li>🔹 Premium Hand Car Wash: $55.00 / car</li>
-                        <li>🔹 Full Window Washing (Architectural): $80.00</li>
+                        <li>🔹 Full Window Washing: $80.00</li>
                     </ul>
                 `,
                 
@@ -950,7 +966,7 @@
                 faqHeadDesc: "Clear technical insights into our operational procedures and safety frameworks.",
                 faqItems: `
                     <div class="faq-item">
-                        <h3>Can the 3100 PSI pressure damage architectural window frames?</h3>
+                        <h3>Can the 3100 PSI pressure damage window glass or frames?</h3>
                         <p>Absolutely not. High pressure is never applied to glass, screens, or delicate window borders. We deploy specialized low-pressure soft-washing techniques paired with manual washing brushes and structural safe-distance rinsing systems.</p>
                     </div>
                     <div class="faq-item">
@@ -959,7 +975,7 @@
                     </div>
                     <div class="faq-item">
                         <h3>How do you safely clean second-story residential windows?</h3>
-                        <p>We work with water-fed telescopic architectural poles using carbon fiber framing and soft-bristle architectural brushes. This allows us to deliver a streak-free clean on all floors while keeping both feet safely on the ground.</p>
+                        <p>We work with water-fed telescopic poles using carbon fiber framing and soft-bristle architectural brushes. This allows us to deliver a streak-free clean on all floors while keeping both feet safely on the ground.</p>
                     </div>
                     <div class="faq-item">
                         <h3>Are your online calculator figures legally binding contracts?</h3>
@@ -969,13 +985,14 @@
             }
         };
 
-        // FONCTION CENTRALE DE RE-RENDU DU CODE LORS DU SWITCH FR/EN
+        // FONCTION DE BASCULEMENT DE LANGUE INTEGRALE DE PLUS DE 1000 LIGNES
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             
             document.getElementById('lnk-services').innerText = traductions[lang].lnkServices;
             document.getElementById('lnk-calc').innerText = traductions[lang].lnkCalc;
+            document.getElementById('lnk-faq').innerText = traductions[lang].lnkFaq;
             document.getElementById('lnk-contact').innerText = traductions[lang].lnkContact;
             document.getElementById('hero-tagline').innerText = traductions[lang].heroTagline;
             document.getElementById('hero-title').innerHTML = traductions[lang].heroTitle;
@@ -985,6 +1002,10 @@
             
             document.getElementById('feat-1-title').innerText = traductions[lang].feat1Title;
             document.getElementById('feat-1-desc').innerText = traductions[lang].feat1Desc;
+            document.getElementById('feat-2-title').innerText = traductions[lang].feat2Title;
+            document.getElementById('feat-2-desc').innerText = traductions[lang].feat2Desc;
+            document.getElementById('feat-3-title').innerText = traductions[lang].feat3Title;
+            document.getElementById('feat-3-desc').innerText = traductions[lang].feat3Desc;
             
             document.getElementById('srv-head-title').innerText = traductions[lang].srvHeadTitle;
             document.getElementById('srv-head-desc').innerText = traductions[lang].srvHeadDesc;
@@ -1037,7 +1058,6 @@
             calculerTotal();
         }
 
-        // COCHAGE AUTOMATIQUE SELON LE FORFAIT COMBO SÉLECTIONNÉ
         function appliquerCombo() {
             const combo = document.getElementById('combo-select').value;
             
@@ -1065,7 +1085,6 @@
             calculerTotal();
         }
 
-        // MODULE MATHÉMATIQUE DE CALCUL DE DEVIS DYNAMIQUE
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
@@ -1104,7 +1123,6 @@
                 if (qtyBacs === 2) total += 25;
                 if (qtyBacs === 3) total += 30;
 
-                // FORCE LE PREMIER SEUIL DE SEUIL DE DEPLACEMENT MINI DE 15$
                 if (total > 0 && total < 15) {
                     total = 15;
                 }
@@ -1113,7 +1131,6 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // EXECUTION DE SÉCURITÉ AU LANCEMENT
         changerLanguageInitiale();
         
         function changerLanguageInitiale() {
