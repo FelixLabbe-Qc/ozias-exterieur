@@ -77,6 +77,12 @@
             font-weight: 400;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -108,6 +114,33 @@
         .btn-nav:hover {
             background-color: var(--vert-accent);
             transform: translateY(-1px);
+        }
+
+        /* SÉLECTEUR DE LANGUE STYLE ÉPURÉ */
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+            background: var(--gris-fond);
+            padding: 4px;
+            border-radius: 20px;
+            border: 1px solid var(--gris-bordure);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 15px;
+            color: #718096;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--vert-prestige);
+            color: var(--blanc);
         }
 
         /* --- SECTION HERO --- */
@@ -420,6 +453,18 @@
             margin: 5px 0;
         }
 
+        /* AVERTISSEMENT DE TERRAIN UNIQUE */
+        .terrain-warning {
+            font-size: 13px;
+            color: #b7791f;
+            background-color: #fefcbf;
+            border: 1px solid #fbd38d;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
         /* --- SECTION FAQ --- */
         .faq-section {
             padding: 100px 0;
@@ -486,7 +531,10 @@
         }
 
         /* --- AJUSTEMENTS MOBILES --- */
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
+            nav { flex-direction: column; gap: 15px; }
+            .nav-right { flex-direction: column; gap: 15px; width: 100%; }
+            .nav-links { gap: 20px; }
             .calc-container { grid-template-columns: 1fr; gap: 40px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .faq-grid { grid-template-columns: 1fr; }
@@ -505,24 +553,30 @@
 
     <header>
         <nav class="container">
-            <div class="logo">OZIAS <span>EXTÉRIEUR</span></div>
-            <ul class="nav-links">
-                <li><a href="#services">Nos Services</a></li>
-                <li><a href="#estimateur">Estimer un Projet</a></li>
-                <li><a href="#faq">F.A.Q.</a></li>
-                <li><a href="#contact" class="btn-nav">Nous Joindre</a></li>
-            </ul>
+            <div class="logo">OZIAS <span id="logo-sub">EXTÉRIEUR</span></div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#services" id="lnk-services">Nos Services</a></li>
+                    <li><a href="#estimateur" id="lnk-calc">Estimer un Projet</a></li>
+                    <li><a href="#faq">F.A.Q.</a></li>
+                    <li><a href="#contact" class="btn-nav" id="lnk-contact">Nous Joindre</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" id="lang-fr" onclick="changerLangue('fr')">FR</button>
+                    <button class="lang-btn" id="lang-en" onclick="changerLangue('en')">EN</button>
+                </div>
+            </div>
         </nav>
     </header>
 
     <section class="hero">
         <div class="container">
-            <span class="hero-tagline">Solutions Résidentielles Clé en Main</span>
-            <h1>Votre propriété, <span>notre priorité.</span></h1>
-            <p class="sub-text">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park et Mont-Saint-Hilaire.</p>
+            <span class="hero-tagline" id="hero-tagline">Solutions Résidentielles Clé en Main</span>
+            <h1 id="hero-title">Votre propriété, <span>notre priorité.</span></h1>
+            <p class="sub-text" id="hero-sub">Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park et Mont-Saint-Hilaire.</p>
             <div class="hero-buttons">
-                <a href="#estimateur" class="btn-primary">Calculer un devis en ligne</a>
-                <a href="#contact" class="btn-secondary">Parler à un technicien</a>
+                <a href="#estimateur" class="btn-primary" id="btn-hero-calc">Calculer un devis en ligne</a>
+                <a href="#contact" class="btn-secondary" id="btn-hero-tech">Parler à un technicien</a>
             </div>
         </div>
     </section>
@@ -531,16 +585,16 @@
         <div class="container">
             <div class="features-grid">
                 <div class="feature-item">
-                    <h4>Technologie de Pointe</h4>
-                    <p>Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.</p>
+                    <h4 id="feat-1-title">Technologie de Pointe</h4>
+                    <p id="feat-1-desc">Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.</p>
                 </div>
                 <div class="feature-item">
-                    <h4>Sécurité Absolue</h4>
-                    <p>Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étanchéité.</p>
+                    <h4 id="feat-2-title">Sécurité Absolue</h4>
+                    <p id="feat-2-desc">Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étanchéité.</p>
                 </div>
                 <div class="feature-item">
-                    <h4>Rigueur & Propreté</h4>
-                    <p>Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.</p>
+                    <h4 id="feat-3-title">Rigueur & Propreté</h4>
+                    <p id="feat-3-desc">Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.</p>
                 </div>
             </div>
         </div>
@@ -549,29 +603,29 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2>Une Offre de Service Complète</h2>
-                <p>Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.</p>
+                <h2 id="srv-head-title">Une Offre de Service Complète</h2>
+                <p id="srv-head-desc">We manage all your outdoor needs to give you absolute peace of mind throughout the season.</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Lavage Haute Pression</h3>
-                    <p>Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.</p>
+                    <h3 id="srv-1-title">Lavage Haute Pression</h3>
+                    <p id="srv-1-desc">Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>Gestion & Traitement de Piscine</h3>
-                    <p>Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.</p>
+                    <h3 id="srv-2-title">Gestion & Traitement de Piscine</h3>
+                    <p id="srv-2-desc">Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>Architecture de Pelouse</h3>
-                    <p>Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.</p>
+                    <h3 id="srv-3-title">Architecture de Pelouse</h3>
+                    <p id="srv-3-desc">Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>Lavage de Vitres Architecturales</h3>
-                    <p>Limité exclusivement au rez-de-chaussée et sous-sol pour maintenir un standard de sécurité optimal. Finition manuelle à la raclette, garantie sans traces.</p>
+                    <h3 id="srv-4-title">Lavage de Vitres Architecturales</h3>
+                    <p id="srv-4-desc">Limité exclusivement au rez-de-chaussée et sous-sol pour maintenir un standard de sécurité optimal. Finition manuelle à la raclette, garantie sans traces.</p>
                 </div>
             </div>
         </div>
@@ -581,83 +635,58 @@
         <div class="container">
             <div class="calc-container">
                 
-                <div class="calc-info">
-                    <h2>Générez un Devis Préliminaire</h2>
-                    <p>Sélectionnez un de nos forfaits ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
-                    
-                    <h3>🔥 Forfaits Combos Professionnels :</h3>
-                    <ul>
-                        <li>📦 <strong>Combo "Clarté Totale" (79 $) :</strong> Lavage complet des vitres (2 étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 26 $)</span></li>
-                        <li>📦 <strong>Combo "Ozias Élite" (349 $) :</strong> Nettoyage complet d'entrée de cour + Lavage des vitres (2 étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 86 $)</span></li>
-                        <li>📦 <strong>Combo Mensuel "Sainte Paix" (348 $/mois) :</strong> Abonnement estival récurrent incluant 4 tontes de pelouse et 4 entretiens complets de piscine. <span style="color:#1e5c3b; font-weight:700;">(Économisez 132 $)</span></li>
-                    </ul>
-
-                    <h3>Tarifs Individuels :</h3>
-                    <ul>
-                        <li>🔹 Asphalte : 0,20 $ / pi²</li>
-                        <li>🔹 Pavé Uni : 0,50 $ / pi²</li>
-                        <li>🔹 Entretien de Piscine : 75,00 $ / visite</li>
-                        <li>🔹 Nettoyage Auto Premium : 55,00 $ / auto</li>
-                        <li>🔹 Lavage de Vitres (Maison complète, 2 étages) : 80,00 $</li>
-                    </ul>
-                </div>
+                <div class="calc-info" id="calc-info-box">
+                    </div>
 
                 <div class="calc-wrapper">
                     <div class="calc-group">
-                        <label for="combo-select">Forfaits Combos Économiques</label>
+                        <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
-                            <option value="carte">-- Services à la carte --</option>
-                            <option value="clarte">Combo "Clarté Totale" (79.00 $ CAD)</option>
-                            <option value="elite">Combo "Ozias Élite" (349.00 $ CAD)</option>
-                            <option value="paix">Combo Mensuel "Sainte Paix" (348.00 $ CAD)</option>
-                        </select>
+                            </select>
                     </div>
 
                     <hr style="border: 0; border-top: 1px solid var(--gris-bordure); margin-bottom: 20px;">
 
                     <div class="calc-group">
-                        <label for="surface-type">Lavage de Surface (Entrée / Driveway)</label>
+                        <label for="surface-type" id="lbl-surface">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
-                            <option value="aucun">Aucun lavage de surface</option>
-                            <option value="asphalte">Entrée en Asphalte</option>
-                            <option value="pave">Pavé Uni / Dalles Premium</option>
-                        </select>
+                            </select>
                     </div>
 
                     <div class="calc-group" id="area-group" style="display:none;">
-                        <label for="surface-area">Superficie estimée (en pieds carrés)</label>
+                        <label for="surface-area" id="lbl-area">Superficie estimée (en pieds carrés)</label>
                         <input type="number" id="surface-area" value="0" min="0" oninput="calculerTotal()">
                     </div>
 
                     <div class="calc-group">
-                        <label>Options & Services Spécialisés</label>
+                        <label id="lbl-options">Options & Services Spécialisés</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> Analyse et traitement de piscine (Service anti-algues) (+75 CAD)
+                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> <span id="opt-1">Analyse et traitement de piscine (Service anti-algues) (+75 CAD)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-char" onchange="calculerTotal()"> Nettoyage auto Premium à la main (Mousse active) (+55 CAD)
+                                <input type="checkbox" id="add-char" onchange="calculerTotal()"> <span id="opt-2">Nettoyage auto Premium à la main (Mousse active) (+55 CAD)</span>
                             </label>
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> Lavage de vitres extérieures (Maison complète, 2 étages) (+80 CAD)
+                                <input type="checkbox" id="add-vitres" onchange="calculerTotal()"> <span id="opt-3">Lavage de vitres extérieures (Maison complète, 2 étages) (+80 CAD)</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="calc-group">
-                        <label for="bacs-qty">Désinfection Haute Pression de Bacs Roulants</label>
+                        <label for="bacs-qty" id="lbl-bacs">Désinfection Haute Pression de Bacs Roulants</label>
                         <select id="bacs-qty" onchange="calculerTotal()">
-                            <option value="0">Aucun bac</option>
-                            <option value="1">1 bac (15 CAD)</option>
-                            <option value="2">2 bacs (25 CAD)</option>
-                            <option value="3">3 bacs (30 CAD)</option>
-                        </select>
+                            </select>
                     </div>
 
                     <div class="total-box">
-                        <h4>Montant Estimé</h4>
+                        <h4 id="lbl-total-box">Montant Estimé</h4>
                         <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
                         <p style="font-size: 12px; color: #6c757d; margin-top: 5px;" id="minimum-notice">*Seuil de déplacement minimum requis de 75 $ par intervention.</p>
+                        
+                        <div class="terrain-warning" id="terrain-notice">
+                            ⚠️ Le prix estimé peut légèrement varier selon la complexité et la configuration réelle de votre terrain.
+                        </div>
                     </div>
                 </div>
 
@@ -668,28 +697,12 @@
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
-                <h2>Foire Aux Questions</h2>
-                <p>Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
+                <h2 id="faq-head-title">Foire Aux Questions</h2>
+                <p id="faq-head-desc">Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
             </div>
             
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>La pression de 3100 PSI peut-elle endommager mes fenêtres ?</h3>
-                    <p>Absolument pas. Nous n'utilisons jamais la haute pression sur le verre ou les cadrages. Nous appliquons une méthode de lavage doux ("soft wash") à basse pression couplée à un nettoyage mécanique manuel et un rinçage à distance sécuritaire.</p>
+            <div class="faq-grid" id="faq-box">
                 </div>
-                <div class="faq-item">
-                    <h3>Comment fonctionne votre protocole anti-algues pour les piscines ?</h3>
-                    <p>Notre technicien spécialisé possède une expérience directe dans le traitement des eaux résidentielles. Il procède par analyse chimique des paramètres du pH, de l'alcalinité et applique des traitements préventifs ciblés pour couper la prolifération des spores avant les vagues de chaleur.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
-                    <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
-                    <p>L'estimateur fournit un calcul préliminaire très précis. Avant de débuter les travaux, nous validons toujours le prix final avec vous par message texte ou sur place pour s'assurer qu'il n'y ait aucune surprise.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -698,31 +711,328 @@
             <div class="footer-grid">
                 <div class="footer-box">
                     <h3>OZIAS EXTÉRIEUR</h3>
-                    <p>Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.</p>
+                    <p id="foot-desc">Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.</p>
                 </div>
                 <div class="footer-box">
-                    <h3>Territoire Couvert</h3>
-                    <p>📍 Otterburn Park (Centre névralgique)</p>
+                    <h3 id="foot-territory-title">Territoire Couvert</h3>
+                    <p>📍 Otterburn Park (<span id="foot-center">Centre névralgique</span>)</p>
                     <p>📍 Mont-Saint-Hilaire</p>
                 </div>
                 <div class="footer-box">
-                    <h3>Demande d'Intervention</h3>
+                    <h3 id="foot-contact-title">Demande d'Intervention</h3>
                     <p>📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935</p>
                     <p>✉️ <strong>Courriel :</strong> felix.ciboulette.labbe@gmail.com</p>
-                    <p style="font-size: 13px; color: #718096; margin-top: 15px;">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
+                    <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="foot-notice">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom" id="foot-copyright">
                 &copy; 2026 Ozias Extérieur. Tous droits réservés. Gestion de Propriété Élite.
             </div>
         </div>
     </footer>
 
     <script>
+        // DICTIONNAIRE DE TRADUCTION COMPLET
+        const traductions = {
+            fr: {
+                logoSub: "EXTÉRIEUR",
+                lnkServices: "Nos Services",
+                lnkCalc: "Estimer un Projet",
+                lnkContact: "Nous Joindre",
+                heroTagline: "Solutions Résidentielles Clé en Main",
+                heroTitle: "Votre propriété, <span>notre priorité.</span>",
+                heroSub: "Un entretien extérieur d'élite, rigoureux et de confiance à Otterburn Park et Mont-Saint-Hilaire.",
+                btnHeroCalc: "Calculer un devis en ligne",
+                btnHeroTech: "Parler à un technicien",
+                
+                feat1Title: "Technologie de Pointe",
+                feat1Desc: "Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.",
+                feat2Title: "Sécurité Absolue",
+                feat2Desc: "Techniques adaptées (\"soft wash\") pour protéger vos vitres, cadrages et joints d'étanchéité.",
+                feat3Title: "Rigueur & Propreté",
+                feat3Desc: "Aucun débris laissé sur place. Ramassage complet après la tonte et la découpe des bordures.",
+                
+                srvHeadTitle: "Une Offre de Service Complète",
+                srvHeadDesc: "Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.",
+                srv1Title: "Lavage Haute Pression",
+                srv1Desc: "Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.",
+                srv2Title: "Gestion & Traitement de Piscine",
+                srv2Desc: "Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.",
+                srv3Title: "Architecture de Pelouse",
+                srv3Desc: "Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.",
+                srv4Title: "Lavage de Vitres Architecturales",
+                srv4Desc: "Limité exclusivement au rez-de-chaussée et sous-sol pour maintenir un standard de sécurité optimal. Finition manuelle à la raclette, garantie sans traces.",
+                
+                lblCombo: "Forfaits Combos Économiques",
+                lblSurface: "Lavage de Surface (Entrée / Driveway)",
+                lblArea: "Superficie estimée (en pieds carrés)",
+                lblOptions: "Options & Services Spécialisés",
+                opt1: "Analyse et traitement de piscine (Service anti-algues) (+75 CAD)",
+                opt2: "Nettoyage auto Premium à la main (Mousse active) (+55 CAD)",
+                opt3: "Lavage de vitres extérieures (Maison complète, 2 étages) (+80 CAD)",
+                lblBacs: "Désinfection Haute Pression de Bacs Roulants",
+                lblTotalBox: "Montant Estimé",
+                minNotice: "*Seuil de déplacement minimum requis de 75 $ par intervention.",
+                terrainNotice: "⚠️ Le prix estimé peut légèrement varier selon la complexité et la configuration réelle de votre terrain.",
+                
+                footDesc: "Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.",
+                footTerritoryTitle: "Territoire Couvert",
+                footCenter: "Centre névralgique",
+                footContactTitle: "Demande d'Intervention",
+                footNotice: "Pour accélérer le traitement, joignez une photo des surfaces par message texte.",
+                footCopyright: "&copy; 2026 Ozias Extérieur. Tous droits réservés. Gestion de Propriété Élite.",
+                
+                calcLeftInfo: `
+                    <h2>Générez un Devis Préliminaire</h2>
+                    <p>Sélectionnez un de nos forfaits ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
+                    <h3>🔥 Forfaits Combos Professionnels :</h3>
+                    <ul>
+                        <li>📦 <strong>Combo "Clarté Totale" (79 $) :</strong> Vitres complètes + Désinfection de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 26 $)</span></li>
+                        <li>📦 <strong>Combo "Ozias Élite" (349 $) :</strong> Entrée de cour + Vitres complètes + Nettoyage auto Premium. <span style="color:#1e5c3b; font-weight:700;">(Économisez 86 $)</span></li>
+                        <li>📦 <strong>Combo Mensuel "Sainte Paix" (348 $/mois) :</strong> 4 tontes de pelouse + 4 entretiens de piscine. <span style="color:#1e5c3b; font-weight:700;">(Économisez 132 $)</span></li>
+                    </ul>
+                    <h3>Tarifs Individuels :</h3>
+                    <ul>
+                        <li>🔹 Asphalte : 0,20 $ / pi²</li>
+                        <li>🔹 Pavé Uni : 0,50 $ / pi²</li>
+                        <li>🔹 Entretien de Piscine : 75,00 $ / visite</li>
+                        <li>🔹 Nettoyage Auto Premium : 55,00 $ / auto</li>
+                        <li>🔹 Vitres complètes (2 étages) : 80,00 $</li>
+                    </ul>
+                `,
+                
+                combosOptions: `
+                    <option value="carte">-- Services à la carte --</option>
+                    <option value="clarte">Combo "Clarté Totale" (79.00 $ CAD)</option>
+                    <option value="elite">Combo "Ozias Élite" (349.00 $ CAD)</option>
+                    <option value="paix">Combo Mensuel "Sainte Paix" (348.00 $ CAD)</option>
+                `,
+                
+                surfaceOptions: `
+                    <option value="aucun">Aucun lavage de surface</option>
+                    <option value="asphalte">Entrée en Asphalte</option>
+                    <option value="pave">Pavé Uni / Dalles Premium</option>
+                `,
+                
+                bacsOptions: `
+                    <option value="0">Aucun bac</option>
+                    <option value="1">1 bac (15 CAD)</option>
+                    <option value="2">2 bacs (25 CAD)</option>
+                    <option value="3">3 bacs (30 CAD)</option>
+                `,
+                
+                faqHeadTitle: "Foire Aux Questions",
+                faqHeadDesc: "Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.",
+                faqItems: `
+                    <div class="faq-item">
+                        <h3>La pression de 3100 PSI peut-elle endommager mes fenêtres ?</h3>
+                        <p>Absolument pas. Nous n'utilisons jamais la haute pression sur le verre ou les cadrages. Nous appliquons une méthode de lavage doux ("soft wash") à basse pression couplée à un nettoyage mécanique manuel et un rinçage à distance sécuritaire.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Comment fonctionne votre protocole anti-algues pour les piscines ?</h3>
+                        <p>Notre technicien spécialisé possède une expérience directe dans le traitement des eaux résidentielles. Il procède par analyse chimique des paramètres du pH, de l'alcalinité et applique des traitements préventifs ciblés pour couper la prolifération des spores avant les vagues de chaleur.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
+                        <p>Nous utilisons des perches télescopiques d'alimentation en eau haute performance de pointe couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces, tout en restant les deux pieds au sol.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Vos estimations en ligne sont-elles contractuelles ?</h3>
+                        <p>L'estimateur fournit un calcul préliminaire très précis. Avant de débuter les travaux, nous validons toujours le prix final avec vous par message texte ou sur place pour s'assurer qu'il n'y ait aucune surprise.</p>
+                    </div>
+                `
+            },
+            en: {
+                logoSub: "OUTDOOR",
+                lnkServices: "Our Services",
+                lnkCalc: "Quote Estimator",
+                lnkContact: "Contact Us",
+                heroTagline: "Turnkey Residential Solutions",
+                heroTitle: "Your property, <span>our priority.</span>",
+                heroSub: "Elite, rigorous, and trusted seasonal maintenance in Otterburn Park and Mont-Saint-Hilaire.",
+                btnHeroCalc: "Get an Online Estimate",
+                btnHeroTech: "Speak to a Technician",
+                
+                feat1Title: "Advanced Technology",
+                feat1Desc: "High-performance 3100 PSI pressure units and material-safe active foam cannons.",
+                feat2Title: "Absolute Safety",
+                feat2Desc: "Tailored low-pressure ('soft wash') techniques to completely protect windows, frames, and sealants.",
+                feat3Title: "Rigorous Cleansing",
+                feat3Desc: "Zero debris left behind. Comprehensive structural sweep after lawn mowing and edge trimming.",
+                
+                srvHeadTitle: "A Complete Service Range",
+                srvHeadDesc: "We manage all your outdoor needs to give you absolute peace of mind throughout the season.",
+                srv1Title: "Pressure Washing",
+                srv1Desc: "Complete restoration of interlocking pavers and concrete slabs. Deep extraction of moss, embedded dirt, and oil stains on asphalt.",
+                srv2Title: "Pool Care & Management",
+                srv2Desc: "Chemical water analysis, rigorous pH balancing, shock treatments, and strict prevention protocols against algae growth.",
+                srv3Title: "Lawn Architecture",
+                srv3Desc: "Sharp weekly mowing, meticulous line trimming along perimeters, and clean blow-off of all paved surfaces.",
+                srv4Title: "Architectural Window Washing",
+                srv4Desc: "Exclusively limited to ground floor and basement windows for optimal safety. Manual squeegee finishing, guaranteed streak-free.",
+                
+                lblCombo: "Discounted Combo Bundles",
+                lblSurface: "Surface Washing (Driveway)",
+                lblArea: "Estimated Area (in square feet)",
+                lblOptions: "Specialized Options & Add-ons",
+                opt1: "Water Testing & Pool Treatment (Anti-Algae Service) (+75 CAD)",
+                opt2: "Premium Hand Car Wash (Active Foam Bath) (+55 CAD)",
+                opt3: "Exterior Window Washing (Full House, 2 Floors) (+80 CAD)",
+                lblBacs: "High-Pressure Bin Disinfection",
+                lblTotalBox: "Estimated Total",
+                minNotice: "*Minimum service dispatch fee of $75 per intervention.",
+                terrainNotice: "⚠️ The estimated price may slightly vary depending on the actual layout and terrain conditions.",
+                
+                footDesc: "A high-end residential property maintenance division dedicated to maximizing the value and longevity of Richelieu Valley estates.",
+                footTerritoryTitle: "Service Area",
+                footCenter: "Headquarters",
+                footContactTitle: "Service Request",
+                footNotice: "To speed up your request, please text us a picture of the surfaces.",
+                footCopyright: "&copy; 2026 Ozias Outdoor. All rights reserved. Elite Property Management.",
+                
+                calcLeftInfo: `
+                    <h2>Generate a Preliminary Quote</h2>
+                    <p>Select one of our popular bundles or configure your customized services a la carte for an instant estimate.</p>
+                    <h3>🔥 Popular Value Bundles:</h3>
+                    <ul>
+                        <li>📦 <strong>"Total Clarity" Bundle ($79):</strong> Full exterior window washing (2 floors) + High-pressure sanitation of 2 rolling bins. <span style="color:#1e5c3b; font-weight:700;">(Save $26)</span></li>
+                        <li>📦 <strong>"Ozias Elite" Bundle ($349):</strong> Driveway pressure wash + Full window washing (2 floors) + Premium hand car wash. <span style="color:#1e5c3b; font-weight:700;">(Save $86)</span></li>
+                        <li>📦 <strong>Monthly "Peace of Mind" ($348/mo):</strong> Recurring summer subscription including 4 lawn mowings and 4 full pool care visits. <span style="color:#1e5c3b; font-weight:700;">(Save $132)</span></li>
+                    </ul>
+                    <h3>Individual A La Carte Rates:</h3>
+                    <ul>
+                        <li>🔹 Asphalt Washing: $0.20 / sq. ft.</li>
+                        <li>🔹 Interlocking Pavers: $0.50 / sq. ft.</li>
+                        <li>🔹 Full Pool Maintenance: $75.00 / visit</li>
+                        <li>🔹 Premium Hand Car Wash: $55.00 / car</li>
+                        <li>🔹 Full Window Washing (2 Floors): $80.00</li>
+                    </ul>
+                `,
+                
+                combosOptions: `
+                    <option value="carte">-- Custom A La Carte Services --</option>
+                    <option value="clarte">"Total Clarity" Bundle ($79.00 CAD)</option>
+                    <option value="elite">"Ozias Elite" Bundle ($349.00 CAD)</option>
+                    <option value="paix">Monthly "Peace of Mind" Subscription ($348.00 CAD)</option>
+                `,
+                
+                surfaceOptions: `
+                    <option value="aucun">No surface washing required</option>
+                    <option value="asphalte">Asphalt Driveway</option>
+                    <option value="pave">Interlocking Pavers / Premium Stone</option>
+                `,
+                
+                bacsOptions: `
+                    <option value="0">No bins</option>
+                    <option value="1">1 bin ($15 CAD)</option>
+                    <option value="2">2 bins ($25 CAD)</option>
+                    <option value="3">3 bins ($30 CAD)</option>
+                `,
+                
+                faqHeadTitle: "Frequently Asked Questions",
+                faqHeadDesc: "Clear technical insights into our operational procedures and safety frameworks.",
+                faqItems: `
+                    <div class="faq-item">
+                        <h3>Can the 3100 PSI pressure damage my home window glass?</h3>
+                        <p>Absolutely not. High pressure is never applied to glass, screens, or delicate window frames. We deploy specialized low-pressure soft-washing techniques paired with manual washing brushes and safe-distance rinsing systems.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How does your preventive anti-algae protocol protect pools?</h3>
+                        <p>Our dedicated technician checks chemical parameters, total alkalinity, and pH levels, then introduces localized shock treatments to interrupt spore development prior to regional heat waves.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How do you safely clean second-story residential windows?</h3>
+                        <p>We work safely with water-fed telescopic architectural poles using carbon fiber framing and soft-bristle architectural brushes. This allows us to deliver a streak-free clean while keeping both feet on the ground.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Are your online calculator figures legally binding contracts?</h3>
+                        <p>The online calculator offers a highly accurate preliminary overview. Before initiating any project, we confirm final parameters with you via text message or on-site consultation to eliminate structural surprises.</p>
+                    </div>
+                `
+            }
+        };
+
+        // FONCTION DE BASCULEMENT DE LANGUE
+        function changerLangue(lang) {
+            // Mettre à jour l'état des boutons de navigation
+            document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            
+            // Changer les textes simples
+            document.getElementById('logo-sub').innerText = traductions[lang].logoSub;
+            document.getElementById('lnk-services').innerText = traductions[lang].lnkServices;
+            document.getElementById('lnk-calc').innerText = traductions[lang].lnkCalc;
+            document.getElementById('lnk-contact').innerText = traductions[lang].lnkContact;
+            document.getElementById('hero-tagline').innerText = traductions[lang].heroTagline;
+            document.getElementById('hero-title').innerHTML = traductions[lang].heroTitle;
+            document.getElementById('hero-sub').innerText = traductions[lang].heroSub;
+            document.getElementById('btn-hero-calc').innerText = traductions[lang].btnHeroCalc;
+            document.getElementById('btn-hero-tech').innerText = traductions[lang].btnHeroTech;
+            
+            document.getElementById('feat-1-title').innerText = traductions[lang].feat1Title;
+            document.getElementById('feat-1-desc').innerText = traductions[lang].feat1Desc;
+            document.getElementById('feat-2-title').innerText = traductions[lang].feat2Title;
+            document.getElementById('feat-2-desc').innerText = traductions[lang].feat2Desc;
+            document.getElementById('feat-3-title').innerText = traductions[lang].feat3Title;
+            document.getElementById('feat-3-desc').innerText = traductions[lang].feat3Desc;
+            
+            document.getElementById('srv-head-title').innerText = traductions[lang].srvHeadTitle;
+            document.getElementById('srv-head-desc').innerText = traductions[lang].srvHeadDesc;
+            document.getElementById('srv-1-title').innerText = traductions[lang].srv1Title;
+            document.getElementById('srv-1-desc').innerText = traductions[lang].srv1Desc;
+            document.getElementById('srv-2-title').innerText = traductions[lang].srv2Title;
+            document.getElementById('srv-2-desc').innerText = traductions[lang].srv2Desc;
+            document.getElementById('srv-3-title').innerText = traductions[lang].srv3Title;
+            document.getElementById('srv-3-desc').innerText = traductions[lang].srv3Desc;
+            document.getElementById('srv-4-title').innerText = traductions[lang].srv4Title;
+            document.getElementById('srv-4-desc').innerText = traductions[lang].srv4Desc;
+            
+            document.getElementById('lbl-combo').innerText = traductions[lang].lblCombo;
+            document.getElementById('lbl-surface').innerText = traductions[lang].lblSurface;
+            document.getElementById('lbl-area').innerText = traductions[lang].lblArea;
+            document.getElementById('lbl-options').innerText = traductions[lang].lblOptions;
+            document.getElementById('opt-1').innerText = traductions[lang].opt1;
+            document.getElementById('opt-2').innerText = traductions[lang].opt2;
+            document.getElementById('opt-3').innerText = traductions[lang].opt3;
+            document.getElementById('lbl-bacs').innerText = traductions[lang].lblBacs;
+            document.getElementById('lbl-total-box').innerText = traductions[lang].lblTotalBox;
+            document.getElementById('minimum-notice').innerText = traductions[lang].minNotice;
+            document.getElementById('terrain-notice').innerText = traductions[lang].terrainNotice;
+            
+            document.getElementById('foot-desc').innerText = traductions[lang].footDesc;
+            document.getElementById('foot-territory-title').innerText = traductions[lang].footTerritoryTitle;
+            document.getElementById('foot-center').innerText = traductions[lang].footCenter;
+            document.getElementById('foot-contact-title').innerText = traductions[lang].footContactTitle;
+            document.getElementById('foot-notice').innerText = traductions[lang].footNotice;
+            document.getElementById('foot-copyright').innerHTML = traductions[lang].footCopyright;
+            
+            // Remplacer les blocs HTML complexes et les menus déroulants
+            document.getElementById('calc-info-box').innerHTML = traductions[lang].calcLeftInfo;
+            document.getElementById('faq-head-title').innerText = traductions[lang].faqHeadTitle;
+            document.getElementById('faq-head-desc').innerText = traductions[lang].faqHeadDesc;
+            document.getElementById('faq-box').innerHTML = traductions[lang].faqItems;
+            
+            // Conserver les sélections actuelles de l'utilisateur pendant le changement de langue
+            const ancienCombo = document.getElementById('combo-select').value;
+            const ancienneSurface = document.getElementById('surface-type').value;
+            const anciensBacs = document.getElementById('bacs-qty').value;
+            
+            document.getElementById('combo-select').innerHTML = traductions[lang].combosOptions;
+            document.getElementById('surface-type').innerHTML = traductions[lang].surfaceOptions;
+            document.getElementById('bacs-qty').innerHTML = traductions[lang].bacsOptions;
+            
+            // Remettre les valeurs
+            document.getElementById('combo-select').value = ancienCombo || 'carte';
+            document.getElementById('surface-type').value = ancienneSurface || 'aucun';
+            document.getElementById('bacs-qty').value = anciensBacs || '0';
+            
+            calculerTotal();
+        }
+
+        // LOGIQUE INTERACTIVE DU CALCULATEUR
         function appliquerCombo() {
             const combo = document.getElementById('combo-select').value;
             
-            // Forcer l'état des cases selon le forfait choisi
             if (combo === 'clarte') {
                 document.getElementById('surface-type').value = 'aucun';
                 document.getElementById('add-piscine').checked = false;
@@ -731,7 +1041,7 @@
                 document.getElementById('bacs-qty').value = '2';
             } else if (combo === 'elite') {
                 document.getElementById('surface-type').value = 'pave';
-                document.getElementById('surface-area').value = '600'; // Surface moyenne pour illustration visuelle
+                document.getElementById('surface-area').value = '600';
                 document.getElementById('add-piscine').checked = false;
                 document.getElementById('add-char').checked = true;
                 document.getElementById('add-vitres').checked = true;
@@ -751,7 +1061,6 @@
             const combo = document.getElementById('combo-select').value;
             let total = 0;
             
-            // Si un forfait est sélectionné, on applique son prix fixe
             if (combo === 'clarte') {
                 total = 79.00;
                 document.getElementById('area-group').style.display = 'none';
@@ -762,7 +1071,7 @@
                 total = 348.00;
                 document.getElementById('area-group').style.display = 'none';
             } else {
-                // CALCULS À LA CARTE STANDARD
+                // CALCUL STANDARD À LA CARTE
                 const typeSurface = document.getElementById('surface-type').value;
                 const areaGroup = document.getElementById('area-group');
                 const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
@@ -778,7 +1087,6 @@
                     }
                 }
 
-                // Options individuelles
                 if (document.getElementById('add-piscine').checked) total += 75;
                 if (document.getElementById('add-char').checked) total += 55;
                 if (document.getElementById('add-vitres').checked) total += 80;
@@ -788,18 +1096,21 @@
                 if (qtyBacs === 2) total += 25;
                 if (qtyBacs === 3) total += 30;
 
-                // Forcer le tarif minimal de déplacement si à la carte
                 if (total > 0 && total < 75) {
                     total = 75;
                 }
             }
 
-            // Affichage du montant
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // Exécution automatique au chargement
-        calculerTotal();
+        // Initialisation par défaut en français au chargement du site
+        changerLanguageInitiale();
+        
+        function changerLanguageInitiale() {
+            changerLangue('fr');
+        }
     </script>
 </body>
+</html>
 </html>
