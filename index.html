@@ -598,7 +598,7 @@
                 </div>
                 <div class="feature-item">
                     <h4 id="feat-2-title">Sécurité Absolue</h4>
-                    <p id="feat-2-desc">Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étanchéité.</p>
+                    <p id="feat-2-desc">Techniques adaptées ("soft wash") pour protéger vos vitres, cadrages et joints d'étaintéité.</p>
                 </div>
                 <div class="feature-item">
                     <h4 id="feat-3-title">Rigueur & Propreté</h4>
@@ -690,7 +690,7 @@
                     <div class="total-box">
                         <h4 id="lbl-total-box">Montant Estimé</h4>
                         <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
-                        <p style="font-size: 12px; color: #6c757d; margin-top: 5px;" id="minimum-notice">*Seuil de déplacement minimum requis de 75 $ par intervention.</p>
+                        <p style="font-size: 12px; color: #6c757d; margin-top: 5px;" id="minimum-notice">*Seuil de déplacement minimum requis de 15 $ par intervention.</p>
                         
                         <div class="terrain-warning" id="terrain-notice">
                             ⚠️ Le prix estimé peut légèrement varier selon la complexité et la configuration réelle de votre terrain.
@@ -781,7 +781,7 @@
                 opt3: "Lavage de vitres extérieures (Maison complète, 2 étages) (+80 CAD)",
                 lblBacs: "Désinfection Haute Pression de Bacs Roulants",
                 lblTotalBox: "Montant Estimé",
-                minNotice: "*Seuil de déplacement minimum requis de 75 $ par intervention.",
+                minNotice: "*Seuil de déplacement minimum requis de 15 $ par intervention.",
                 terrainNotice: "⚠️ Le prix estimé peut légèrement varier selon la complexité et la configuration réelle de votre terrain.",
                 
                 footDesc: "Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.",
@@ -890,7 +890,7 @@
                 opt3: "Exterior Window Washing (Full House, 2 Floors) (+80 CAD)",
                 lblBacs: "High-Pressure Bin Disinfection",
                 lblTotalBox: "Estimated Total",
-                minNotice: "*Minimum service dispatch fee of $75 per intervention.",
+                minNotice: "*Minimum service dispatch fee of $15 per intervention.",
                 terrainNotice: "⚠️ The estimated price may slightly vary depending on the actual layout and terrain conditions.",
                 
                 footDesc: "A high-end residential property maintenance division dedicated to maximizing the value and longevity of Richelieu Valley estates.",
@@ -1108,8 +1108,9 @@
                 if (qtyBacs === 2) total += 25;
                 if (qtyBacs === 3) total += 30;
 
-                if (total > 0 && total < 75) {
-                    total = 75;
+                // Frais minimum ajusté à 15 $ pour laisser passer le prix des bacs
+                if (total > 0 && total < 15) {
+                    total = 15;
                 }
             }
 
