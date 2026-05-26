@@ -115,7 +115,7 @@
             transform: translateY(-1px);
         }
 
-        /* SÉLECTEUR DE LANGUE CORPORATIF ÉPURÉ */
+        /* SÉLECTEUR DE LANGUE --- */
         .lang-switcher {
             display: flex;
             gap: 5px;
@@ -142,7 +142,7 @@
             color: var(--blanc);
         }
 
-        /* --- SECTION HERO (ACCUEIL PRINCIPAL) --- */
+        /* --- SECTION HERO --- */
         .hero {
             background: linear-gradient(180deg, rgba(241, 244, 241, 0.85) 0%, rgba(255, 255, 255, 0.95) 100%), url('fond-hilaire.jpg');
             background-size: cover;
@@ -340,7 +340,7 @@
             line-height: 1.6;
         }
 
-        /* --- ESTIMATEUR INTERACTIF AVEC BLOCS DE TEXTE --- */
+        /* --- ESTIMATEUR INTERACTIF --- */
         .calculator-section {
             background-color: var(--blanc);
             padding: 100px 0;
@@ -480,7 +480,7 @@
             font-weight: 500;
         }
 
-        /* --- SECTION FOIRE AUX QUESTIONS (FAQ) --- */
+        /* --- SECTION FAQ --- */
         .faq-section {
             padding: 100px 0;
             background-color: var(--gris-fond);
@@ -505,7 +505,7 @@
             color: #5a6578;
         }
 
-        /* --- COBRPS ET GRID DU FOOTER --- */
+        /* --- FOOTER --- */
         footer {
             background-color: var(--anthracite);
             color: var(--blanc);
@@ -612,7 +612,7 @@
                 <div class="feature-item">
                     <div style="font-size: 35px; color: var(--vert-accent); margin-bottom: 15px;"><i class="fa-solid fa-microchip"></i></div>
                     <h4 id="feat-1-title">Technologie de Pointe</h4>
-                    <p id="feat-1-desc">Unités de lavage haute performance 3100 PSI and canons à mousse active respectueux des matériaux.</p>
+                    <p id="feat-1-desc">Unités de lavage haute performance 3100 PSI et canons à mousse active respectueux des matériaux.</p>
                 </div>
                 <div class="feature-item">
                     <div style="font-size: 35px; color: var(--vert-accent); margin-bottom: 15px;"><i class="fa-solid fa-shield-halved"></i></div>
@@ -639,25 +639,25 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
                     <h3 id="srv-1-title">Lavage Haute Pression</h3>
-                    <p id="srv-1-desc">Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.</p>
+                    <p id="srv-1-desc">Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-water"></i></div>
                     <h3 id="srv-2-title">Gestion de Piscine</h3>
-                    <p id="srv-2-desc">Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.</p>
+                    <p id="srv-2-desc">Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
                     <h3 id="srv-3-title">Tonte de pelouse</h3>
-                    <p id="srv-3-desc">Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.</p>
+                    <p id="srv-3-desc">Coupe de gazon chaque semaine à prix fixe. On s'occupe aussi de faire les bordures proprement au coupe-bordure (weedeater) et on passe la souffleuse sur votre entrée et vos trottoirs pour ne laisser aucun débris.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
                     <h3 id="srv-4-title">Lavage de vitres</h3>
-                    <p id="srv-4-desc">Nettoyage complet de vos fenêtres extérieures, incluant les étages supérieurs. Nous utilisons des perches télescopiques professionnelles pour un fini impeccable sans traces, en toute sécurité depuis le sol.</p>
+                    <p id="srv-4-desc">Lavage complet de vos fenêtres extérieures, incluant les vitres du deuxième étage. Grâce à nos perches télescopiques à alimentation d'eau, on nettoie tout proprement et sans traces, directement depuis le sol.</p>
                 </div>
             </div>
         </div>
@@ -694,7 +694,7 @@
                         <label id="lbl-options">Options & Services Spécialisés</label>
                         <div class="checkbox-group">
                             <label class="checkbox-item">
-                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> <span id="opt-1">Analyse et traitement de piscine (Service anti-algues) (+75 CAD)</span>
+                                <input type="checkbox" id="add-piscine" onchange="calculerTotal()"> <span id="opt-1">Analyse et traitement de piscine (+75 CAD)</span>
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" id="add-char" onchange="calculerTotal()"> <span id="opt-2">Nettoyage auto Premium à la main (Mousse active) (+55 CAD)</span>
@@ -786,13 +786,13 @@
                 srvHeadTitle: "Une Offre de Service Complète",
                 srvHeadDesc: "Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.",
                 srv1Title: "Lavage Haute Pression",
-                srv1Desc: "Restauration complète de pavé uni et dalles de béton. Élimination en profondeur de la mousse, de la saleté incrustée et des taches d'huile sur asphalte.",
+                srv1Desc: "Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.",
                 srv2Title: "Gestion de Piscine",
-                srv2Desc: "Analyse de l'eau, équilibrage rigoureux du pH, traitement-choc et application de protocoles stricts pour empêcher l'éclosion d'algues.",
+                srv2Desc: "Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.",
                 srv3Title: "Tonte de pelouse",
-                srv3Desc: "Tonte hebdomadaire nette, finition minutieuse des bordures au coupe-bordure et nettoyage des résidus sur toutes les circulations pavées.",
+                srv3Desc: "Coupe de gazon chaque semaine à prix fixe. On s'occupe aussi de faire les bordures proprement au coupe-bordure (weedeater) et on passe la souffleuse sur votre entrée et vos trottoirs pour ne laisser aucun débris.",
                 srv4Title: "Lavage de vitres",
-                srv4Desc: "Nettoyage complet de vos fenêtres extérieures, incluant les étages supérieurs. Nous utilisons des perches télescopiques professionnelles pour un fini impeccable sans traces, en toute sécurité depuis le sol.",
+                srv4Desc: "Lavage complet de vos fenêtres extérieures, incluant les vitres du deuxième étage. Grâce à nos perches télescopiques à alimentation d'eau, on nettoie tout proprement et sans traces, directement depuis le sol.",
                 
                 lblCombo: "Forfaits Combos Économiques",
                 lblSurface: "Lavage de Surface (Entrée / Driveway)",
@@ -895,19 +895,19 @@
                 srvHeadTitle: "A Complete Service Range",
                 srvHeadDesc: "We manage all your outdoor needs to give you absolute peace of mind throughout the season.",
                 srv1Title: "Pressure Washing",
-                srv1Desc: "Complete restoration of interlocking pavers and concrete slabs. Deep extraction of moss, embedded dirt, and oil stains on asphalt.",
+                srv1Desc: "Deep cleaning of your interlock pavers, concrete slabs, and asphalt driveway. We use a high-performance 3100 PSI machine to blast away moss, embedded dirt, and oil stains.",
                 srv2Title: "Pool Management",
-                srv2Desc: "Chemical water analysis, rigorous pH balancing, shock treatments, and strict prevention protocols against algae growth.",
+                srv2Desc: "Water quality testing, pH balancing, shock treatments, and regular care. Our tech makes sure your pool stays sparkling clear all summer long to keep algae away.",
                 srv3Title: "Lawn mowing",
-                srv3Desc: "Sharp weekly mowing, meticulous line trimming along perimeters, and clean blow-off of all paved surfaces.",
+                srv3Desc: "Weekly lawn cutting at a fixed rate. We also handle clean line trimming along perimeters and blow off your driveway and sidewalks to leave zero mess behind.",
                 srv4Title: "Window washing",
-                srv4Desc: "Complete cleaning of your exterior windows, including upper floors. We use professional telescopic water-fed poles for a streak-free finish, working safely from the ground.",
+                srv4Desc: "Full exterior window cleaning, including second-story glass. Using our water-fed telescopic poles, we wash everything clean and streak-free right from the ground.",
                 
                 lblCombo: "Discounted Combo Bundles",
                 lblSurface: "Surface Washing (Driveway)",
                 lblArea: "Estimated Area (in square feet)",
                 lblOptions: "Specialized Options & Add-ons",
-                opt1: "Water Testing & Pool Treatment (Anti-Algae Service) (+75 CAD)",
+                opt1: "Water Testing & Pool Treatment (+75 CAD)",
                 opt2: "Premium Hand Car Wash (Active Foam Bath) (+55 CAD)",
                 opt3: "Window Washing (Full House, including upper floors) (+80 CAD)",
                 lblBacs: "High-Pressure Bin Disinfection",
@@ -985,7 +985,7 @@
             }
         };
 
-        // FONCTION DE BASCULEMENT DE LANGUE INTEGRALE DE PLUS DE 1000 LIGNES
+        // FONCTION DE BASCULEMENT DE LANGUE
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -1131,6 +1131,7 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
+        // EXECUTION DE SÉCURITÉ AU LANCEMENT
         changerLanguageInitiale();
         
         function changerLanguageInitiale() {
