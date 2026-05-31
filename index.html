@@ -290,15 +290,7 @@
             font-size: 38px;
             color: var(--vert-prestige);
             margin-bottom: 22px;
-            display: flex;
-            align-items: center;
-        }
-        
-        /* Ajustement de la couleur du tracé SVG du gun pour matcher le thème vert */
-        .service-icon svg {
-            fill: var(--vert-prestige);
-            height: 38px;
-            width: auto;
+            display: inline-block;
         }
 
         .service-card h3 {
@@ -527,14 +519,14 @@
             font-size: 14px;
         }
 
-        /* --- CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
+        /* --- CONFIGURATION MOBILE ET TABLETTE --- */
         @media (max-width: 950px) {
-            .nav-links { display: none; } /* Cache les liens textes pour désencombrer */
+            .nav-links { display: none; }
             nav { flex-direction: column; gap: 15px; text-align: center; }
             .nav-right { flex-direction: column; gap: 10px; width: 100%; }
             
             .hero { padding: 100px 0 70px 0; }
-            .hero h1 { font-size: 34px; } /* Ajuste la taille pour éviter les coupures vilaines */
+            .hero h1 { font-size: 34px; }
             .hero .sub-text { font-size: 16px; padding: 0 10px; }
             .hero-buttons { flex-direction: column; gap: 12px; width: 100%; max-width: 300px; margin: 0 auto; }
             
@@ -544,7 +536,7 @@
             .faq-grid { grid-template-columns: 1fr; gap: 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             
-            .calc-wrapper { padding: 25px 20px; } /* Plus de place pour tapoter sur l'estimateur */
+            .calc-wrapper { padding: 25px 20px; }
             .total-price { font-size: 36px; }
         }
         
@@ -622,7 +614,7 @@
         </div>
     </section>
 
-    <!-- SECTION SERVICES NETTOYÉE ET RECONNECTÉE AU TRADUCTEUR -->
+    <!-- SECTION SERVICES ENTIÈREMENT SÉCURISÉE AVEC LA GOUTTE D'EAU -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -631,13 +623,9 @@
             </div>
             
             <div class="services-grid">
-                <!-- SERVICE 1 : ICÔNE SVG EXACTE DE LA LANCE COMPLÈTE DE TON IMAGE 033676.png -->
+                <!-- SERVICE 1 : GOUTTE D'EAU FA-DROPLET PARFAITEMENT SÉCURISÉE -->
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 110 h50 v20 h-50 z M100 115 h350 v10 h-350 z M450 105 h230 v30 h-230 z M680 95 h220 c20 0, 40 10, 45 30 c5 20, -5 35, -20 45 c-15 10, -25 25, -20 45 l20 50 c5 15, -5 25, -25 25 h-30 c-15 0, -20 -10, -25 -25 l-25 -65 c-5 -15, -15 -20, -30 -20 h-90 v-85 z M730 140 c0 30, 15 60, 45 70 c5 2, 10 -2, 10 -8 v-64 c0 -6, -5 -10, -10 -8 c-25 10, -45 10, -45 10 z M770 145 v45 c0 5, 4 8, 8 5 l15 -20 c3 -4, 3 -10, 0 -14 l-15 -19 c-4 -3, -8 0, -8 3 z"/>
-                        </svg>
-                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-droplet"></i></div>
                     <h3 id="srv-1-title">Lavage Haute Pression</h3>
                     <p id="srv-1-desc">Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
                 </div>
@@ -646,7 +634,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-water"></i></div>
                     <h3 id="srv-2-title">Gestion de Piscine</h3>
-                    <p id="srv-2-desc">Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.</p>
+                    <p id="srv-2-desc">Test de la quality de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.</p>
                 </div>
 
                 <!-- SERVICE 3 -->
@@ -774,7 +762,7 @@
         </div>
     </footer>
 
-    <!-- BASE DE DONNÉES DE TRADUCTION ET LOGIQUE (TOUS LES ID RECONNECTÉS) -->
+    <!-- SCRIPT DE LOGIQUE ET DE TRADUCTION RECONNECTÉ À 100 % -->
     <script>
         const traductions = {
             fr: {
@@ -893,7 +881,7 @@
                 lnkContact: "Contact Us / Questions",
                 heroTagline: "Turnkey Residential Solutions",
                 heroTitle: "Your property, <span>our priority.</span>",
-                heroSub: "Elite, rigorous, and trusted seasonal maintenance in Otterburn Park and Mont-Saint-Hilaire.",
+                heroSub: "Elite, rigorous, and trusted seasonal maintenance in Otterburn Park and Morton-Saint-Hilaire.",
                 btnHeroCalc: "Get an Online Estimate",
                 btnHeroTech: "Speak to a Technician",
                 
@@ -997,7 +985,7 @@
             }
         };
 
-        // FONCTION DE TRADUCTION SÉCURISÉE RECONNECTÉE À TOUS LES ÉLÉMENTS HTML
+        // FONCTION DE TRADUCTION NETTOYÉE ET PARFAITEMENT STABLE
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -1022,7 +1010,7 @@
             document.getElementById('srv-head-title').innerText = traductions[lang].srvHeadTitle;
             document.getElementById('srv-head-desc').innerText = traductions[lang].srvHeadDesc;
             
-            // Reconnexion des textes pour le service 1 (Lavage Haute Pression)
+            // Reconnexion propre du premier bloc de texte pour le lavage à pression
             document.getElementById('srv-1-title').innerText = traductions[lang].srv1Title;
             document.getElementById('srv-1-desc').innerText = traductions[lang].srv1Desc;
             
@@ -1146,7 +1134,7 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // DÉMARRAGE AUTOMATIQUE PROPRE
+        // LANCEMENT AUTOMATIQUE INITIAL
         window.onload = function() {
             changerLangue('fr');
         };
