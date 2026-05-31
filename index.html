@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ozias Extérieur | Excellence en Entretien Résidentiel</title>
+    <!-- CHARGEMENT DE LA BANQUE D'ICÔNES PROFESSIONNELLES FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- VARIABLES DE DESIGN CORPORATIF HAUT DE GAMME --- */
@@ -189,41 +190,6 @@
             justify-content: center;
         }
 
-        .btn-primary {
-            background-color: var(--vert-prestige);
-            color: var(--blanc);
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--vert-accent);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--vert-prestige);
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 16px;
-            border: 2px solid var(--vert-prestige);
-            transition: var(--transition);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(19, 59, 35, 0.04);
-            transform: translateY(-2px);
-        }
-
         /* --- SECTION ENGAGEMENTS & VALEURS --- */
         .features {
             padding: 70px 0;
@@ -260,7 +226,7 @@
         /* --- BLOCS DE SERVICES DÉTAILLÉS --- */
         .services {
             padding: 100px 0;
-            background-color: var(--fond-gris);
+            background-color: var(--gris-fond);
         }
 
         .section-header {
@@ -553,27 +519,45 @@
             font-size: 14px;
         }
 
-        /* --- ADAPTATION AUX DISPOSITIFS MOBILES --- */
+        /* --- CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
         @media (max-width: 950px) {
-            nav { flex-direction: column; gap: 15px; }
-            .nav-right { flex-direction: column; gap: 15px; width: 100%; }
-            .nav-links { gap: 20px; }
-            .calc-container { grid-template-columns: 1fr; gap: 40px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .faq-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero h1 { font-size: 38px; }
-            .hero .sub-text { font-size: 17px; }
-            .hero-buttons { flex-direction: column; gap: 10px; }
-            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+            nav { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-right { flex-direction: column; gap: 10px; width: 100%; }
+            
+            .hero { padding: 100px 0 70px 0; }
+            .hero h1 { font-size: 34px; }
+            .hero .sub-text { font-size: 16px; padding: 0 10px; }
+            .hero-buttons { flex-direction: column; gap: 12px; width: 100%; max-width: 300px; margin: 0 auto; }
+            
+            .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .calc-container { grid-template-columns: 1fr; gap: 40px; }
+            .faq-grid { grid-template-columns: 1fr; gap: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; }
+            
+            .calc-wrapper { padding: 25px 20px; }
+            .total-price { font-size: 36px; }
         }
+        
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            text-align: center;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        .btn-primary { background-color: var(--vert-prestige); color: var(--blanc); text-decoration: none; box-shadow: var(--shadow-sm); }
+        .btn-primary:hover { background-color: var(--vert-accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-secondary { background-color: transparent; color: var(--vert-prestige); text-decoration: none; border: 2px solid var(--vert-prestige); }
+        .btn-secondary:hover { background-color: rgba(19, 59, 35, 0.04); transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
+    <!-- BARRE DE NAVIGATION CORPORATIVE -->
     <header>
         <nav class="container">
             <div class="logo">
@@ -594,6 +578,7 @@
         </nav>
     </header>
 
+    <!-- SECTION HERO -->
     <section class="hero">
         <div class="container">
             <span class="hero-tagline" id="hero-tagline">Solutions Résidentielles Clé en Main</span>
@@ -606,6 +591,7 @@
         </div>
     </section>
 
+    <!-- SECTION ENGAGEMENTS QUALITÉ -->
     <section class="features">
         <div class="container">
             <div class="features-grid">
@@ -628,6 +614,7 @@
         </div>
     </section>
 
+    <!-- SECTION SERVICES MODIFIÉE AVEC LE PISTOLET À PRESSION -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -636,24 +623,28 @@
             </div>
             
             <div class="services-grid">
+                <!-- SERVICE 1 : REMPLACEMENT DE L'ICÔNE PAR UN GUN À PRESSION -->
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+                    <div class="service-icon"><i class="fa-solid fa-gun"></i></div>
                     <h3 id="srv-1-title">Lavage Haute Pression</h3>
                     <p id="srv-1-desc">Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
                 </div>
 
+                <!-- SERVICE 2 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-water"></i></div>
                     <h3 id="srv-2-title">Gestion de Piscine</h3>
                     <p id="srv-2-desc">Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.</p>
                 </div>
 
+                <!-- SERVICE 3 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
                     <h3 id="srv-3-title">Tonte de pelouse</h3>
                     <p id="srv-3-desc">Coupe de gazon chaque semaine à prix fixe. On s'occupe aussi de faire les bordures proprement au coupe-bordure (weedeater) et on passe la souffleuse sur votre entrée et vos trottoirs pour ne laisser aucun débris.</p>
                 </div>
 
+                <!-- SERVICE 4 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
                     <h3 id="srv-4-title">Lavage de vitres</h3>
@@ -663,18 +654,21 @@
         </div>
     </section>
 
+    <!-- SECTION ESTIMATEUR INTERACTIF -->
     <section id="estimateur" class="calculator-section">
         <div class="container">
             <div class="calc-container">
                 
                 <div class="calc-info" id="calc-info-box">
-                    </div>
+                    <!-- Rempli dynamiquement par JS -->
+                </div>
 
                 <div class="calc-wrapper">
                     <div class="calc-group">
                         <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <hr style="border: 0; border-top: 1px solid var(--gris-bordure); margin-bottom: 20px;">
@@ -682,7 +676,8 @@
                     <div class="calc-group">
                         <label for="surface-type" id="lbl-surface">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <div class="calc-group" id="area-group" style="display:none;">
@@ -708,7 +703,8 @@
                     <div class="calc-group">
                         <label for="bacs-qty" id="lbl-bacs">Désinfection Haute Pression de Bacs Roulants</label>
                         <select id="bacs-qty" onchange="calculerTotal()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <div class="total-box">
@@ -725,6 +721,7 @@
         </div>
     </section>
 
+    <!-- SECTION FAQ -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -733,10 +730,12 @@
             </div>
             
             <div class="faq-grid" id="faq-box">
-                </div>
+                <!-- Rempli dynamiquement -->
+            </div>
         </div>
     </section>
 
+    <!-- PIED DE PAGE -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -763,6 +762,7 @@
         </div>
     </footer>
 
+    <!-- BASE DE DONNÉES GÉANTE TRADUCTION BILINGUE ET LOGIQUE MATHÉMATIQUE -->
     <script>
         const traductions = {
             fr: {
@@ -1131,7 +1131,7 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // EXECUTION DE SÉCURITÉ AU LANCEMENT
+        // EXECUTION AU LANCEMENT
         changerLanguageInitiale();
         
         function changerLanguageInitiale() {
