@@ -519,7 +519,7 @@
             font-size: 14px;
         }
 
-        /* --- CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
+        /* --- CONFIGURATION MOBILE --- */
         @media (max-width: 950px) {
             .nav-links { display: none; }
             nav { flex-direction: column; gap: 15px; text-align: center; }
@@ -614,7 +614,7 @@
         </div>
     </section>
 
-    <!-- SECTION SERVICES MODIFIÉE AVEC L'ICÔNE DE CANON MÉCANIQUE -->
+    <!-- SECTION SERVICES MODIFIÉE AVEC L'ICÔNE DE JET ALLONGÉ -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -623,11 +623,11 @@
             </div>
             
             <div class="services-grid">
-                <!-- SERVICE 1 : CANON MÉCANIQUE À HAUTE PRESSION INDUSTRIALISÉ -->
+                <!-- SERVICE 1 : ICÔNE MODERNE DE JET DIRECTIONNEL QUI CORRESPOND À TA LANCE -->
                 <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
-                    <h3 id="srv-1-title">Lavage Haute Pression</h3>
-                    <p id="srv-1-desc">Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
+                    <div class="service-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+                    <h3>Lavage Haute Pression</h3>
+                    <p>Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
                 </div>
 
                 <!-- SERVICE 2 -->
@@ -762,7 +762,7 @@
         </div>
     </footer>
 
-    <!-- BASE DE DONNÉES GÉANTE TRADUCTION BILINGUE ET LOGIQUE MATHÉMATIQUE -->
+    <!-- BASE DE DONNÉES DE TRADUCTION ET LOGIQUE -->
     <script>
         const traductions = {
             fr: {
@@ -785,8 +785,6 @@
                 
                 srvHeadTitle: "Une Offre de Service Complète",
                 srvHeadDesc: "Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.",
-                srv1Title: "Lavage Haute Pression",
-                srv1Desc: "Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.",
                 srv2Title: "Gestion de Piscine",
                 srv2Desc: "Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.",
                 srv3Title: "Tonte de pelouse",
@@ -894,8 +892,6 @@
                 
                 srvHeadTitle: "A Complete Service Range",
                 srvHeadDesc: "We manage all your outdoor needs to give you absolute peace of mind throughout the season.",
-                srv1Title: "Pressure Washing",
-                srv1Desc: "Deep cleaning of your interlock pavers, concrete slabs, and asphalt driveway. We use a high-performance 3100 PSI machine to blast away moss, embedded dirt, and oil stains.",
                 srv2Title: "Pool Management",
                 srv2Desc: "Water quality testing, pH balancing, shock treatments, and regular care. Our tech makes sure your pool stays sparkling clear all summer long to keep algae away.",
                 srv3Title: "Lawn mowing",
@@ -985,7 +981,7 @@
             }
         };
 
-        // FONCTION DE BASCULEMENT DE LANGUE
+        // FONCTION DE NAVIGATION SANS ENCOMBREMENT
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -1009,8 +1005,6 @@
             
             document.getElementById('srv-head-title').innerText = traductions[lang].srvHeadTitle;
             document.getElementById('srv-head-desc').innerText = traductions[lang].srvHeadDesc;
-            document.getElementById('srv-1-title').innerText = traductions[lang].srv1Title;
-            document.getElementById('srv-1-desc').innerText = traductions[lang].srv1Desc;
             document.getElementById('srv-2-title').innerText = traductions[lang].srv2Title;
             document.getElementById('srv-2-desc').innerText = traductions[lang].srv2Desc;
             document.getElementById('srv-3-title').innerText = traductions[lang].srv3Title;
@@ -1131,7 +1125,6 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // EXECUTION AU LANCEMENT
         changerLanguageInitiale();
         
         function changerLanguageInitiale() {
