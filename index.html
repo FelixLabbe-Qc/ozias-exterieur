@@ -536,9 +536,8 @@
             font-size: 14px;
         }
 
-        /* --- COEUR DE LA CORRECTION : CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
+        /* --- CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
         @media (max-width: 950px) {
-            /* 1. Restructuration complète de la barre de navigation mobile */
             nav {
                 flex-direction: column;
                 gap: 12px;
@@ -546,12 +545,10 @@
                 align-items: center;
             }
             
-            /* Masque les liens textes pour éliminer les chevauchements de la capture d'écran */
             .nav-links {
                 display: none !important;
             }
             
-            /* Alignement horizontal propre du bouton et du sélecteur de langue */
             .nav-right {
                 flex-direction: row;
                 justify-content: center;
@@ -574,24 +571,10 @@
                 font-size: 11px;
             }
             
-            /* 2. Ajustements fluides des espacements généraux */
-            .hero { 
-                padding: 90px 0 60px 0; 
-            }
-            .hero h1 { 
-                font-size: 32px; 
-            }
-            .hero .sub-text { 
-                font-size: 15px; 
-                padding: 0 5px; 
-            }
-            .hero-buttons { 
-                flex-direction: column; 
-                gap: 10px; 
-                width: 100%; 
-                max-width: 280px; 
-                margin: 0 auto; 
-            }
+            .hero { padding: 90px 0 60px 0; }
+            .hero h1 { font-size: 32px; }
+            .hero .sub-text { font-size: 15px; padding: 0 5px; }
+            .hero-buttons { flex-direction: column; gap: 10px; width: 100%; max-width: 280px; margin: 0 auto; }
             
             .features-grid { grid-template-columns: 1fr; gap: 25px; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -628,7 +611,6 @@
                 <img src="logo.png" alt="Ozias Extérieur">
             </div>
             <div class="nav-right">
-                <!-- Les liens textes s'effaceront intelligemment sur mobile pour laisser place au bouton de contact propre -->
                 <ul class="nav-links">
                     <li><a href="#services" id="lnk-services">Nos Services</a></li>
                     <li><a href="#estimateur" id="lnk-calc">Estimer un Projet</a></li>
@@ -835,7 +817,7 @@
         </div>
     </footer>
 
-    <!-- BASE DE DONNÉES GÉANTE DE TRADUCTION BILINGUE -->
+    <!-- BASE DE DONNÉES DE TRADUCTION BILINGUE ET SCRIPT LOGIQUE MIS À JOUR -->
     <script>
         const traductions = {
             fr: {
@@ -937,27 +919,6 @@
                     <option value="1">1 bac (15 CAD)</option>
                     <option value="2">2 bacs (25 CAD)</option>
                     <option value="3">3 bacs (30 CAD)</option>
-                `,
-                
-                faqHeadTitle: "Foire Aux Questions",
-                faqHeadDesc: "Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.",
-                faqItems: `
-                    <div class="faq-item">
-                        <h3>La pression de 3100 PSI peut-elle endommager les vitres ?</h3>
-                        <p>Absolument pas. Nous n'utilisons jamais la haute pression sur le verre ou les cadrages délicats de vos fenêtres. Nous appliquons une méthode de lavage doux ("soft wash") à basse pression couplée à un nettoyage mécanique manuel et un rinçage à distance sécuritaire qui protège l'étanchéité.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Comment fonctionne votre protocole anti-algues pour la gestion des piscines ?</h3>
-                        <p>Notre technicien spécialisé procède à une analyse chimique rigoureuse des paramètres de l'eau (pH, alcalinité, stabilisateur). Il applique des traitements préventifs ciblés et des chocs réguliers pour couper la proliferation des spores d'algues avant les vagues de chaleur.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Comment nettoyez-vous les vitres du deuxième étage de manière sécuritaire ?</h3>
-                        <p>Grâce à nos perches télescopiques d'alimentation en eau haute performance de pointe couplées à des brosses en soies douces architecturales. Cela nous permet d'obtenir un nettoyage parfait et sans traces sur tous vos étages, tout en restant les deux pieds au sol en toute sécurité.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Vos estimations de calcul en ligne sont-elles contractuelles ?</h3>
-                        <p>L'estimateur fournit un calcul préliminaire très précis basé sur nos grilles de prix. Avant de débuter les travaux, nous validons toujours le prix final par message texte ou sur place avec vous pour s'assurer qu'il n'y ait aucune surprise.</p>
-                    </div>
                 `
             },
             en: {
@@ -1063,12 +1024,11 @@
             }
         };
 
-        // FONCTION DE TRADUCTION INTACTE ET ULTRA-STABLE
+        // FONCTION DE TRADUCTION
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             
-            // Évite le crash si les éléments .nav-links sont cachés en mode mobile
             if(document.getElementById('lnk-services')) document.getElementById('lnk-services').innerText = traductions[lang].lnkServices;
             if(document.getElementById('lnk-calc')) document.getElementById('lnk-calc').innerText = traductions[lang].lnkCalc;
             if(document.getElementById('lnk-faq')) document.getElementById('lnk-faq').innerText = traductions[lang].lnkFaq;
@@ -1176,10 +1136,12 @@
             calculerTotal();
         }
 
+        // --- NOUVELLE LOGIQUE FLEXIBLE DU CALCULATEUR ---
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
             
+            // 1. Définition du prix de base selon le combo sélectionné
             if (combo === 'clarte') {
                 total = 79.00;
                 document.getElementById('area-group').style.display = 'none';
@@ -1189,7 +1151,10 @@
             } else if (combo === 'paix') {
                 total = 348.00;
                 document.getElementById('area-group').style.display = 'none';
-            } else {
+            }
+
+            // 2. Si l'utilisateur est "À la carte", on calcule la surface et la tonte normalement
+            if (combo === 'carte') {
                 const typeSurface = document.getElementById('surface-type').value;
                 const areaGroup = document.getElementById('area-group');
                 const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
@@ -1210,19 +1175,31 @@
                 else if (typeTonte === 'moyen') total += 55.00;
                 else if (typeTonte === 'grand') total += 85.00;
                 else if (typeTonte === 'vgrand') total += 132.50;
+            }
 
-                if (document.getElementById('add-piscine').checked) total += 75;
-                if (document.getElementById('add-char').checked) total += 55;
-                if (document.getElementById('add-vitres').checked) total += 80;
+            // 3. TOUTES LES OPTIONS CI-DESSOUS S'ADDITIONNENT MAINTENANT, MÊME SI UN COMBO EST CHOISI !
+            // On calcule le prix des options uniquement si elles ne sont pas déjà cochées par le script automatique du combo
+            if (combo !== 'paix' && document.getElementById('add-piscine').checked) total += 75;
+            if (combo !== 'elite' && document.getElementById('add-char').checked) total += 55;
+            if (combo !== 'clarte' && combo !== 'elite' && document.getElementById('add-vitres').checked) total += 80;
 
-                const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
+            // Pour les poubelles, on ajoute le prix si la quantité est supérieure à ce que le combo inclut déjà
+            const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
+            if (combo === 'clarte') {
+                // Le combo Clarté Totale inclut déjà 2 bacs. Si l'utilisateur en sélectionne 3, on charge la différence entre 3 bacs (30$) et 2 bacs (25$), soit +5$.
+                if (qtyBacs === 3) total += (30 - 25);
+                else if (qtyBacs === 1) total += 0; // Évite de baisser le prix du forfait fixe
+                else if (qtyBacs === 0) total += 0;
+            } else {
+                // Hors combo Clarté Totale, on applique la grille standard à la carte de façon cumulative
                 if (qtyBacs === 1) total += 15;
                 if (qtyBacs === 2) total += 25;
                 if (qtyBacs === 3) total += 30;
+            }
 
-                if (total > 0 && total < 15) {
-                    total = 15;
-                }
+            // 4. Seuil de déplacement minimum de secours
+            if (total > 0 && total < 15) {
+                total = 15;
             }
 
             document.getElementById('total-amount').innerText = total.toFixed(2);
