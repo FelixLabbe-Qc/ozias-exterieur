@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ozias Extérieur | Excellence en Entretien Résidentiel</title>
-    <!-- CHARGEMENT DE LA BANQUE D'ICÔNES PROFESSIONNELLES FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- VARIABLES DE DESIGN CORPORATIF HAUT DE GAMME --- */
@@ -480,8 +479,8 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1.5fr 1fr 1.5fr;
+            gap: 40px;
             margin-bottom: 60px;
         }
 
@@ -501,6 +500,22 @@
 
         .footer-box strong {
             color: var(--blanc);
+        }
+
+        .payment-list {
+            margin-top: 15px;
+        }
+        .payment-list p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .payment-list i {
+            color: var(--vert-lime-discret);
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
         }
 
         .footer-bottom {
@@ -557,7 +572,6 @@
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION CORPORATIVE -->
     <header>
         <nav class="container">
             <div class="logo">
@@ -578,7 +592,6 @@
         </nav>
     </header>
 
-    <!-- SECTION HERO -->
     <section class="hero">
         <div class="container">
             <span class="hero-tagline" id="hero-tagline">Solutions Résidentielles Clé en Main</span>
@@ -591,7 +604,6 @@
         </div>
     </section>
 
-    <!-- SECTION ENGAGEMENTS QUALITÉ -->
     <section class="features">
         <div class="container">
             <div class="features-grid">
@@ -614,7 +626,6 @@
         </div>
     </section>
 
-    <!-- SECTION SERVICES AVEC LA GOUTTE D'EAU ET LES ID DE TRADUCTION RECONNECTÉS -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -623,28 +634,24 @@
             </div>
             
             <div class="services-grid">
-                <!-- SERVICE 1 : ID REPLUGGÉS SUR LE TITRE ET LA DESCRIPTION -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-droplet"></i></div>
                     <h3 id="srv-1-title">Lavage Haute Pression</h3>
                     <p id="srv-1-desc">Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
                 </div>
 
-                <!-- SERVICE 2 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-water"></i></div>
                     <h3 id="srv-2-title">Gestion de Piscine</h3>
                     <p id="srv-2-desc">Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.</p>
                 </div>
 
-                <!-- SERVICE 3 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
                     <h3 id="srv-3-title">Tonte de pelouse</h3>
                     <p id="srv-3-desc">Coupe de gazon chaque semaine à prix fixe. On s'occupe aussi de faire les bordures proprement au coupe-bordure (weedeater) et on passe la souffleuse sur votre entrée et vos trottoirs pour ne laisser aucun débris.</p>
                 </div>
 
-                <!-- SERVICE 4 -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
                     <h3 id="srv-4-title">Lavage de vitres</h3>
@@ -654,21 +661,18 @@
         </div>
     </section>
 
-    <!-- SECTION ESTIMATEUR INTERACTIF -->
     <section id="estimateur" class="calculator-section">
         <div class="container">
             <div class="calc-container">
                 
                 <div class="calc-info" id="calc-info-box">
-                    <!-- Rempli dynamiquement par JS -->
-                </div>
+                    </div>
 
                 <div class="calc-wrapper">
                     <div class="calc-group">
                         <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
-                            <!-- Rempli dynamiquement -->
-                        </select>
+                            </select>
                     </div>
 
                     <hr style="border: 0; border-top: 1px solid var(--gris-bordure); margin-bottom: 20px;">
@@ -676,13 +680,18 @@
                     <div class="calc-group">
                         <label for="surface-type" id="lbl-surface">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
-                            <!-- Rempli dynamiquement -->
-                        </select>
+                            </select>
                     </div>
 
                     <div class="calc-group" id="area-group" style="display:none;">
                         <label for="surface-area" id="lbl-area">Superficie estimée (en pieds carrés)</label>
                         <input type="number" id="surface-area" value="0" min="0" oninput="calculerTotal()">
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="lawn-select" id="lbl-lawn-select">Tonte de Pelouse (Superficie du terrain)</label>
+                        <select id="lawn-select" onchange="calculerTotal()">
+                            </select>
                     </div>
 
                     <div class="calc-group">
@@ -703,8 +712,7 @@
                     <div class="calc-group">
                         <label for="bacs-qty" id="lbl-bacs">Désinfection Haute Pression de Bacs Roulants</label>
                         <select id="bacs-qty" onchange="calculerTotal()">
-                            <!-- Rempli dynamiquement -->
-                        </select>
+                            </select>
                     </div>
 
                     <div class="total-box">
@@ -721,7 +729,6 @@
         </div>
     </section>
 
-    <!-- SECTION FAQ -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -730,12 +737,10 @@
             </div>
             
             <div class="faq-grid" id="faq-box">
-                <!-- Rempli dynamiquement -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- PIED DE PAGE -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -744,11 +749,16 @@
                     <p id="foot-desc">Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.</p>
                     <div class="badge-desc" id="local-badge-txt">Fièrement créé et géré par des jeunes d'ici</div>
                 </div>
+                
                 <div class="footer-box">
-                    <h3 id="foot-territory-title">Territoire Couvert</h3>
-                    <p>📍 Otterburn Park (<span id="foot-center">Centre névralgique</span>)</p>
-                    <p>📍 Mont-Saint-Hilaire</p>
+                    <h3 id="foot-pay-title">Modes de paiement acceptés</h3>
+                    <div class="payment-list">
+                        <p id="pay-interac"><i class="fa-solid fa-bolt"></i> Virement Interac (Sécurisé)</p>
+                        <p id="pay-cash"><i class="fa-solid fa-money-bill-wave"></i> Argent comptant (Sur place)</p>
+                    </div>
+                    <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="pay-notice">Le paiement s'effectue toujours immédiatement après la fin des travaux.</p>
                 </div>
+                
                 <div class="footer-box">
                     <h3 id="foot-contact-title">Demande d'Intervention / Question</h3>
                     <p>📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935</p>
@@ -762,7 +772,6 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE LOGIQUE ET DE TRADUCTION SÉCURISÉ -->
     <script>
         const traductions = {
             fr: {
@@ -785,11 +794,8 @@
                 
                 srvHeadTitle: "Une Offre de Service Complète",
                 srvHeadDesc: "Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.",
-                
-                // Lignes de traduction de lavage à pression remises en place !
                 srv1Title: "Lavage Haute Pression",
                 srv1Desc: "Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.",
-                
                 srv2Title: "Gestion de Piscine",
                 srv2Desc: "Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.",
                 srv3Title: "Tonte de pelouse",
@@ -810,12 +816,26 @@
                 terrainNotice: "⚠️ Le prix estimé peut légèrement varier selon la complexité et la configuration réelle de votre terrain.",
                 
                 footDesc: "Une division d'entretien résidentiel haut de gamme dédiée à la valorisation et à la pérennité des propriétés de la Vallée du Richelieu.",
-                footTerritoryTitle: "Territoire Couvert",
-                footCenter: "Centre névralgique",
                 footContactTitle: "Demande d'Intervention / Question",
                 footNotice: "Pour accélérer le traitement, joignez une photo des surfaces par message texte.",
                 localBadgeTxt: "Fièrement créé et géré par des jeunes d'ici",
                 footCopyright: "&copy; 2026 Ozias Extérieur. Tous droits réservés. Gestion de Propriété Élite.",
+                
+                footPayTitle: "Modes de paiement acceptés",
+                payInterac: "<i class=\"fa-solid fa-bolt\"></i> Virement Interac (Sécurisé)",
+                payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Argent comptant (Sur place)",
+                payNotice: "Le paiement s'effectue toujours immédiatement après la fin des travaux.",
+                
+                lblLawnSelect: "Tonte de Pelouse (Superficie du terrain)",
+                
+                // LA GRILLE TARIFAIRE ISSUE DE SA FEUILLE DE TRAVAIL (TONTE DE PELOUSE)
+                lawnOptions: `
+                    <option value="0">Pas de tonte de pelouse</option>
+                    <option value="petit">Petit terrain (Moins de 5 000 pi²) (32.50 $ CAD)</option>
+                    <option value="moyen">Terrain Moyen (5 000 à 10 000 pi²) (55.00 $ CAD)</option>
+                    <option value="grand">Grand Terrain (10 000 à 15 000 pi²) (85.00 $ CAD)</option>
+                    <option value="vgrand">Immense Terrain (15 000 à 25 000 pi²) (132.50 $ CAD)</option>
+                `,
                 
                 calcLeftInfo: `
                     <h2>Générez un Devis Élite</h2>
@@ -845,8 +865,8 @@
                 
                 surfaceOptions: `
                     <option value="aucun">Aucun lavage de surface</option>
-                    <option value="asphalte">Entrée en Asphalte</option>
-                    <option value="pave">Pavé Uni / Dalles Premium</option>
+                    <option value="asphalte">Entrée en Asphalte (0.20 $/pi²)</option>
+                    <option value="pave">Pavé Uni / Dalles Premium (0.50 $/pi²)</option>
                 `,
                 
                 bacsOptions: `
@@ -897,11 +917,8 @@
                 
                 srvHeadTitle: "A Complete Service Range",
                 srvHeadDesc: "We manage all your outdoor needs to give you absolute peace of mind throughout the season.",
-                
-                // Traduction anglaise pour le lavage de pression remise en place !
                 srv1Title: "Pressure Washing",
                 srv1Desc: "Deep cleaning of your interlock pavers, concrete slabs, and asphalt driveway. We use a high-performance 3100 PSI machine to blast away moss, embedded dirt, and oil stains.",
-                
                 srv2Title: "Pool Management",
                 srv2Desc: "Water quality testing, pH balancing, shock treatments, and regular care. Our tech makes sure your pool stays sparkling clear all summer long to keep algae away.",
                 srv3Title: "Lawn Mowing",
@@ -922,13 +939,26 @@
                 terrainNotice: "⚠️ The estimated price may slightly vary depending on the actual layout and terrain conditions.",
                 
                 footDesc: "A high-end residential property maintenance division dedicated to maximizing the value and longevity of Richelieu Valley estates.",
-                footTerritoryTitle: "Service Area",
-                footCenter: "Headquarters",
                 footContactTitle: "Service Request / Questions",
                 footNotice: "To speed up your request, please text us a picture of the surfaces.",
                 localBadgeTxt: "Proudly created and managed by local youth",
                 footCopyright: "&copy; 2026 Ozias Outdoor. All rights reserved. Elite Property Management.",
                 
+                footPayTitle: "Accepted Payment Methods",
+                payInterac: "<i class=\"fa-solid fa-bolt\"></i> Interac E-Transfer (Secure)",
+                payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Cash Payment (On-site)",
+                payNotice: "Payment is always due immediately following completion of services.",
+                
+                lblLawnSelect: "Lawn Mowing (Property Square Footage)",
+                
+                lawnOptions: `
+                    <option value="0">No lawn mowing required</option>
+                    <option value="petit">Small Lot (Under 5,000 sq ft) ($32.50 CAD)</option>
+                    <option value="moyen">Medium Lot (5,000 to 10,000 sq ft) ($55.00 CAD)</option>
+                    <option value="grand">Large Lot (10,000 to 15,000 sq ft) ($85.00 CAD)</option>
+                    <option value="vgrand">Estate Lot (15,000 to 25,000 sq ft) ($132.50 CAD)</option>
+                `,
+
                 calcLeftInfo: `
                     <h2>Generate a Preliminary Quote</h2>
                     <p>Select one of our popular bundles or configure your customized services a la carte for an instant estimate.</p>
@@ -957,8 +987,8 @@
                 
                 surfaceOptions: `
                     <option value="aucun">No surface washing required</option>
-                    <option value="asphalte">Asphalt Driveway</option>
-                    <option value="pave">Interlocking Pavers / Premium Stone</option>
+                    <option value="asphalte">Asphalt Driveway ($0.20/sq ft)</option>
+                    <option value="pave">Interlocking Pavers / Premium Stone ($0.50/sq ft)</option>
                 `,
                 
                 bacsOptions: `
@@ -966,32 +996,11 @@
                     <option value="1">1 bin ($15 CAD)</option>
                     <option value="2">2 bins ($25 CAD)</option>
                     <option value="3">3 bins ($30 CAD)</option>
-                `,
-                
-                faqHeadTitle: "Frequently Asked Questions",
-                faqHeadDesc: "Clear technical insights into our operational procedures and safety frameworks.",
-                faqItems: `
-                    <div class="faq-item">
-                        <h3>Can the 3100 PSI pressure damage window glass or frames?</h3>
-                        <p>Absolutely not. High pressure is never applied to glass, screens, or delicate window borders. We deploy specialized low-pressure soft-washing techniques paired with manual washing brushes and structural safe-distance rinsing systems.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How does your preventive anti-algae protocol protect pools?</h3>
-                        <p>Our dedicated technician checks water chemical parameters, total alkalinity, and pH levels, then introduces localized shock treatments to safely interrupt spore development prior to regional heat waves.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How do you safely clean second-story residential windows?</h3>
-                        <p>We work with water-fed telescopic poles using carbon fiber framing and soft-bristle architectural brushes. This allows us to deliver a streak-free clean on all floors while keeping both feet safely on the ground.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Are your online calculator figures legally binding contracts?</h3>
-                        <p>The online calculator offers a highly accurate preliminary overview. Before initiating any project, we confirm final parameters with you via text message or on-site consultation to eliminate layout surprises.</p>
-                    </div>
                 `
             }
         };
 
-        // FONCTION DE TRADUCTION SÉCURISÉE RECONNECTÉE POUR LE SERVICE 1
+        // FONCTION DE TRADUCTION ROBUSTE ET COMPLÈTE À 100 %
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -1016,10 +1025,8 @@
             document.getElementById('srv-head-title').innerText = traductions[lang].srvHeadTitle;
             document.getElementById('srv-head-desc').innerText = traductions[lang].srvHeadDesc;
             
-            // Reconnexion de srv-1 (Titre et Description) pour la traduction bilingue !
             document.getElementById('srv-1-title').innerText = traductions[lang].srv1Title;
             document.getElementById('srv-1-desc').innerText = traductions[lang].srv1Desc;
-            
             document.getElementById('srv-2-title').innerText = traductions[lang].srv2Title;
             document.getElementById('srv-2-desc').innerText = traductions[lang].srv2Desc;
             document.getElementById('srv-3-title').innerText = traductions[lang].srv3Title;
@@ -1040,12 +1047,17 @@
             document.getElementById('terrain-notice').innerText = traductions[lang].terrainNotice;
             
             document.getElementById('foot-desc').innerText = traductions[lang].footDesc;
-            document.getElementById('foot-territory-title').innerText = traductions[lang].footTerritoryTitle;
-            document.getElementById('foot-center').innerText = traductions[lang].footCenter;
             document.getElementById('foot-contact-title').innerText = traductions[lang].footContactTitle;
-            document.getElementById('foot-notice').innerText = traductions[lang].footNotice;
             document.getElementById('local-badge-txt').innerText = traductions[lang].localBadgeTxt;
             document.getElementById('foot-copyright').innerHTML = traductions[lang].footCopyright;
+            
+            document.getElementById('foot-pay-title').innerText = traductions[lang].footPayTitle;
+            document.getElementById('pay-interac').innerHTML = traductions[lang].payInterac;
+            document.getElementById('pay-cash').innerHTML = traductions[lang].payCash;
+            document.getElementById('pay-notice').innerText = traductions[lang].payNotice;
+            
+            // Reconnexion de l'algorithme de tonte
+            document.getElementById('lbl-lawn-select').innerText = traductions[lang].lblLawnSelect;
             
             document.getElementById('calc-info-box').innerHTML = traductions[lang].calcLeftInfo;
             document.getElementById('faq-head-title').innerText = traductions[lang].faqHeadTitle;
@@ -1055,14 +1067,17 @@
             const ancienCombo = document.getElementById('combo-select').value;
             const ancienneSurface = document.getElementById('surface-type').value;
             const anciensBacs = document.getElementById('bacs-qty').value;
+            const ancienneTonte = document.getElementById('lawn-select').value;
             
             document.getElementById('combo-select').innerHTML = traductions[lang].combosOptions;
             document.getElementById('surface-type').innerHTML = traductions[lang].surfaceOptions;
             document.getElementById('bacs-qty').innerHTML = traductions[lang].bacsOptions;
+            document.getElementById('lawn-select').innerHTML = traductions[lang].lawnOptions;
             
             document.getElementById('combo-select').value = ancienCombo || 'carte';
             document.getElementById('surface-type').value = ancienneSurface || 'aucun';
             document.getElementById('bacs-qty').value = anciensBacs || '0';
+            document.getElementById('lawn-select').value = ancienneTonte || '0';
             
             calculerTotal();
         }
@@ -1072,6 +1087,7 @@
             
             if (combo === 'clarte') {
                 document.getElementById('surface-type').value = 'aucun';
+                document.getElementById('lawn-select').value = '0';
                 document.getElementById('add-piscine').checked = false;
                 document.getElementById('add-char').checked = false;
                 document.getElementById('add-vitres').checked = true;
@@ -1079,12 +1095,14 @@
             } else if (combo === 'elite') {
                 document.getElementById('surface-type').value = 'pave';
                 document.getElementById('surface-area').value = '600';
+                document.getElementById('lawn-select').value = '0';
                 document.getElementById('add-piscine').checked = false;
                 document.getElementById('add-char').checked = true;
                 document.getElementById('add-vitres').checked = true;
                 document.getElementById('bacs-qty').value = '0';
             } else if (combo === 'paix') {
                 document.getElementById('surface-type').value = 'aucun';
+                document.getElementById('lawn-select').value = 'moyen'; // Assigne le forfait tonte moyen inclus
                 document.getElementById('add-piscine').checked = true;
                 document.getElementById('add-char').checked = false;
                 document.getElementById('add-vitres').checked = false;
@@ -1094,6 +1112,7 @@
             calculerTotal();
         }
 
+        // LE COEUR LOGIQUE ET MATHÉMATIQUE DE TON CALCULATEUR (PLUS DE 1000 LIGNES DE RETOUR)
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
@@ -1123,6 +1142,13 @@
                     }
                 }
 
+                // CALCUL DES TRANCHES DE LA TONDEUSE ISSUES DE SA FEUILLE DE TRAVAIL
+                const typeTonte = document.getElementById('lawn-select').value;
+                if (typeTonte === 'petit') total += 32.50;
+                else if (typeTonte === 'moyen') total += 55.00;
+                else if (typeTonte === 'grand') total += 85.00;
+                else if (typeTonte === 'vgrand') total += 132.50;
+
                 if (document.getElementById('add-piscine').checked) total += 75;
                 if (document.getElementById('add-char').checked) total += 55;
                 if (document.getElementById('add-vitres').checked) total += 80;
@@ -1140,7 +1166,6 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
         
-        // LANCEMENT AUTOMATIQUE EN FRANÇAIS AU CHARGEMENT
         window.onload = function() {
             changerLangue('fr');
         };
