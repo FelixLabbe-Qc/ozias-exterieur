@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ozias Extérieur | Excellence en Entretien Résidentiel</title>
+    <!-- CHARGEMENT DE LA BANQUE D'ICÔNES PROFESSIONNELLES FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- VARIABLES DE DESIGN CORPORATIF HAUT DE GAMME --- */
@@ -47,7 +48,7 @@
             margin: 0 auto;
         }
 
-        /* --- EN-TÊTE (BARRE DE NAVIGATION) --- */
+        /* --- EN-TÊTE (BARRE DE NAVIGATION AUTOMATISÉE) --- */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -108,6 +109,7 @@
             border-radius: 4px;
             font-weight: 600 !important;
             box-shadow: var(--shadow-sm);
+            white-space: nowrap;
         }
 
         .btn-nav:hover {
@@ -534,25 +536,72 @@
             font-size: 14px;
         }
 
-        /* --- CONFIGURATION MOBILE ET TABLETTE --- */
+        /* --- COEUR DE LA CORRECTION : CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
         @media (max-width: 950px) {
-            .nav-links { display: none; }
-            nav { flex-direction: column; gap: 15px; text-align: center; }
-            .nav-right { flex-direction: column; gap: 10px; width: 100%; }
+            /* 1. Restructuration complète de la barre de navigation mobile */
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 10px 0;
+                align-items: center;
+            }
             
-            .hero { padding: 100px 0 70px 0; }
-            .hero h1 { font-size: 34px; }
-            .hero .sub-text { font-size: 16px; padding: 0 10px; }
-            .hero-buttons { flex-direction: column; gap: 12px; width: 100%; max-width: 300px; margin: 0 auto; }
+            /* Masque les liens textes pour éliminer les chevauchements de la capture d'écran */
+            .nav-links {
+                display: none !important;
+            }
             
-            .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            /* Alignement horizontal propre du bouton et du sélecteur de langue */
+            .nav-right {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                width: 100%;
+            }
+
+            .btn-nav {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .lang-switcher {
+                padding: 3px;
+            }
+
+            .lang-btn {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+            
+            /* 2. Ajustements fluides des espacements généraux */
+            .hero { 
+                padding: 90px 0 60px 0; 
+            }
+            .hero h1 { 
+                font-size: 32px; 
+            }
+            .hero .sub-text { 
+                font-size: 15px; 
+                padding: 0 5px; 
+            }
+            .hero-buttons { 
+                flex-direction: column; 
+                gap: 10px; 
+                width: 100%; 
+                max-width: 280px; 
+                margin: 0 auto; 
+            }
+            
+            .features-grid { grid-template-columns: 1fr; gap: 25px; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
-            .calc-container { grid-template-columns: 1fr; gap: 40px; }
+            .calc-container { grid-template-columns: 1fr; gap: 35px; }
             .faq-grid { grid-template-columns: 1fr; gap: 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .payment-list p { justify-content: center; }
             
-            .calc-wrapper { padding: 25px 20px; }
-            .total-price { font-size: 36px; }
+            .calc-wrapper { padding: 20px 15px; }
+            .total-price { font-size: 34px; }
         }
         
         .btn-primary, .btn-secondary {
@@ -572,18 +621,20 @@
 </head>
 <body>
 
+    <!-- BARRE DE NAVIGATION CORPORATIVE -->
     <header>
         <nav class="container">
             <div class="logo">
                 <img src="logo.png" alt="Ozias Extérieur">
             </div>
             <div class="nav-right">
+                <!-- Les liens textes s'effaceront intelligemment sur mobile pour laisser place au bouton de contact propre -->
                 <ul class="nav-links">
                     <li><a href="#services" id="lnk-services">Nos Services</a></li>
                     <li><a href="#estimateur" id="lnk-calc">Estimer un Projet</a></li>
                     <li><a href="#faq" id="lnk-faq">F.A.Q.</a></li>
-                    <li><a href="#contact" class="btn-nav" id="lnk-contact">Nous Joindre / Question</a></li>
                 </ul>
+                <a href="#contact" class="btn-nav" id="lnk-contact">Nous Joindre / Question</a>
                 <div class="lang-switcher">
                     <button class="lang-btn active" id="lang-fr" onclick="changerLangue('fr')">FR</button>
                     <button class="lang-btn" id="lang-en" onclick="changerLangue('en')">EN</button>
@@ -592,6 +643,7 @@
         </nav>
     </header>
 
+    <!-- SECTION HERO -->
     <section class="hero">
         <div class="container">
             <span class="hero-tagline" id="hero-tagline">Solutions Résidentielles Clé en Main</span>
@@ -604,6 +656,7 @@
         </div>
     </section>
 
+    <!-- SECTION ENGAGEMENTS QUALITÉ -->
     <section class="features">
         <div class="container">
             <div class="features-grid">
@@ -626,6 +679,7 @@
         </div>
     </section>
 
+    <!-- SECTION SERVICES -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -661,18 +715,21 @@
         </div>
     </section>
 
+    <!-- SECTION ESTIMATEUR INTERACTIF -->
     <section id="estimateur" class="calculator-section">
         <div class="container">
             <div class="calc-container">
                 
                 <div class="calc-info" id="calc-info-box">
-                    </div>
+                    <!-- Rempli dynamiquement par JS -->
+                </div>
 
                 <div class="calc-wrapper">
                     <div class="calc-group">
                         <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <hr style="border: 0; border-top: 1px solid var(--gris-bordure); margin-bottom: 20px;">
@@ -680,7 +737,8 @@
                     <div class="calc-group">
                         <label for="surface-type" id="lbl-surface">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <div class="calc-group" id="area-group" style="display:none;">
@@ -691,7 +749,8 @@
                     <div class="calc-group">
                         <label for="lawn-select" id="lbl-lawn-select">Tonte de Pelouse (Superficie du terrain)</label>
                         <select id="lawn-select" onchange="calculerTotal()">
-                            </select>
+                            <!-- Géré dynamiquement par JS selon la langue -->
+                        </select>
                     </div>
 
                     <div class="calc-group">
@@ -712,7 +771,8 @@
                     <div class="calc-group">
                         <label for="bacs-qty" id="lbl-bacs">Désinfection Haute Pression de Bacs Roulants</label>
                         <select id="bacs-qty" onchange="calculerTotal()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <div class="total-box">
@@ -729,6 +789,7 @@
         </div>
     </section>
 
+    <!-- SECTION FAQ -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -737,10 +798,12 @@
             </div>
             
             <div class="faq-grid" id="faq-box">
-                </div>
+                <!-- Rempli dynamiquement -->
+            </div>
         </div>
     </section>
 
+    <!-- PIED DE PAGE AVEC MODES DE PAIEMENT INCLUS -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -772,6 +835,7 @@
         </div>
     </footer>
 
+    <!-- BASE DE DONNÉES GÉANTE DE TRADUCTION BILINGUE -->
     <script>
         const traductions = {
             fr: {
@@ -828,7 +892,6 @@
                 
                 lblLawnSelect: "Tonte de Pelouse (Superficie du terrain)",
                 
-                // LA GRILLE TARIFAIRE ISSUE DE SA FEUILLE DE TRAVAIL (TONTE DE PELOUSE)
                 lawnOptions: `
                     <option value="0">Pas de tonte de pelouse</option>
                     <option value="petit">Petit terrain (Moins de 5 000 pi²) (32.50 $ CAD)</option>
@@ -1000,14 +1063,16 @@
             }
         };
 
-        // FONCTION DE TRADUCTION ROBUSTE ET COMPLÈTE À 100 %
+        // FONCTION DE TRADUCTION INTACTE ET ULTRA-STABLE
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             
-            document.getElementById('lnk-services').innerText = traductions[lang].lnkServices;
-            document.getElementById('lnk-calc').innerText = traductions[lang].lnkCalc;
-            document.getElementById('lnk-faq').innerText = traductions[lang].lnkFaq;
+            // Évite le crash si les éléments .nav-links sont cachés en mode mobile
+            if(document.getElementById('lnk-services')) document.getElementById('lnk-services').innerText = traductions[lang].lnkServices;
+            if(document.getElementById('lnk-calc')) document.getElementById('lnk-calc').innerText = traductions[lang].lnkCalc;
+            if(document.getElementById('lnk-faq')) document.getElementById('lnk-faq').innerText = traductions[lang].lnkFaq;
+            
             document.getElementById('lnk-contact').innerText = traductions[lang].lnkContact;
             document.getElementById('hero-tagline').innerText = traductions[lang].heroTagline;
             document.getElementById('hero-title').innerHTML = traductions[lang].heroTitle;
@@ -1056,7 +1121,6 @@
             document.getElementById('pay-cash').innerHTML = traductions[lang].payCash;
             document.getElementById('pay-notice').innerText = traductions[lang].payNotice;
             
-            // Reconnexion de l'algorithme de tonte
             document.getElementById('lbl-lawn-select').innerText = traductions[lang].lblLawnSelect;
             
             document.getElementById('calc-info-box').innerHTML = traductions[lang].calcLeftInfo;
@@ -1102,7 +1166,7 @@
                 document.getElementById('bacs-qty').value = '0';
             } else if (combo === 'paix') {
                 document.getElementById('surface-type').value = 'aucun';
-                document.getElementById('lawn-select').value = 'moyen'; // Assigne le forfait tonte moyen inclus
+                document.getElementById('lawn-select').value = 'moyen';
                 document.getElementById('add-piscine').checked = true;
                 document.getElementById('add-char').checked = false;
                 document.getElementById('add-vitres').checked = false;
@@ -1112,7 +1176,6 @@
             calculerTotal();
         }
 
-        // LE COEUR LOGIQUE ET MATHÉMATIQUE DE TON CALCULATEUR (PLUS DE 1000 LIGNES DE RETOUR)
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
@@ -1142,7 +1205,6 @@
                     }
                 }
 
-                // CALCUL DES TRANCHES DE LA TONDEUSE ISSUES DE SA FEUILLE DE TRAVAIL
                 const typeTonte = document.getElementById('lawn-select').value;
                 if (typeTonte === 'petit') total += 32.50;
                 else if (typeTonte === 'moyen') total += 55.00;
