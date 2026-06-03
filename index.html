@@ -731,7 +731,7 @@
                     <div class="calc-group">
                         <label for="lawn-select" id="lbl-lawn-select">Tonte de Pelouse (Superficie du terrain)</label>
                         <select id="lawn-select" onchange="calculerTotal()">
-                            <!-- Géré dynamiquement par JS selon la langue -->
+                            <!-- Géré dynamiquement par JS -->
                         </select>
                     </div>
 
@@ -780,12 +780,12 @@
             </div>
             
             <div class="faq-grid" id="faq-box">
-                <!-- Rempli dynamiquement -->
+                <!-- Rempli dynamiquement par JS -->
             </div>
         </div>
     </section>
 
-    <!-- PIED DE PAGE AVEC IDENTIFIANTS DE TRADUCTION INJECTÉS -->
+    <!-- PIED DE PAGE -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -801,12 +801,12 @@
                         <p id="pay-interac"><i class="fa-solid fa-bolt"></i> Virement Interac (Sécurisé)</p>
                         <p id="pay-cash"><i class="fa-solid fa-money-bill-wave"></i> Argent comptant (Sur place)</p>
                     </div>
+                    <!-- AJOUT DE L'ID POUR TRADUIRE CE TEXTE -->
                     <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="pay-notice">Le paiement s'effectue toujours immédiatement après la fin des travaux.</p>
                 </div>
                 
                 <div class="footer-box">
                     <h3 id="foot-contact-title">Demande d'Intervention / Question</h3>
-                    <!-- RECONNEXION UNIQUE DE TES LIENS DE CONTACT -->
                     <p id="foot-phone">📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935</p>
                     <p id="foot-email">✉️ <strong>Courriel :</strong> felix.ciboulette.labbe@gmail.com</p>
                     <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="foot-notice">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
@@ -818,7 +818,7 @@
         </div>
     </footer>
 
-    <!-- BASE DE DONNÉES DE TRADUCTION BILINGUE INTÉGRALE -->
+    <!-- BASE DE DONNÉES DE TRADUCTION BILINGUE ET SCRIPT LOGIQUE CORRIGÉ -->
     <script>
         const traductions = {
             fr: {
@@ -872,7 +872,6 @@
                 payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Argent comptant (Sur place)",
                 payNotice: "Le paiement s'effectue toujours immédiatement après la fin des travaux.",
                 
-                // AJOUTS DES TRADUCTIONS DES LIGNES DE L'IMAGE
                 footPhone: "📱 <strong>Ligne Directe / Texto :</strong> 514-758-6935",
                 footEmail: "✉️ <strong>Courriel :</strong> felix.ciboulette.labbe@gmail.com",
                 footNotice: "Pour accélérer le traitement, joignez une photo des surfaces par message texte.",
@@ -996,9 +995,10 @@
                 footPayTitle: "Accepted Payment Methods",
                 payInterac: "<i class=\"fa-solid fa-bolt\"></i> Interac E-Transfer (Secure)",
                 payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Cash Payment (On-site)",
+                
+                // LA CORRECTION DU TEXTE DE PAIEMENT SOUS L'IMAGE SÉCURISÉE ICI
                 payNotice: "Payment is always due immediately following completion of services.",
                 
-                // SÉCURISATION ANGLAISE DE TES INFOS DE CONTACT DU FOOTER
                 footPhone: "📱 <strong>Direct Line / Text :</strong> 514-758-6935",
                 footEmail: "✉️ <strong>Email :</strong> felix.ciboulette.labbe@gmail.com",
                 footNotice: "To speed up processing, please attach a photo of the surfaces via text message.",
@@ -1050,11 +1050,33 @@
                     <option value="1">1 bin ($15 CAD)</option>
                     <option value="2">2 bins ($25 CAD)</option>
                     <option value="3">3 bins ($30 CAD)</option>
+                `,
+
+                // LA CORRECTION DU DICTIONNAIRE FAQ EN ANGLAIS RÉINTÉGRÉ ICI
+                faqHeadTitle: "Frequently Asked Questions",
+                faqHeadDesc: "Clear technical insights into our operational frameworks and safety protocols.",
+                faqItems: `
+                    <div class="faq-item">
+                        <h3>Can the 3100 PSI pressure damage window glass or frames?</h3>
+                        <p>Absolutely not. High pressure is never applied to glass, screens, or delicate window borders. We deploy specialized low-pressure soft-washing techniques paired with manual washing brushes and structural safe-distance rinsing systems.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How does your preventive anti-algae protocol protect pools?</h3>
+                        <p>Our dedicated technician checks water chemical parameters, total alkalinity, and pH levels, then introduces localized shock treatments to safely interrupt spore development prior to regional heat waves.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How do you safely clean second-story residential windows?</h3>
+                        <p>We work with water-fed telescopic poles using carbon fiber framing and soft-bristle architectural brushes. This allows us to deliver a streak-free clean on all floors while keeping both feet safely on the ground.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Are your online calculator figures legally binding contracts?</h3>
+                        <p>The online calculator offers a highly accurate preliminary overview. Before initiating any project, we confirm final parameters with you via text message or on-site consultation to eliminate layout surprises.</p>
+                    </div>
                 `
             }
         };
 
-        // FONCTION DE TRADUCTION SÉCURISÉE AVEC RECONNEXION UNIQUE DU FOOTER
+        // FONCTION DE TRADUCTION INTEGRALE ET SÉCURISÉE
         function changerLangue(lang) {
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
@@ -1110,7 +1132,9 @@
             document.getElementById('pay-interac').innerHTML = traductions[lang].payInterac;
             document.getElementById('pay-cash').innerHTML = traductions[lang].payCash;
             
-            // EXECUTION DE LA TRADUCTION DES LIENS RECONNECTÉS DU FOOTER
+            // RECONNEXION DE LA LIGNE D'ACTIVATION DU PETIT TEXTE DE PAIEMENT
+            document.getElementById('pay-notice').innerText = traductions[lang].payNotice;
+            
             document.getElementById('foot-phone').innerHTML = traductions[lang].footPhone;
             document.getElementById('foot-email').innerHTML = traductions[lang].footEmail;
             document.getElementById('foot-notice').innerText = traductions[lang].footNotice;
@@ -1118,6 +1142,8 @@
             document.getElementById('lbl-lawn-select').innerText = traductions[lang].lblLawnSelect;
             
             document.getElementById('calc-info-box').innerHTML = traductions[lang].calcLeftInfo;
+            
+            // SÉCURISATION DE LA RECONNEXION FAQ DANS LE SCRIPT
             document.getElementById('faq-head-title').innerText = traductions[lang].faqHeadTitle;
             document.getElementById('faq-head-desc').innerText = traductions[lang].faqHeadDesc;
             document.getElementById('faq-box').innerHTML = traductions[lang].faqItems;
