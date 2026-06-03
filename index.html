@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ozias Extérieur | Excellence en Entretien Résidentiel</title>
+    <!-- CHARGEMENT DE LA BANQUE D'ICÔNES PROFESSIONNELLES FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- VARIABLES DE DESIGN CORPORATIF HAUT DE GAMME --- */
@@ -312,7 +313,7 @@
             padding: 100px 0;
         }
 
-        .calc-container {
+        .container-calc {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
@@ -577,7 +578,7 @@
             
             .features-grid { grid-template-columns: 1fr; gap: 25px; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
-            .calc-container { grid-template-columns: 1fr; gap: 35px; }
+            .container-calc { grid-template-columns: 1fr; gap: 35px; }
             .faq-grid { grid-template-columns: 1fr; gap: 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .payment-list p { justify-content: center; }
@@ -603,6 +604,7 @@
 </head>
 <body>
 
+    <!-- BARRE DE NAVIGATION CORPORATIVE -->
     <header>
         <nav class="container">
             <div class="logo">
@@ -623,6 +625,7 @@
         </nav>
     </header>
 
+    <!-- SECTION HERO -->
     <section class="hero">
         <div class="container">
             <span class="hero-tagline" id="hero-tagline">Solutions Résidentielles Clé en Main</span>
@@ -635,6 +638,7 @@
         </div>
     </section>
 
+    <!-- SECTION ENGAGEMENTS QUALITÉ -->
     <section class="features">
         <div class="container">
             <div class="features-grid">
@@ -657,6 +661,7 @@
         </div>
     </section>
 
+    <!-- SECTION SERVICES -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -668,7 +673,8 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-droplet"></i></div>
                     <h3 id="srv-1-title">Lavage Haute Pression</h3>
-                    <p id="srv-1-desc">Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.</p>
+                    <!-- NOUVELLE DESCRIPTION AVEC TON APPAREIL DE 2000 PSI RECONECTÉ DÈS LE DÉPART -->
+                    <p id="srv-1-desc">Nettoyage en profondeur de vos surfaces. Nous possédons deux unités distinctes pour nous adapter à votre propriété : une puissance de 3100 PSI pour le pavé uni et l'asphalte, et une unité de 2000 PSI en "soft wash" pour les revêtements délicats en toute sécurité.</p>
                 </div>
 
                 <div class="service-card">
@@ -692,18 +698,21 @@
         </div>
     </section>
 
+    <!-- SECTION ESTIMATEUR INTERACTIF -->
     <section id="estimateur" class="calculator-section">
         <div class="container">
-            <div class="calc-container">
+            <div class="container-calc">
                 
                 <div class="calc-info" id="calc-info-box">
-                    </div>
+                    <!-- Rempli dynamiquement par JS -->
+                </div>
 
                 <div class="calc-wrapper">
                     <div class="calc-group">
                         <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <hr style="border: 0; border-top: 1px solid var(--gris-bordure); margin-bottom: 20px;">
@@ -711,7 +720,8 @@
                     <div class="calc-group">
                         <label for="surface-type" id="lbl-surface">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <div class="calc-group" id="area-group" style="display:none;">
@@ -722,7 +732,8 @@
                     <div class="calc-group">
                         <label for="lawn-select" id="lbl-lawn-select">Tonte de Pelouse (Superficie du terrain)</label>
                         <select id="lawn-select" onchange="calculerTotal()">
-                            </select>
+                            <!-- Géré dynamiquement par JS -->
+                        </select>
                     </div>
 
                     <div class="calc-group">
@@ -743,7 +754,8 @@
                     <div class="calc-group">
                         <label for="bacs-qty" id="lbl-bacs">Désinfection Haute Pression de Bacs Roulants</label>
                         <select id="bacs-qty" onchange="calculerTotal()">
-                            </select>
+                            <!-- Rempli dynamiquement -->
+                        </select>
                     </div>
 
                     <div class="total-box">
@@ -760,6 +772,7 @@
         </div>
     </section>
 
+    <!-- SECTION FAQ -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -768,10 +781,12 @@
             </div>
             
             <div class="faq-grid" id="faq-box">
-                </div>
+                <!-- Rempli dynamiquement par JS -->
+            </div>
         </div>
     </section>
 
+    <!-- PIED DE PAGE -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -803,6 +818,7 @@
         </div>
     </footer>
 
+    <!-- BASE DE DONNÉES DE TRADUCTION ET ENGIN DE CALCUL MIS À JOUR -->
     <script>
         const traductions = {
             fr: {
@@ -825,8 +841,9 @@
                 
                 srvHeadTitle: "Une Offre de Service Complète",
                 srvHeadDesc: "Nous gérons l'ensemble de vos besoins extérieurs pour vous offrir une tranquillité d'esprit totale tout au long de la saison.",
+                // MISE À JOUR FRANÇAISE DE LA DESCRIPTION DES MACHINES DE LAVAGE
                 srv1Title: "Lavage Haute Pression",
-                srv1Desc: "Nettoyage en profondeur de votre pavé uni, de vos dalles de béton et de votre entrée d'asphalte. On utilise une machine performante de 3100 PSI pour faire disparaître la mousse, la saleté accumulée et les taches d'huile.",
+                srv1Desc: "Nettoyage en profondeur de vos surfaces. Nous possédons deux unités distinctes pour nous adapter à votre propriété : une puissance de 3100 PSI pour le pavé uni et l'asphalte, et une unité de 2000 PSI en \"soft wash\" pour les revêtements délicats en toute sécurité.",
                 srv2Title: "Gestion de Piscine",
                 srv2Desc: "Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.",
                 srv3Title: "Tonte de pelouse",
@@ -909,7 +926,6 @@
                     <option value="3">3 bacs (30 CAD)</option>
                 `,
                 
-                // NOUVELLE FAQ ECO-FRIENDLY RECRÉÉE EN FRANÇAIS ICI
                 faqHeadTitle: "Foire Aux Questions",
                 faqHeadDesc: "Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.",
                 faqItems: `
@@ -951,8 +967,9 @@
                 
                 srvHeadTitle: "A Complete Service Range",
                 srvHeadDesc: "We manage all your outdoor needs to give you absolute peace of mind throughout the season.",
+                // MISE À JOUR ANGLAISE DE LA DESCRIPTION DES MACHINES DE LAVAGE
                 srv1Title: "Pressure Washing",
-                srv1Desc: "Deep cleaning of your interlock pavers, concrete slabs, and asphalt driveway. We use a high-performance 3100 PSI machine to blast away moss, embedded dirt, and oil stains.",
+                srv1Desc: "Deep cleaning for all your outdoor surfaces. We operate two distinct pressure units customized for your property: a powerful 3100 PSI system to revive interlocking pavers and driveways, and a dedicated 2000 PSI soft-wash system to safely clean delicate sidings and windows.",
                 srv2Title: "Pool Management",
                 srv2Desc: "Water quality testing, pH balancing, shock treatments, and regular care. Our tech makes sure your pool stays sparkling clear all summer long to keep algae away.",
                 srv3Title: "Lawn Mowing",
@@ -1035,7 +1052,6 @@
                     <option value="3">3 bins ($30 CAD)</option>
                 `,
 
-                // NOUVELLE FAQ ECO-FRIENDLY RECRÉÉE EN ANGLAIS ICI
                 faqHeadTitle: "Frequently Asked Questions",
                 faqHeadDesc: "Clear technical insights into our operational frameworks and safety protocols.",
                 faqItems: `
@@ -1176,7 +1192,7 @@
             calculerTotal();
         }
 
-        // --- CALCULATION DU TOTAL INTERACTIF SÉCURISÉ ---
+        // --- ENGIN DE CALCUL INTERACTIF SÉCURISÉ ---
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
