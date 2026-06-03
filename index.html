@@ -801,7 +801,6 @@
                         <p id="pay-interac"><i class="fa-solid fa-bolt"></i> Virement Interac (Sécurisé)</p>
                         <p id="pay-cash"><i class="fa-solid fa-money-bill-wave"></i> Argent comptant (Sur place)</p>
                     </div>
-                    <!-- AJOUT DE L'ID POUR TRADUIRE CE TEXTE -->
                     <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="pay-notice">Le paiement s'effectue toujours immédiatement après la fin des travaux.</p>
                 </div>
                 
@@ -818,7 +817,7 @@
         </div>
     </footer>
 
-    <!-- BASE DE DONNÉES DE TRADUCTION BILINGUE ET SCRIPT LOGIQUE CORRIGÉ -->
+    <!-- BASE DE DONNÉES DE TRADUCTION BILINGUE ET SCRIPT LOGIQUE INTERACTIF SÉCURISÉ -->
     <script>
         const traductions = {
             fr: {
@@ -995,8 +994,6 @@
                 footPayTitle: "Accepted Payment Methods",
                 payInterac: "<i class=\"fa-solid fa-bolt\"></i> Interac E-Transfer (Secure)",
                 payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Cash Payment (On-site)",
-                
-                // LA CORRECTION DU TEXTE DE PAIEMENT SOUS L'IMAGE SÉCURISÉE ICI
                 payNotice: "Payment is always due immediately following completion of services.",
                 
                 footPhone: "📱 <strong>Direct Line / Text :</strong> 514-758-6935",
@@ -1052,7 +1049,6 @@
                     <option value="3">3 bins ($30 CAD)</option>
                 `,
 
-                // LA CORRECTION DU DICTIONNAIRE FAQ EN ANGLAIS RÉINTÉGRÉ ICI
                 faqHeadTitle: "Frequently Asked Questions",
                 faqHeadDesc: "Clear technical insights into our operational frameworks and safety protocols.",
                 faqItems: `
@@ -1131,8 +1127,6 @@
             document.getElementById('foot-pay-title').innerText = traductions[lang].footPayTitle;
             document.getElementById('pay-interac').innerHTML = traductions[lang].payInterac;
             document.getElementById('pay-cash').innerHTML = traductions[lang].payCash;
-            
-            // RECONNEXION DE LA LIGNE D'ACTIVATION DU PETIT TEXTE DE PAIEMENT
             document.getElementById('pay-notice').innerText = traductions[lang].payNotice;
             
             document.getElementById('foot-phone').innerHTML = traductions[lang].footPhone;
@@ -1143,7 +1137,6 @@
             
             document.getElementById('calc-info-box').innerHTML = traductions[lang].calcLeftInfo;
             
-            // SÉCURISATION DE LA RECONNEXION FAQ DANS LE SCRIPT
             document.getElementById('faq-head-title').innerText = traductions[lang].faqHeadTitle;
             document.getElementById('faq-head-desc').innerText = traductions[lang].faqHeadDesc;
             document.getElementById('faq-box').innerHTML = traductions[lang].faqItems;
@@ -1196,59 +1189,70 @@
             calculerTotal();
         }
 
+        // --- EXÉCUTION DE LA CORRECTION D'AFFICHAGE DU SERVICE DE SURFACE ---
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
             
-            if (combo === 'clarte') {
-                total = 79.00;
-                document.getElementById('area-group').style.display = 'none';
-            } else if (combo === 'elite') {
-                total = 349.00;
-                document.getElementById('area-group').style.display = 'block';
-            } else if (combo === 'paix') {
-                total = 348.00;
-                document.getElementById('area-group').style.display = 'none';
+            // Étape A : Gestion indépendante et instantanée de l'affichage de la case de pieds carrés
+            const typeSurface = document.getElementById('surface-type').value;
+            const areaGroup = document.getElementById('area-group');
+            const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
+            
+            if (typeSurface === 'aucun') {
+                areaGroup.style.display = 'none';
+            } else {
+                areaGroup.style.display = 'block'; // S'affiche d'office dès qu'un nettoyage est requis !
             }
 
-            if (combo === 'carte') {
-                const typeSurface = document.getElementById('surface-type').value;
-                const areaGroup = document.getElementById('area-group');
-                const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
-                
-                if (typeSurface === 'aucun') {
-                    areaGroup.style.display = 'none';
-                } else {
-                    areaGroup.style.display = 'block';
+            // Étape B : Application du prix de base des forfaits corporatifs fixes
+            if (combo === 'clarte') {
+                total = 79.00;
+            } else if (combo === 'elite') {
+                total = 349.00;
+            } else if (combo === 'paix') {
+                total = 348.00;
+            }
+
+            // Étape C : Calcul cumulatif dynamique des services de surface et de tonte
+            // Si l'utilisateur est en "À la carte" OU s'il a modifié le menu malgré le choix d'un combo
+            if (combo === 'carte' || typeSurface !== 'aucun') {
+                // On n'ajoute pas le prix de surface si c'est le combo Élite par défaut (déjà inclus dans les 349.00$)
+                if (!(combo === 'elite' && typeSurface === 'pave' && areaInput === 600)) {
                     if (typeSurface === 'asphalte') {
                         total += areaInput * 0.20;
                     } else if (typeSurface === 'pave') {
                         total += areaInput * 0.50;
                     }
                 }
+            }
 
-                const typeTonte = document.getElementById('lawn-select').value;
+            // Calcul de la tonte de pelouse uniquement si on est hors combo (ou si la valeur change)
+            const typeTonte = document.getElementById('lawn-select').value;
+            if (combo === 'carte' || (combo !== 'paix' && typeTonte !== '0')) {
                 if (typeTonte === 'petit') total += 32.50;
                 else if (typeTonte === 'moyen') total += 55.00;
                 else if (typeTonte === 'grand') total += 85.00;
                 else if (typeTonte === 'vgrand') total += 132.50;
             }
 
+            // Étape D : Calcul cumulatif des options spécialisées additionnelles
             if (combo !== 'paix' && document.getElementById('add-piscine').checked) total += 75;
             if (combo !== 'elite' && document.getElementById('add-char').checked) total += 55;
             if (combo !== 'clarte' && combo !== 'elite' && document.getElementById('add-vitres').checked) total += 80;
 
+            // Étape E : Gestion de la désinfection des bacs roulants
             const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
             if (combo === 'clarte') {
                 if (qtyBacs === 3) total += (30 - 25);
-                else if (qtyBacs === 1) total += 0;
-                else if (qtyBacs === 0) total += 0;
+                else if (qtyBacs === 1 || qtyBacs === 0) total += 0;
             } else {
                 if (qtyBacs === 1) total += 15;
                 if (qtyBacs === 2) total += 25;
                 if (qtyBacs === 3) total += 30;
             }
 
+            // Étape F : Application du seuil plancher de sécurité de déplacement
             if (total > 0 && total < 15) {
                 total = 15;
             }
