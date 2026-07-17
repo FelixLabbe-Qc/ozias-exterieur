@@ -1171,11 +1171,13 @@
             calculerTotal();
         }
 
-        // --- ENGIN DE CALCUL INTERACTIF D'ORIGINE SÉCURISÉ ---
+        // --- ENGIN DE CALCUL INTERACTIF REBÂTI POUR PROTÉGER TES PRIX ---
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
-            let total = 0;
             
+            let totalComboBase = 0;   // Contient uniquement ce qui est inclus dans le combo
+            let totalHorsCombo = 0;   // Contient le reste des options ajoutées "à la carte"
+
             const typeSurface = document.getElementById('surface-type').value;
             const areaGroup = document.getElementById('area-group');
             const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
@@ -1186,45 +1188,85 @@
                 areaGroup.style.display = 'block';
             }
 
-            if (typeSurface === 'asphalte') {
-                total += areaInput * 0.20;
-            } else if (typeSurface === 'pave') {
-                total += areaInput * 0.50;
+            // --- 1. CALCUL DE LA SURFACE ---
+            let surfaceCost = 0;
+            if (typeSurface === 'asphalte') surfaceCost = areaInput * 0.20;
+            else if (typeSurface === 'pave') surfaceCost = areaInput * 0.50;
+
+            if (combo === 'elite') {
+                totalComboBase += surfaceCost; // Le lavage d'entrée fait partie de ce combo
+            } else {
+                totalHorsCombo += surfaceCost; // Option à la carte plein prix pour les autres
             }
 
+            // --- 2. CALCUL DE LA TONTE DE PELOUSE ---
             const typeTonte = document.getElementById('lawn-select').value;
-            if (typeTonte === 'petit') total += 32.50;
-            else if (typeTonte === 'moyen') total += 55.00;
-            else if (typeTonte === 'grand') total += 85.00;
-            else if (typeTonte === 'vgrand') total += 132.50;
+            let lawnCost = 0;
+            if (typeTonte === 'petit') lawnCost = 32.50;
+            else if (typeTonte === 'moyen') lawnCost = 55.00;
+            else if (typeTonte === 'grand') lawnCost = 85.00;
+            else if (typeTonte === 'vgrand') lawnCost = 132.50;
 
+            if (combo === 'paix') {
+                totalComboBase += lawnCost; // La tonte fait partie de ce combo
+            } else {
+                totalHorsCombo += lawnCost; // Option à la carte plein prix pour les autres
+            }
+
+            // --- 3. CALCUL DU LAVAGE DE VITRES ---
             const typeVitres = document.getElementById('windows-select').value;
-            if (typeVitres === 'petit') total += 80.00;
-            else if (typeVitres === 'moyen') total += 120.00;
-            else if (typeVitres === 'grand') total += 180.00;
+            let windowsCost = 0;
+            if (typeVitres === 'petit') windowsCost = 80.00;
+            else if (typeVitres === 'moyen') windowsCost = 120.00;
+            else if (typeVitres === 'grand') windowsCost = 180.00;
 
-            if (document.getElementById('add-desherbage').checked) total += 45;
-            if (document.getElementById('add-char').checked) total += 55;
+            if (combo === 'clarte' || combo === 'elite') {
+                totalComboBase += windowsCost; // Les vitres font partie de ces combos
+            } else {
+                totalHorsCombo += windowsCost; // Option à la carte plein prix pour les autres
+            }
 
+            // --- 4. CALCUL DES OPTIONS (DÉSHERBAGE & CHAR) ---
+            if (document.getElementById('add-desherbage').checked) {
+                if (combo === 'paix') totalComboBase += 45; // Inclus dans Sainte Paix
+                else totalHorsCombo += 45;
+            }
+            
+            if (document.getElementById('add-char').checked) {
+                if (combo === 'elite') totalComboBase += 55; // Inclus dans Ozias Élite
+                else totalHorsCombo += 55;
+            }
+
+            // --- 5. CALCUL DES BACS ROULANTS ---
             const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
-            if (qtyBacs === 1) total += 15;
-            else if (qtyBacs === 2) total += 25;
-            else if (qtyBacs === 3) total += 30;
+            let bacsCost = 0;
+            if (qtyBacs === 1) bacsCost = 15;
+            else if (qtyBacs === 2) bacsCost = 25;
+            else if (qtyBacs === 3) bacsCost = 30;
 
-            // Application dynamique du pourcentage de rabais
             if (combo === 'clarte') {
-                total = total * 0.90; // 10% de réduction
+                totalComboBase += bacsCost; // Les bacs font partie de ce combo
+            } else {
+                totalHorsCombo += bacsCost; // Option à la carte plein prix pour les autres
+            }
+
+            // --- 6. APPLICATION DU POURCENTAGE SUR LE COMBO UNIQUEMENT ---
+            if (combo === 'clarte') {
+                totalComboBase = totalComboBase * 0.90; // 10% de réduction sur la base du combo
             } else if (combo === 'elite') {
-                total = total * 0.85; // 15% de réduction
+                totalComboBase = totalComboBase * 0.85; // 15% de réduction sur la base du combo
             } else if (combo === 'paix') {
-                total = total * 0.80; // 20% de réduction
+                totalComboBase = totalComboBase * 0.80; // 20% de réduction sur la base du combo
             }
 
-            if (total > 0 && total < 15) {
-                total = 15;
+            // Le montant final est l'addition du combo réduit + les options hors-forfait pleines et intactes
+            let totalGlobal = totalComboBase + totalHorsCombo;
+
+            if (totalGlobal > 0 && totalGlobal < 15) {
+                totalGlobal = 15;
             }
 
-            document.getElementById('total-amount').innerText = total.toFixed(2);
+            document.getElementById('total-amount').innerText = totalGlobal.toFixed(2);
         }
         
         window.onload = function() {
