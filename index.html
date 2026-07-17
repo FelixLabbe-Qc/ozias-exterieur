@@ -728,7 +728,8 @@
                     <div class="calc-group">
                         <label for="windows-select" id="lbl-windows-select">Lavage de vitres extérieures</label>
                         <select id="windows-select" onchange="calculerTotal()">
-                            </select>
+                            <!-- Sélection dynamique basée sur la taille de la propriété -->
+                        </select>
                     </div>
 
                     <div class="calc-group">
@@ -833,7 +834,7 @@
                 srv2Title: "Gestion de Piscine",
                 srv2Desc: "Test de la qualité de l'eau, balancement du pH, traitement-choc et entretien régulier. Notre gars s'assure que votre eau reste claire, propre et transparente tout l'été pour éviter les algues.",
                 srv3Title: "Tonte de pelouse",
-                srv3Desc: "Coupe de gazon chaque semaine à prix fixe. On s'occupe aussi de faire les bordures proprement au coupe-bordure (weedeater) et on passe la souffleuse sur votre entrée et vos trottoirs pour ne laisser aucun débris.",
+                srv3Desc: "Coupe de gazon chaque semaine à prix fixe. On s'occupe aussi de faire les bordures proprement au coupe-bordure (weedeater) et on passe la souffleuse on votre entrée et vos trottoirs pour ne laisser aucun débris.",
                 srv4Title: "Lavage de vitres",
                 srv4Desc: "Lavage complet de vos fenêtres extérieures, incluant les vitres du deuxième étage. Grâce à nos perches télescopiques à alimentation d'eau, on nettoie tout proprement et sans traces, directement depuis le sol.",
                 
@@ -885,9 +886,9 @@
                     <p>Sélectionnez un de nos forfaits combos ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
                     <h3>🔥 Forfaits Combos Professionnels :</h3>
                     <ul>
-                        <li>📦 <strong>Combo "Clarté Totale" (79 $) :</strong> Lavage de vitres de base + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Économisez 26 $)</span></li>
-                        <li>📦 <strong>Combo "Ozias Élite" (349 $) :</strong> Nettoyage complet d'entrée de cour + Lavage de vitres de base + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Économisez 86 $)</span></li>
-                        <li>📦 <strong>Combo Mensuel "Sainte Paix" (348 $/mois) :</strong> Abonnement estival récurrent incluant 4 tontes de pelouse nettes et 4 entretiens de piscine complets. <span style="color:#1e5c3b; font-weight:700;">(Économisez 132 $)</span></li>
+                        <li>📦 <strong>Combo "Clarté Totale" :</strong> Lavage de vitres (incluant les étages) + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 10% appliqué)</span></li>
+                        <li>📦 <strong>Combo "Ozias Élite" :</strong> Nettoyage complet d'entrée de cour + Lavage de vitres (incluant les étages) + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 15% appliqué)</span></li>
+                        <li>📦 <strong>Combo Mensuel "Sainte Paix" :</strong> Abonnement estival récurrent incluant 4 tontes de pelouse nettes et 4 entretiens de piscine complets. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 20% appliqué)</span></li>
                     </ul>
                     <h3>Tarifs Individuels :</h3>
                     <ul>
@@ -900,9 +901,9 @@
                 
                 combosOptions: `
                     <option value="carte">-- Services à la carte --</option>
-                    <option value="clarte">Combo "Clarté Totale" (79.00 $ CAD)</option>
-                    <option value="elite">Combo "Ozias Élite" (349.00 $ CAD)</option>
-                    <option value="paix">Combo Mensuel "Sainte Paix" (348.00 $ CAD)</option>
+                    <option value="clarte">Combo "Clarté Totale" (10% de rabais)</option>
+                    <option value="elite">Combo "Ozias Élite" (15% de rabais)</option>
+                    <option value="paix">Combo Mensuel "Sainte Paix" (20% de rabais)</option>
                 `,
                 
                 surfaceOptions: `
@@ -1016,9 +1017,9 @@
                     <p>Select one of our popular bundles or configure your customized services a la carte for an instant estimate.</p>
                     <h3>🔥 Popular Value Bundles:</h3>
                     <ul>
-                        <li>📦 <strong>"Total Clarity" Bundle ($79):</strong> Window washing + High-pressure sanitation of 2 rolling bins. <span style="color:#1e5c3b; font-weight:700;">(Save $26)</span></li>
-                        <li>📦 <strong>"Ozias Elite" Bundle ($349):</strong> Driveway pressure wash + Full window washing + Premium hand car wash. <span style="color:#1e5c3b; font-weight:700;">(Save $86)</span></li>
-                        <li>📦 <strong>Monthly "Peace of Mind" ($348/mo):</strong> Recurring summer subscription including 4 sharp lawn mowings and 4 full pool care visits. <span style="color:#1e5c3b; font-weight:700;">(Save $132)</span></li>
+                        <li>📦 <strong>"Total Clarity" Bundle :</strong> Window washing (including upper floors) + High-pressure sanitation of 2 rolling bins. <span style="color:#1e5c3b; font-weight:700;">(10% discount applied)</span></li>
+                        <li>📦 <strong>"Ozias Elite" Bundle :</strong> Driveway pressure wash + Full window washing (including upper floors) + Premium hand car wash. <span style="color:#1e5c3b; font-weight:700;">(15% discount applied)</span></li>
+                        <li>📦 <strong>Monthly "Peace of Mind" :</strong> Recurring summer subscription including 4 sharp lawn mowings and 4 full pool care visits. <span style="color:#1e5c3b; font-weight:700;">(20% discount applied)</span></li>
                     </ul>
                     <h3>Individual A La Carte Rates:</h3>
                     <ul>
@@ -1031,9 +1032,9 @@
                 
                 combosOptions: `
                     <option value="carte">-- Custom A La Carte Services --</option>
-                    <option value="clarte">"Total Clarity" Bundle ($79.00 CAD)</option>
-                    <option value="elite">"Ozias Elite" Bundle ($349.00 CAD)</option>
-                    <option value="paix">Monthly "Peace of Mind" Subscription ($348.00 CAD)</option>
+                    <option value="clarte">"Total Clarity" Bundle (10% discount)</option>
+                    <option value="elite">"Ozias Elite" Bundle (15% discount)</option>
+                    <option value="paix">Monthly "Peace of Mind" Subscription (20% discount)</option>
                 `,
                 
                 surfaceOptions: `
@@ -1170,7 +1171,7 @@
             calculerTotal();
         }
 
-        // --- ENGIN DE CALCUL INTERACTIF D'ORIGINE SÉCURISÉ ---
+        // --- ENGIN DE CALCUL D'ORIGINE SÉCURISÉ ---
         function calculerTotal() {
             const combo = document.getElementById('combo-select').value;
             let total = 0;
@@ -1185,51 +1186,38 @@
                 areaGroup.style.display = 'block';
             }
 
-            if (combo === 'clarte') {
-                total = 79.00;
-            } else if (combo === 'elite') {
-                total = 349.00;
-            } else if (combo === 'paix') {
-                total = 348.00;
-            }
-
-            if (combo === 'carte' || typeSurface !== 'aucun') {
-                if (!(combo === 'elite' && typeSurface === 'pave' && areaInput === 600)) {
-                    if (typeSurface === 'asphalte') {
-                        total += areaInput * 0.20;
-                    } else if (typeSurface === 'pave') {
-                        total += areaInput * 0.50;
-                    }
-                }
+            if (typeSurface === 'asphalte') {
+                total += areaInput * 0.20;
+            } else if (typeSurface === 'pave') {
+                total += areaInput * 0.50;
             }
 
             const typeTonte = document.getElementById('lawn-select').value;
-            if (combo === 'carte' || (combo !== 'paix' && typeTonte !== '0')) {
-                if (typeTonte === 'petit') total += 32.50;
-                else if (typeTonte === 'moyen') total += 55.00;
-                else if (typeTonte === 'grand') total += 85.00;
-                else if (typeTonte === 'vgrand') total += 132.50;
-            }
+            if (typeTonte === 'petit') total += 32.50;
+            else if (typeTonte === 'moyen') total += 55.00;
+            else if (typeTonte === 'grand') total += 85.00;
+            else if (typeTonte === 'vgrand') total += 132.50;
 
-            // Calcul du forfait dynamique de vitres (évite doublon si combo actif)
             const typeVitres = document.getElementById('windows-select').value;
-            if (combo === 'carte' || (combo !== 'clarte' && combo !== 'elite' && typeVitres !== '0')) {
-                if (typeVitres === 'petit') total += 80.00;
-                else if (typeVitres === 'moyen') total += 120.00;
-                else if (typeVitres === 'grand') total += 180.00;
-            }
+            if (typeVitres === 'petit') total += 80.00;
+            else if (typeVitres === 'moyen') total += 120.00;
+            else if (typeVitres === 'grand') total += 180.00;
 
-            if (combo !== 'paix' && document.getElementById('add-piscine').checked) total += 75;
-            if (combo !== 'elite' && document.getElementById('add-char').checked) total += 55;
+            if (document.getElementById('add-piscine').checked) total += 75;
+            if (document.getElementById('add-char').checked) total += 55;
 
             const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
+            if (qtyBacs === 1) total += 15;
+            else if (qtyBacs === 2) total += 25;
+            else if (qtyBacs === 3) total += 30;
+
+            // Application dynamique du pourcentage de rabais
             if (combo === 'clarte') {
-                if (qtyBacs === 3) total += (30 - 25);
-                else if (qtyBacs === 1 || qtyBacs === 0) total += 0;
-            } else {
-                if (qtyBacs === 1) total += 15;
-                if (qtyBacs === 2) total += 25;
-                if (qtyBacs === 3) total += 30;
+                total = total * 0.90; // 10% de réduction
+            } else if (combo === 'elite') {
+                total = total * 0.85; // 15% de réduction
+            } else if (combo === 'paix') {
+                total = total * 0.80; // 20% de réduction
             }
 
             if (total > 0 && total < 15) {
