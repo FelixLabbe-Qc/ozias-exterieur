@@ -715,7 +715,7 @@
                     <div class="calc-group">
                         <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
-                            <option value="carte">-- Services à la carte --</option>
+                            <option value="carte">-- Aucun forfait (Services à la carte) --</option>
                             <option value="automne">Combo "Nettoyage d'Automne" (15% de rabais)</option>
                             <option value="clarte">Combo "Clarté Totale" (10% de rabais)</option>
                             <option value="elite">Combo "Ozias Élite" (15% de rabais)</option>
@@ -812,8 +812,8 @@
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
-                <h2>Questions Fréquentes</h2>
-                <p>Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
+                <h2 id="faq-head-title">Foire Aux Questions</h2>
+                <p id="faq-head-desc">Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
             </div>
             
             <div class="faq-grid" id="faq-box">
@@ -963,7 +963,7 @@
                 `,
                 
                 combosOptions: `
-                    <option value="carte">-- Services à la carte --</option>
+                    <option value="carte">-- Aucun forfait (Services à la carte) --</option>
                     <option value="automne">Combo "Nettoyage d'Automne" (15% de rabais)</option>
                     <option value="clarte">Combo "Clarté Totale" (10% de rabais)</option>
                     <option value="elite">Combo "Ozias Élite" (15% de rabais)</option>
@@ -1108,7 +1108,7 @@
                 `,
                 
                 combosOptions: `
-                    <option value="carte">-- Custom A La Carte Services --</option>
+                    <option value="carte">-- No Bundle (A La Carte Services) --</option>
                     <option value="automne">"Fall Cleanup" Bundle (15% discount)</option>
                     <option value="clarte">"Total Clarity" Bundle (10% discount)</option>
                     <option value="elite">"Ozias Elite" Bundle (15% discount)</option>
@@ -1126,6 +1126,27 @@
                     <option value="1">1 bin ($15 CAD)</option>
                     <option value="2">2 bins ($25 CAD)</option>
                     <option value="3">3 bins ($30 CAD)</option>
+                `,
+
+                faqHeadTitle: "Frequently Asked Questions",
+                faqHeadDesc: "A few clarifications about our operating methods and safety standards.",
+                faqItems: `
+                    <div class="faq-item">
+                        <h3>Are your pressure washing methods and products eco-friendly?</h3>
+                        <p>Absolutely. We operate two distinct pressure units to adapt precisely to your property. Our lightweight 2000 PSI unit allows us to clean delicate surfaces and windows using a low-water 'soft wash' technique without structural risks. For heavy-duty interlock and driveways, our robust 3100 PSI machine uses pure mechanical water force, avoiding harsh or toxic chemicals that could harm lawns and garden beds.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What exactly does the garden bed and border edging service include?</h3>
+                        <p>Our technician conducts meticulous manual hand weeding to remove unwanted roots directly from your flowerbeds. We also clean and scrape out weeds embedded in sidewalk or paver joints and recut clean edge lines along your lawn perimeter.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How do you safely wash second-story exterior windows?</h3>
+                        <p>We use commercial-grade water-fed carbon fiber telescopic poles paired with specialized architectural soft brushes. This guarantees streak-free, crystal-clear glass across all floors while keeping both feet safely on the ground without placing ladders against your siding.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Are your online quote estimates binding?</h3>
+                        <p>Our estimator gives a very accurate estimate based on our standard pricing model. Before starting any job, we always validate the final cost with you in person or by text message so there are never any unexpected surprises.</p>
+                    </div>
                 `
             }
         };
@@ -1212,6 +1233,7 @@
             setText('faq-head-desc', traductions[lang].faqHeadDesc);
             setInner('faq-box', traductions[lang].faqItems);
             
+            // Conserver les valeurs sélectionnées lors du changement de langue
             const comboEl = document.getElementById('combo-select');
             const surfEl = document.getElementById('surface-type');
             const bacsEl = document.getElementById('bacs-qty');
@@ -1334,8 +1356,7 @@
             const bacsEl = document.getElementById('bacs-qty');
             const qtyBacs = bacsEl ? parseInt(bacsEl.value, 10) : 0;
 
-            // --- VÉRIFICATION DE VALIDITÉ DES COMBOS ---
-            // Si le client modifie ou retire un service inclus, on annule le forfait et on repasse à la carte
+            // Détection si l'utilisateur retire une composante essentielle d'un forfait
             if (combo === 'automne') {
                 if (!gouttieresCoche || typeFeuilles === '0') {
                     combo = 'carte';
@@ -1420,7 +1441,7 @@
             if (combo === 'clarte') totalComboBase += bacsCost;
             else totalHorsCombo += bacsCost;
 
-            // 7. Application des réductions uniquement si les conditions complètes sont maintenues
+            // 7. Rabais
             if (combo === 'automne') totalComboBase = totalComboBase * 0.85;
             else if (combo === 'clarte') totalComboBase = totalComboBase * 0.90;
             else if (combo === 'elite') totalComboBase = totalComboBase * 0.85;
