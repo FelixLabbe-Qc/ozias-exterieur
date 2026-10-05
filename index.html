@@ -47,7 +47,7 @@
             margin: 0 auto;
         }
 
-        /* --- EN-TÊTE (BARRE DE NAVIGATION AUTOMATISÉE) --- */
+        /* --- EN-TÊTE --- */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -379,7 +379,7 @@
             padding: 14px;
             border: 1px solid #dcdcdc;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 15px;
             transition: var(--transition);
             background-color: var(--blanc);
         }
@@ -535,7 +535,36 @@
             font-size: 14px;
         }
 
-        /* --- CONFIGURATION MOBILE ET TABLETTE ULTRA-OPTIMISÉE --- */
+        /* --- BOUTON D'APPEL FLOTTANT DIRECT --- */
+        .floating-call-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 58px;
+            height: 58px;
+            background-color: var(--vert-prestige);
+            color: #ffffff !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .floating-call-btn:hover {
+            background-color: var(--vert-accent);
+            transform: scale(1.08);
+        }
+
+        .floating-call-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* --- CONFIGURATION MOBILE ET TABLETTE --- */
         @media (max-width: 950px) {
             nav {
                 flex-direction: column;
@@ -543,11 +572,7 @@
                 padding: 10px 0;
                 align-items: center;
             }
-            
-            .nav-links {
-                display: none !important;
-            }
-            
+            .nav-links { display: none !important; }
             .nav-right {
                 flex-direction: row;
                 justify-content: center;
@@ -555,35 +580,22 @@
                 gap: 15px;
                 width: 100%;
             }
-
-            .btn-nav {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-
-            .lang-switcher {
-                padding: 3px;
-            }
-
-            .lang-btn {
-                padding: 4px 10px;
-                font-size: 11px;
-            }
-            
+            .btn-nav { padding: 8px 16px; font-size: 14px; }
+            .lang-switcher { padding: 3px; }
+            .lang-btn { padding: 4px 10px; font-size: 11px; }
             .hero { padding: 90px 0 60px 0; }
             .hero h1 { font-size: 32px; }
             .hero .sub-text { font-size: 15px; padding: 0 5px; }
             .hero-buttons { flex-direction: column; gap: 10px; width: 100%; max-width: 280px; margin: 0 auto; }
-            
             .features-grid { grid-template-columns: 1fr; gap: 25px; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
             .container-calc { grid-template-columns: 1fr; gap: 35px; }
             .faq-grid { grid-template-columns: 1fr; gap: 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .payment-list p { justify-content: center; }
-            
             .calc-wrapper { padding: 20px 15px; }
             .total-price { font-size: 34px; }
+            .floating-call-btn { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 21px; }
         }
         
         .btn-primary, .btn-secondary {
@@ -686,7 +698,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
                     <h3 id="srv-4-title">Lavage de vitres</h3>
-                    <p id="srv-4-desc">Lavage complet de vos fenêtres extérieures, incluant les vitres du deuxième étage. Grâce à nos perches télescopiques à alimentation d'eau, on nettoie tout proprement et sans traces, directement depuis le sol.</p>
+                    <p id="srv-4-desc">Lavage complet de vos fenêtres extérieures sans traces. Plain-pied dès 120 $, cottage dès 240 $ et grande propriété dès 390 $. Grâce à nos perches télescopiques à eau pure, on nettoie tout proprement et sans traces, directement depuis le sol.</p>
                 </div>
             </div>
         </div>
@@ -703,6 +715,11 @@
                     <div class="calc-group">
                         <label for="combo-select" id="lbl-combo">Forfaits Combos Économiques</label>
                         <select id="combo-select" onchange="appliquerCombo()">
+                            <option value="carte">-- Services à la carte --</option>
+                            <option value="automne">Combo "Nettoyage d'Automne" (15% de rabais)</option>
+                            <option value="clarte">Combo "Clarté Totale" (10% de rabais)</option>
+                            <option value="elite">Combo "Ozias Élite" (15% de rabais)</option>
+                            <option value="paix">Combo Mensuel "Sainte Paix" (20% de rabais)</option>
                         </select>
                     </div>
 
@@ -711,6 +728,9 @@
                     <div class="calc-group">
                         <label for="surface-type" id="lbl-surface">Lavage de Surface (Entrée / Driveway)</label>
                         <select id="surface-type" onchange="calculerTotal()">
+                            <option value="aucun">Aucun lavage de surface</option>
+                            <option value="asphalte">Entrée en Asphalte (0.20 $/pi²)</option>
+                            <option value="pave">Pavé Uni / Dalles Premium (0.50 $/pi²)</option>
                         </select>
                     </div>
 
@@ -722,19 +742,40 @@
                     <div class="calc-group">
                         <label for="lawn-select" id="lbl-lawn-select">Tonte de Pelouse (Superficie du terrain)</label>
                         <select id="lawn-select" onchange="calculerTotal()">
+                            <option value="0">Pas de tonte de pelouse</option>
+                            <option value="petit">Petit terrain (Moins de 5 000 pi²) (32.50 $ CAD)</option>
+                            <option value="moyen">Terrain Moyen (5 000 à 10 000 pi²) (55.00 $ CAD)</option>
+                            <option value="grand">Grand Terrain (10 000 à 15 000 pi²) (85.00 $ CAD)</option>
+                            <option value="vgrand">Immense Terrain (15 000 à 25 000 pi²) (132.50 $ CAD)</option>
                         </select>
                     </div>
 
                     <div class="calc-group">
                         <label for="windows-select" id="lbl-windows-select">Lavage de vitres extérieures</label>
                         <select id="windows-select" onchange="calculerTotal()">
-                            <!-- Sélection dynamique basée sur la taille de la propriété -->
+                            <option value="0">Aucun lavage de vitres</option>
+                            <option value="petit">Plain-pied / Bungalow (+120.00 $ CAD)</option>
+                            <option value="moyen">Maison standard (+240.00 $ CAD)</option>
+                            <option value="grand">Grande maison / Prestige (+390.00 $ CAD)</option>
+                        </select>
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="leaves-select" id="lbl-leaves-select">Ramassage de feuilles d'automne</label>
+                        <select id="leaves-select" onchange="calculerTotal()">
+                            <option value="0">Aucun ramassage de feuilles</option>
+                            <option value="petit">Petit terrain (< 5 000 pi²) (+100.00 $ CAD)</option>
+                            <option value="moyen">Terrain moyen (5 000 à 9 000 pi²) (+170.00 $ CAD)</option>
+                            <option value="grand">Grand terrain (10 000 pi² +) (+290.00 $ CAD)</option>
                         </select>
                     </div>
 
                     <div class="calc-group">
                         <label id="lbl-options">Options & Services Spécialisés</label>
                         <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="add-gouttieres" onchange="calculerTotal()"> <span id="opt-gouttieres">Nettoyage complet des gouttières (+95 CAD)</span>
+                            </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" id="add-desherbage" onchange="calculerTotal()"> <span id="opt-1">Désherbage Premium & Coupe des bordures à la main (+45 CAD)</span>
                             </label>
@@ -747,12 +788,16 @@
                     <div class="calc-group">
                         <label for="bacs-qty" id="lbl-bacs">Désinfection Haute Pression de Bacs Roulants</label>
                         <select id="bacs-qty" onchange="calculerTotal()">
+                            <option value="0">Aucun bac</option>
+                            <option value="1">1 bac (15 CAD)</option>
+                            <option value="2">2 bacs (25 CAD)</option>
+                            <option value="3">3 bacs (30 CAD)</option>
                         </select>
                     </div>
 
                     <div class="total-box">
                         <h4 id="lbl-total-box">Montant Estimé</h4>
-                        <div class="total-price"><span id="total-amount">0</span> $ CAD</div>
+                        <div class="total-price"><span id="total-amount">0.00</span> $ CAD</div>
                         <p style="font-size: 12px; color: #6c757d; margin-top: 5px;" id="minimum-notice">*Seuil de déplacement minimum requis de 15 $ par intervention.</p>
                         <div class="terrain-warning" id="terrain-notice">
                             ⚠️ Le prix estimé peut légèrement varier selon la complexité et la configuration réelle de votre terrain.
@@ -767,8 +812,8 @@
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
-                <h2 id="faq-head-title">Foire Aux Questions</h2>
-                <p id="faq-head-desc">Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
+                <h2>Questions Fréquentes</h2>
+                <p>Quelques éclaircissements sur nos méthodes d'exploitation et nos standards de sécurité.</p>
             </div>
             
             <div class="faq-grid" id="faq-box">
@@ -796,7 +841,7 @@
                 
                 <div class="footer-box">
                     <h3 id="foot-contact-title">Demande d'Intervention / Question</h3>
-                    <p id="foot-phone">📱 <strong>Ligne Directe / Texto :</strong> 450 823 4610</p>
+                    <p id="foot-phone">📱 <strong>Ligne Directe / Texto :</strong> (450) 823-4610</p>
                     <p id="foot-email">✉️ <strong>Courriel :</strong> info@ozias-exterieur.ca</p>
                     <p style="font-size: 13px; color: #718096; margin-top: 15px;" id="foot-notice">Pour accélérer le traitement, joignez une photo des surfaces par message texte.</p>
                 </div>
@@ -806,6 +851,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Pastille d'appel direct flottante -->
+    <a href="tel:4508234610" class="floating-call-btn" title="Appeler Ozias Extérieur au (450) 823-4610" aria-label="Téléphoner à Ozias Extérieur">
+        <i class="fa-solid fa-phone"></i>
+    </a>
 
     <script>
         const traductions = {
@@ -836,12 +886,13 @@
                 srv3Title: "Désherbage & Bordures",
                 srv3Desc: "Entretien et nettoyage complet de vos plates-bandes et contours de propriété. Nous retirons les mauvaises herbes manuellement jusqu'à la racine et nettoyons les craques de pavé uni pour un extérieur impeccable.",
                 srv4Title: "Lavage de vitres",
-                srv4Desc: "Lavage complet de vos fenêtres extérieures, incluant les vitres du deuxième étage. Grâce à nos perches télescopiques à alimentation d'eau, on nettoie tout proprement et sans traces, directement depuis le sol.",
+                srv4Desc: "Lavage complet de vos fenêtres extérieures, incluant les vitres du deuxième étage. Plain-pied dès 120 $, cottage dès 240 $ et grande propriété dès 390 $. Grâce à nos perches télescopiques à eau pure, on nettoie tout proprement et sans traces, directement depuis le sol.",
                 
                 lblCombo: "Forfaits Combos Économiques",
                 lblSurface: "Lavage de Surface (Entrée / Driveway)",
                 lblArea: "Superficie estimée (en pieds carrés)",
                 lblOptions: "Options & Services Spécialisés",
+                optGouttieres: "Nettoyage complet des gouttières (+95 CAD)",
                 opt1: "Désherbage Premium & Coupe des bordures à la main (+45 CAD)",
                 opt2: "Nettoyage auto Premium à la main (Mousse active) (+55 CAD)",
                 lblBacs: "Désinfection Haute Pression de Bacs Roulants",
@@ -859,12 +910,13 @@
                 payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Argent comptant (Sur place)",
                 payNotice: "Le paiement s'effectue toujours immédiatement après la fin des travaux.",
                 
-                footPhone: "📱 <strong>Ligne Directe / Texto :</strong> 450 823 4610",
+                footPhone: "📱 <strong>Ligne Directe / Texto :</strong> (450) 823-4610",
                 footEmail: "✉️ <strong>Courriel :</strong> info@ozias-exterieur.ca",
                 footNotice: "Pour accélérer le traitement, joignez une photo des surfaces par message texte.",
                 
                 lblLawnSelect: "Tonte de Pelouse (Superficie du terrain)",
                 lblWindowsSelect: "Lavage de vitres extérieures (Taille Propriété)",
+                lblLeavesSelect: "Ramassage de feuilles d'automne (Taille Terrain)",
                 
                 lawnOptions: `
                     <option value="0">Pas de tonte de pelouse</option>
@@ -876,9 +928,16 @@
 
                 windowsOptions: `
                     <option value="0">Aucun lavage de vitres</option>
-                    <option value="petit">Petite maison / Bungalow (+80.00 $ CAD)</option>
-                    <option value="moyen">Maison standard (+120.00 $ CAD)</option>
-                    <option value="grand">Grande maison / Grosse propriété (+180.00 $ CAD)</option>
+                    <option value="petit">Plain-pied / Bungalow (+120.00 $ CAD)</option>
+                    <option value="moyen">Maison standard (+240.00 $ CAD)</option>
+                    <option value="grand">Grande maison / Prestige (+390.00 $ CAD)</option>
+                `,
+
+                leavesOptions: `
+                    <option value="0">Aucun ramassage de feuilles</option>
+                    <option value="petit">Petit terrain (< 5 000 pi²) (+100.00 $ CAD)</option>
+                    <option value="moyen">Terrain moyen (5 000 à 9 000 pi²) (+170.00 $ CAD)</option>
+                    <option value="grand">Grand terrain (10 000 pi² +) (+290.00 $ CAD)</option>
                 `,
                 
                 calcLeftInfo: `
@@ -886,12 +945,16 @@
                     <p>Sélectionnez un de nos forfaits combos ou configurez vos services à la carte pour obtenir une estimation instantanée.</p>
                     <h3>🔥 Forfaits Combos Professionnels :</h3>
                     <ul>
+                        <li>📦 <strong>Combo "Nettoyage d'Automne" :</strong> Nettoyage des gouttières + Ramassage des feuilles. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 15% appliqué)</span></li>
                         <li>📦 <strong>Combo "Clarté Totale" :</strong> Lavage de vitres + Désinfection haute pression de 2 bacs roulants. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 10% appliqué)</span></li>
                         <li>📦 <strong>Combo "Ozias Élite" :</strong> Nettoyage complet d'entrée de cour + Lavage de vitres + Nettoyage auto Premium à la main. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 15% appliqué)</span></li>
                         <li>📦 <strong>Combo Mensuel "Sainte Paix" :</strong> Abonnement estival récurrent incluant 4 tontes de pelouse nettes et un désherbage méticuleux des bordures/plates-bandes à chaque visite. <span style="color:#1e5c3b; font-weight:700;">(Rabais de 20% appliqué)</span></li>
                     </ul>
                     <h3>Tarifs Individuels :</h3>
                     <ul>
+                        <li>🔹 Lavage de vitres : Dès 120 $ (Bungalow) / 240 $ (Standard) / 390 $ (Prestige)</li>
+                        <li>🔹 Ramassage de feuilles : Dès 100 $ (Petit) / 170 $ (Moyen) / 290 $ (Grand)</li>
+                        <li>🔹 Nettoyage de gouttières : 95,00 $</li>
                         <li>🔹 Asphalte : 0,20 $ / pi²</li>
                         <li>🔹 Pavé Uni : 0,50 $ / pi²</li>
                         <li>🔹 Désherbage & Entretien Bordures : 45,00 $ / visite</li>
@@ -901,6 +964,7 @@
                 
                 combosOptions: `
                     <option value="carte">-- Services à la carte --</option>
+                    <option value="automne">Combo "Nettoyage d'Automne" (15% de rabais)</option>
                     <option value="clarte">Combo "Clarté Totale" (10% de rabais)</option>
                     <option value="elite">Combo "Ozias Élite" (15% de rabais)</option>
                     <option value="paix">Combo Mensuel "Sainte Paix" (20% de rabais)</option>
@@ -967,12 +1031,13 @@
                 srv3Title: "Weeding & Edge Care",
                 srv3Desc: "Comprehensive clean-up and maintenance for your flowerbeds and property perimeters. We extract weeds manually right from the roots and scrape masonry cracks for a flawless finish.",
                 srv4Title: "Window Washing",
-                srv4Desc: "Full exterior window cleaning, including second-story glass. Using our water-fed telescopic poles, we wash everything clean and streak-free right from the ground.",
+                srv4Desc: "Full exterior window cleaning, including second-story glass. From $120 (Bungalow), $240 (Two-Story), and $390 (Prestige). Using our water-fed telescopic poles, we wash everything clean and streak-free right from the ground.",
                 
                 lblCombo: "Discounted Combo Bundles",
                 lblSurface: "Surface Washing (Driveway)",
                 lblArea: "Estimated Area (in square feet)",
                 lblOptions: "Specialized Options & Add-ons",
+                optGouttieres: "Full Gutter Cleaning (+95 CAD)",
                 opt1: "Premium Weeding & Manual Border Edge Trimming (+45 CAD)",
                 opt2: "Premium Hand Car Wash (Active Foam Bath) (+55 CAD)",
                 lblBacs: "High-Pressure Bin Disinfection",
@@ -990,12 +1055,13 @@
                 payCash: "<i class=\"fa-solid fa-money-bill-wave\"></i> Cash Payment (On-site)",
                 payNotice: "Payment is always due immediately following completion of services.",
                 
-                footPhone: "📱 <strong>Direct Line / Text :</strong> 450 823 4610",
+                footPhone: "📱 <strong>Direct Line / Text :</strong> (450) 823-4610",
                 footEmail: "✉️ <strong>Email :</strong> info@ozias-exterieur.ca",
                 footNotice: "To speed up processing, please attach a photo of the surfaces via text message.",
                 
                 lblLawnSelect: "Lawn Mowing (Property Square Footage)",
                 lblWindowsSelect: "Exterior Window Washing (Property Scale)",
+                lblLeavesSelect: "Autumn Leaf Removal (Property Scale)",
                 
                 lawnOptions: `
                     <option value="0">No lawn mowing required</option>
@@ -1007,22 +1073,33 @@
 
                 windowsOptions: `
                     <option value="0">No window washing</option>
-                    <option value="petit">Small Property / Bungalow (+$80.00 CAD)</option>
-                    <option value="moyen">Standard House (+$120.00 CAD)</option>
-                    <option value="grand">Large Estate / Luxury Property (+$180.00 CAD)</option>
+                    <option value="petit">Bungalow (One-Story) (+$120.00 CAD)</option>
+                    <option value="moyen">Standard House (Two-Story) (+$240.00 CAD)</option>
+                    <option value="grand">Large Estate / Luxury Property (+$390.00 CAD)</option>
                 `,
 
+                leavesOptions: `
+                    <option value="0">No leaf removal</option>
+                    <option value="petit">Small Lot (< 5,000 sq ft) (+$100.00 CAD)</option>
+                    <option value="moyen">Medium Lot (5,000 to 9,000 sq ft) (+$170.00 CAD)</option>
+                    <option value="grand">Large Lot (10,000+ sq ft) (+$290.00 CAD)</option>
+                `,
+                
                 calcLeftInfo: `
                     <h2>Generate a Preliminary Quote</h2>
                     <p>Select one of our popular bundles or configure your customized services a la carte for an instant estimate.</p>
                     <h3>🔥 Popular Value Bundles:</h3>
                     <ul>
+                        <li>📦 <strong>"Fall Cleanup" Bundle :</strong> Gutter cleaning + Leaf removal. <span style="color:#1e5c3b; font-weight:700;">(15% discount applied)</span></li>
                         <li>📦 <strong>"Total Clarity" Bundle :</strong> Window washing + High-pressure sanitation of 2 rolling bins. <span style="color:#1e5c3b; font-weight:700;">(10% discount applied)</span></li>
                         <li>📦 <strong>"Ozias Elite" Bundle :</strong> Driveway pressure wash + Full window washing + Premium hand car wash. <span style="color:#1e5c3b; font-weight:700;">(15% discount applied)</span></li>
                         <li>📦 <strong>Monthly "Peace of Mind" :</strong> Recurring summer subscription including 4 sharp lawn mowings and detailed weeding / border care at every single visit. <span style="color:#1e5c3b; font-weight:700;">(20% discount applied)</span></li>
                     </ul>
                     <h3>Individual A La Carte Rates:</h3>
                     <ul>
+                        <li>🔹 Window Washing: From $120 (Bungalow) / $240 (Standard) / $390 (Prestige)</li>
+                        <li>🔹 Leaf Removal: From $100 (Small) / $170 (Medium) / $290 (Large)</li>
+                        <li>🔹 Gutter Cleaning: $95.00</li>
                         <li>🔹 Asphalt Washing: $0.20 / sq. ft.</li>
                         <li>🔹 Interlocking Pavers: $0.50 / sq. ft.</li>
                         <li>🔹 Garden Bed Weeding & Border Edging: $45.00 / visit</li>
@@ -1032,6 +1109,7 @@
                 
                 combosOptions: `
                     <option value="carte">-- Custom A La Carte Services --</option>
+                    <option value="automne">"Fall Cleanup" Bundle (15% discount)</option>
                     <option value="clarte">"Total Clarity" Bundle (10% discount)</option>
                     <option value="elite">"Ozias Elite" Bundle (15% discount)</option>
                     <option value="paix">Monthly "Peace of Mind" Subscription (20% discount)</option>
@@ -1052,226 +1130,311 @@
             }
         };
 
+        function setInner(id, html) {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = html;
+        }
+
+        function setText(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.innerText = text;
+        }
+
         function changerLangue(lang) {
-            document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            const btnFr = document.getElementById('lang-fr');
+            const btnEn = document.getElementById('lang-en');
+            if (btnFr && btnEn) {
+                btnFr.classList.toggle('active', lang === 'fr');
+                btnEn.classList.toggle('active', lang === 'en');
+            }
             
-            if(document.getElementById('lnk-services')) document.getElementById('lnk-services').innerText = traductions[lang].lnkServices;
-            if(document.getElementById('lnk-calc')) document.getElementById('lnk-calc').innerText = traductions[lang].lnkCalc;
-            if(document.getElementById('lnk-faq')) document.getElementById('lnk-faq').innerText = traductions[lang].lnkFaq;
+            setText('lnk-services', traductions[lang].lnkServices);
+            setText('lnk-calc', traductions[lang].lnkCalc);
+            setText('lnk-faq', traductions[lang].lnkFaq);
+            setText('lnk-contact', traductions[lang].lnkContact);
             
-            document.getElementById('lnk-contact').innerText = traductions[lang].lnkContact;
-            document.getElementById('hero-tagline').innerText = traductions[lang].heroTagline;
-            document.getElementById('hero-title').innerHTML = traductions[lang].heroTitle;
-            document.getElementById('hero-sub').innerText = traductions[lang].heroSub;
-            document.getElementById('btn-hero-calc').innerText = traductions[lang].btnHeroCalc;
-            document.getElementById('btn-hero-tech').innerText = traductions[lang].btnHeroTech;
+            setText('hero-tagline', traductions[lang].heroTagline);
+            setInner('hero-title', traductions[lang].heroTitle);
+            setText('hero-sub', traductions[lang].heroSub);
+            setText('btn-hero-calc', traductions[lang].btnHeroCalc);
+            setText('btn-hero-tech', traductions[lang].btnHeroTech);
             
-            document.getElementById('feat-1-title').innerText = traductions[lang].feat1Title;
-            document.getElementById('feat-1-desc').innerText = traductions[lang].feat1Desc;
-            document.getElementById('feat-2-title').innerText = traductions[lang].feat2Title;
-            document.getElementById('feat-2-desc').innerText = traductions[lang].feat2Desc;
-            document.getElementById('feat-3-title').innerText = traductions[lang].feat3Title;
-            document.getElementById('feat-3-desc').innerText = traductions[lang].feat3Desc;
+            setText('feat-1-title', traductions[lang].feat1Title);
+            setText('feat-1-desc', traductions[lang].feat1Desc);
+            setText('feat-2-title', traductions[lang].feat2Title);
+            setText('feat-2-desc', traductions[lang].feat2Desc);
+            setText('feat-3-title', traductions[lang].feat3Title);
+            setText('feat-3-desc', traductions[lang].feat3Desc);
             
-            document.getElementById('srv-head-title').innerText = traductions[lang].srvHeadTitle;
-            document.getElementById('srv-head-desc').innerText = traductions[lang].srvHeadDesc;
+            setText('srv-head-title', traductions[lang].srvHeadTitle);
+            setText('srv-head-desc', traductions[lang].srvHeadDesc);
+            setText('srv-1-title', traductions[lang].srv1Title);
+            setText('srv-1-desc', traductions[lang].srv1Desc);
+            setText('srv-2-title', traductions[lang].srv2Title);
+            setText('srv-2-desc', traductions[lang].srv2Desc);
+            setText('srv-3-title', traductions[lang].srv3Title);
+            setText('srv-3-desc', traductions[lang].srv3Desc);
+            setText('srv-4-title', traductions[lang].srv4Title);
+            setText('srv-4-desc', traductions[lang].srv4Desc);
             
-            document.getElementById('srv-1-title').innerText = traductions[lang].srv1Title;
-            document.getElementById('srv-1-desc').innerText = traductions[lang].srv1Desc;
-            document.getElementById('srv-2-title').innerText = traductions[lang].srv2Title;
-            document.getElementById('srv-2-desc').innerText = traductions[lang].srv2Desc;
-            document.getElementById('srv-3-title').innerText = traductions[lang].srv3Title;
-            document.getElementById('srv-3-desc').innerText = traductions[lang].srv3Desc;
-            document.getElementById('srv-4-title').innerText = traductions[lang].srv4Title;
-            document.getElementById('srv-4-desc').innerText = traductions[lang].srv4Desc;
+            setText('lbl-combo', traductions[lang].lblCombo);
+            setText('lbl-surface', traductions[lang].lblSurface);
+            setText('lbl-area', traductions[lang].lblArea);
+            setText('lbl-options', traductions[lang].lblOptions);
+            setText('opt-gouttieres', traductions[lang].optGouttieres);
+            setText('opt-1', traductions[lang].opt1);
+            setText('opt-2', traductions[lang].opt2);
+            setText('lbl-bacs', traductions[lang].lblBacs);
+            setText('lbl-total-box', traductions[lang].lblTotalBox);
+            setText('minimum-notice', traductions[lang].minNotice);
+            setText('terrain-notice', traductions[lang].terrainNotice);
             
-            document.getElementById('lbl-combo').innerText = traductions[lang].lblCombo;
-            document.getElementById('lbl-surface').innerText = traductions[lang].lblSurface;
-            document.getElementById('lbl-area').innerText = traductions[lang].lblArea;
-            document.getElementById('lbl-options').innerText = traductions[lang].lblOptions;
-            document.getElementById('opt-1').innerText = traductions[lang].opt1;
-            document.getElementById('opt-2').innerText = traductions[lang].opt2;
-            document.getElementById('lbl-bacs').innerText = traductions[lang].lblBacs;
-            document.getElementById('lbl-total-box').innerText = traductions[lang].lblTotalBox;
-            document.getElementById('minimum-notice').innerText = traductions[lang].minNotice;
-            document.getElementById('terrain-notice').innerText = traductions[lang].terrainNotice;
+            setText('foot-desc', traductions[lang].footDesc);
+            setText('foot-contact-title', traductions[lang].footContactTitle);
+            setText('local-badge-txt', traductions[lang].localBadgeTxt);
+            setInner('foot-copyright', traductions[lang].footCopyright);
             
-            document.getElementById('foot-desc').innerText = traductions[lang].footDesc;
-            document.getElementById('foot-contact-title').innerText = traductions[lang].footContactTitle;
-            document.getElementById('local-badge-txt').innerText = traductions[lang].localBadgeTxt;
-            document.getElementById('foot-copyright').innerHTML = traductions[lang].footCopyright;
+            setText('foot-pay-title', traductions[lang].footPayTitle);
+            setInner('pay-interac', traductions[lang].payInterac);
+            setInner('pay-cash', traductions[lang].payCash);
+            setText('pay-notice', traductions[lang].payNotice);
             
-            document.getElementById('foot-pay-title').innerText = traductions[lang].footPayTitle;
-            document.getElementById('pay-interac').innerHTML = traductions[lang].payInterac;
-            document.getElementById('pay-cash').innerHTML = traductions[lang].payCash;
-            document.getElementById('pay-notice').innerText = traductions[lang].payNotice;
+            setInner('foot-phone', traductions[lang].footPhone);
+            setInner('foot-email', traductions[lang].footEmail);
+            setText('foot-notice', traductions[lang].footNotice);
             
-            document.getElementById('foot-phone').innerHTML = traductions[lang].footPhone;
-            document.getElementById('foot-email').innerHTML = traductions[lang].footEmail;
-            document.getElementById('foot-notice').innerText = traductions[lang].footNotice;
+            setText('lbl-lawn-select', traductions[lang].lblLawnSelect);
+            setText('lbl-windows-select', traductions[lang].lblWindowsSelect);
+            setText('lbl-leaves-select', traductions[lang].lblLeavesSelect);
             
-            document.getElementById('lbl-lawn-select').innerText = traductions[lang].lblLawnSelect;
-            document.getElementById('lbl-windows-select').innerText = traductions[lang].lblWindowsSelect;
+            setInner('calc-info-box', traductions[lang].calcLeftInfo);
+            setText('faq-head-title', traductions[lang].faqHeadTitle);
+            setText('faq-head-desc', traductions[lang].faqHeadDesc);
+            setInner('faq-box', traductions[lang].faqItems);
             
-            document.getElementById('calc-info-box').innerHTML = traductions[lang].calcLeftInfo;
+            const comboEl = document.getElementById('combo-select');
+            const surfEl = document.getElementById('surface-type');
+            const bacsEl = document.getElementById('bacs-qty');
+            const lawnEl = document.getElementById('lawn-select');
+            const winEl = document.getElementById('windows-select');
+            const leavesEl = document.getElementById('leaves-select');
             
-            document.getElementById('faq-head-title').innerText = traductions[lang].faqHeadTitle;
-            document.getElementById('faq-head-desc').innerText = traductions[lang].faqHeadDesc;
-            document.getElementById('faq-box').innerHTML = traductions[lang].faqItems;
+            const vCombo = comboEl ? comboEl.value : 'carte';
+            const vSurf = surfEl ? surfEl.value : 'aucun';
+            const vBacs = bacsEl ? bacsEl.value : '0';
+            const vLawn = lawnEl ? lawnEl.value : '0';
+            const vWin = winEl ? winEl.value : '0';
+            const vLeaves = leavesEl ? leavesEl.value : '0';
             
-            const ancienCombo = document.getElementById('combo-select').value;
-            const ancienneSurface = document.getElementById('surface-type').value;
-            const anciensBacs = document.getElementById('bacs-qty').value;
-            const ancienneTonte = document.getElementById('lawn-select').value;
-            const anciennesVitres = document.getElementById('windows-select').value;
+            if (comboEl) comboEl.innerHTML = traductions[lang].combosOptions;
+            if (surfEl) surfEl.innerHTML = traductions[lang].surfaceOptions;
+            if (bacsEl) bacsEl.innerHTML = traductions[lang].bacsOptions;
+            if (lawnEl) lawnEl.innerHTML = traductions[lang].lawnOptions;
+            if (winEl) winEl.innerHTML = traductions[lang].windowsOptions;
+            if (leavesEl) leavesEl.innerHTML = traductions[lang].leavesOptions;
             
-            document.getElementById('combo-select').innerHTML = traductions[lang].combosOptions;
-            document.getElementById('surface-type').innerHTML = traductions[lang].surfaceOptions;
-            document.getElementById('bacs-qty').innerHTML = traductions[lang].bacsOptions;
-            document.getElementById('lawn-select').innerHTML = traductions[lang].lawnOptions;
-            document.getElementById('windows-select').innerHTML = traductions[lang].windowsOptions;
-            
-            document.getElementById('combo-select').value = ancienCombo || 'carte';
-            document.getElementById('surface-type').value = ancienneSurface || 'aucun';
-            document.getElementById('bacs-qty').value = anciensBacs || '0';
-            document.getElementById('lawn-select').value = ancienneTonte || '0';
-            document.getElementById('windows-select').value = anciennesVitres || '0';
+            if (comboEl) comboEl.value = vCombo || 'carte';
+            if (surfEl) surfEl.value = vSurf || 'aucun';
+            if (bacsEl) bacsEl.value = vBacs || '0';
+            if (lawnEl) lawnEl.value = vLawn || '0';
+            if (winEl) winEl.value = vWin || '0';
+            if (leavesEl) leavesEl.value = vLeaves || '0';
             
             calculerTotal();
         }
 
         function appliquerCombo() {
-            const combo = document.getElementById('combo-select').value;
+            const comboEl = document.getElementById('combo-select');
+            if (!comboEl) return;
+            const combo = comboEl.value;
             
-            if (combo === 'clarte') {
-                document.getElementById('surface-type').value = 'aucun';
-                document.getElementById('lawn-select').value = '0';
-                document.getElementById('add-desherbage').checked = false;
-                document.getElementById('add-char').checked = false;
-                document.getElementById('windows-select').value = 'petit';
-                document.getElementById('bacs-qty').value = '2';
+            const surfEl = document.getElementById('surface-type');
+            const lawnEl = document.getElementById('lawn-select');
+            const winEl = document.getElementById('windows-select');
+            const leavesEl = document.getElementById('leaves-select');
+            const chkGouttieres = document.getElementById('add-gouttieres');
+            const chkDesherbage = document.getElementById('add-desherbage');
+            const chkChar = document.getElementById('add-char');
+            const bacsEl = document.getElementById('bacs-qty');
+            const surfArea = document.getElementById('surface-area');
+
+            if (combo === 'automne') {
+                if (surfEl) surfEl.value = 'aucun';
+                if (lawnEl) lawnEl.value = '0';
+                if (winEl) winEl.value = '0';
+                if (chkGouttieres) chkGouttieres.checked = true;
+                if (leavesEl && leavesEl.value === '0') leavesEl.value = 'moyen';
+                if (chkDesherbage) chkDesherbage.checked = false;
+                if (chkChar) chkChar.checked = false;
+                if (bacsEl) bacsEl.value = '0';
+            } else if (combo === 'clarte') {
+                if (surfEl) surfEl.value = 'aucun';
+                if (lawnEl) lawnEl.value = '0';
+                if (leavesEl) leavesEl.value = '0';
+                if (chkGouttieres) chkGouttieres.checked = false;
+                if (chkDesherbage) chkDesherbage.checked = false;
+                if (chkChar) chkChar.checked = false;
+                if (winEl) winEl.value = 'petit';
+                if (bacsEl) bacsEl.value = '2';
             } else if (combo === 'elite') {
-                document.getElementById('surface-type').value = 'pave';
-                document.getElementById('surface-area').value = '600';
-                document.getElementById('lawn-select').value = '0';
-                document.getElementById('add-desherbage').checked = false;
-                document.getElementById('add-char').checked = true;
-                document.getElementById('windows-select').value = 'petit';
-                document.getElementById('bacs-qty').value = '0';
+                if (surfEl) surfEl.value = 'pave';
+                if (surfArea) surfArea.value = '600';
+                if (lawnEl) lawnEl.value = '0';
+                if (leavesEl) leavesEl.value = '0';
+                if (chkGouttieres) chkGouttieres.checked = false;
+                if (chkDesherbage) chkDesherbage.checked = false;
+                if (chkChar) chkChar.checked = true;
+                if (winEl) winEl.value = 'petit';
+                if (bacsEl) bacsEl.value = '0';
             } else if (combo === 'paix') {
-                document.getElementById('surface-type').value = 'aucun';
-                document.getElementById('lawn-select').value = 'moyen';
-                document.getElementById('add-desherbage').checked = true;
-                document.getElementById('add-char').checked = false;
-                document.getElementById('windows-select').value = '0';
-                document.getElementById('bacs-qty').value = '0';
+                if (surfEl) surfEl.value = 'aucun';
+                if (lawnEl) lawnEl.value = 'moyen';
+                if (leavesEl) leavesEl.value = '0';
+                if (chkGouttieres) chkGouttieres.checked = false;
+                if (chkDesherbage) chkDesherbage.checked = true;
+                if (chkChar) chkChar.checked = false;
+                if (winEl) winEl.value = '0';
+                if (bacsEl) bacsEl.value = '0';
             }
             
             calculerTotal();
         }
 
-        // --- ENGIN DE CALCUL INTERACTIF REBÂTI POUR PROTÉGER TES PRIX ---
         function calculerTotal() {
-            const combo = document.getElementById('combo-select').value;
+            const comboEl = document.getElementById('combo-select');
+            let combo = comboEl ? comboEl.value : 'carte';
             
-            let totalComboBase = 0;   // Contient uniquement ce qui est inclus dans le combo
-            let totalHorsCombo = 0;   // Contient le reste des options ajoutées "à la carte"
-
-            const typeSurface = document.getElementById('surface-type').value;
+            const surfEl = document.getElementById('surface-type');
+            const typeSurface = surfEl ? surfEl.value : 'aucun';
             const areaGroup = document.getElementById('area-group');
             const areaInput = parseFloat(document.getElementById('surface-area').value) || 0;
             
-            if (typeSurface === 'aucun') {
-                areaGroup.style.display = 'none';
-            } else {
-                areaGroup.style.display = 'block';
+            if (areaGroup) {
+                areaGroup.style.display = (typeSurface === 'aucun') ? 'none' : 'block';
             }
 
-            // --- 1. CALCUL DE LA SURFACE ---
+            const lawnEl = document.getElementById('lawn-select');
+            const typeTonte = lawnEl ? lawnEl.value : '0';
+
+            const winEl = document.getElementById('windows-select');
+            const typeVitres = winEl ? winEl.value : '0';
+
+            const leavesEl = document.getElementById('leaves-select');
+            const typeFeuilles = leavesEl ? leavesEl.value : '0';
+
+            const chkGouttieres = document.getElementById('add-gouttieres');
+            const gouttieresCoche = chkGouttieres && chkGouttieres.checked;
+
+            const chkDesherbage = document.getElementById('add-desherbage');
+            const desherbageCoche = chkDesherbage && chkDesherbage.checked;
+
+            const chkChar = document.getElementById('add-char');
+            const charCoche = chkChar && chkChar.checked;
+
+            const bacsEl = document.getElementById('bacs-qty');
+            const qtyBacs = bacsEl ? parseInt(bacsEl.value, 10) : 0;
+
+            // --- VÉRIFICATION DE VALIDITÉ DES COMBOS ---
+            // Si le client modifie ou retire un service inclus, on annule le forfait et on repasse à la carte
+            if (combo === 'automne') {
+                if (!gouttieresCoche || typeFeuilles === '0') {
+                    combo = 'carte';
+                    if (comboEl) comboEl.value = 'carte';
+                }
+            } else if (combo === 'clarte') {
+                if (typeVitres === '0' || qtyBacs === 0) {
+                    combo = 'carte';
+                    if (comboEl) comboEl.value = 'carte';
+                }
+            } else if (combo === 'elite') {
+                if (typeSurface === 'aucun' || areaInput <= 0 || typeVitres === '0' || !charCoche) {
+                    combo = 'carte';
+                    if (comboEl) comboEl.value = 'carte';
+                }
+            } else if (combo === 'paix') {
+                if (typeTonte === '0' || !desherbageCoche) {
+                    combo = 'carte';
+                    if (comboEl) comboEl.value = 'carte';
+                }
+            }
+
+            let totalComboBase = 0;
+            let totalHorsCombo = 0;
+
+            // 1. Surface
             let surfaceCost = 0;
             if (typeSurface === 'asphalte') surfaceCost = areaInput * 0.20;
             else if (typeSurface === 'pave') surfaceCost = areaInput * 0.50;
 
-            if (combo === 'elite') {
-                totalComboBase += surfaceCost; // Le lavage d'entrée fait partie de ce combo
-            } else {
-                totalHorsCombo += surfaceCost; // Option à la carte plein prix pour les autres
-            }
+            if (combo === 'elite') totalComboBase += surfaceCost;
+            else totalHorsCombo += surfaceCost;
 
-            // --- 2. CALCUL DE LA TONTE DE PELOUSE ---
-            const typeTonte = document.getElementById('lawn-select').value;
+            // 2. Pelouse
             let lawnCost = 0;
             if (typeTonte === 'petit') lawnCost = 32.50;
             else if (typeTonte === 'moyen') lawnCost = 55.00;
             else if (typeTonte === 'grand') lawnCost = 85.00;
             else if (typeTonte === 'vgrand') lawnCost = 132.50;
 
-            if (combo === 'paix') {
-                totalComboBase += lawnCost; // La tonte fait partie de ce combo
-            } else {
-                totalHorsCombo += lawnCost; // Option à la carte plein prix pour les autres
-            }
+            if (combo === 'paix') totalComboBase += lawnCost;
+            else totalHorsCombo += lawnCost;
 
-            // --- 3. CALCUL DU LAVAGE DE VITRES ---
-            const typeVitres = document.getElementById('windows-select').value;
+            // 3. Vitres
             let windowsCost = 0;
-            if (typeVitres === 'petit') windowsCost = 80.00;
-            else if (typeVitres === 'moyen') windowsCost = 120.00;
-            else if (typeVitres === 'grand') windowsCost = 180.00;
+            if (typeVitres === 'petit') windowsCost = 120.00;
+            else if (typeVitres === 'moyen') windowsCost = 240.00;
+            else if (typeVitres === 'grand') windowsCost = 390.00;
 
-            if (combo === 'clarte' || combo === 'elite') {
-                totalComboBase += windowsCost; // Les vitres font partie de ces combos
+            if (combo === 'clarte' || combo === 'elite') totalComboBase += windowsCost;
+            else totalHorsCombo += windowsCost;
+
+            // 4. Gouttières + Feuilles
+            let gouttieresCost = gouttieresCoche ? 95.00 : 0;
+            let leavesCost = 0;
+            if (typeFeuilles === 'petit') leavesCost = 100.00;
+            else if (typeFeuilles === 'moyen') leavesCost = 170.00;
+            else if (typeFeuilles === 'grand') leavesCost = 290.00;
+
+            if (combo === 'automne') {
+                totalComboBase += (gouttieresCost + leavesCost);
             } else {
-                totalHorsCombo += windowsCost; // Option à la carte plein prix pour les autres
+                totalHorsCombo += (gouttieresCost + leavesCost);
             }
 
-            // --- 4. CALCUL DES OPTIONS (DÉSHERBAGE & CHAR) ---
-            if (document.getElementById('add-desherbage').checked) {
-                if (combo === 'paix') totalComboBase += 45; // Inclus dans Sainte Paix
+            // 5. Options spécialisées
+            if (desherbageCoche) {
+                if (combo === 'paix') totalComboBase += 45;
                 else totalHorsCombo += 45;
             }
-            
-            if (document.getElementById('add-char').checked) {
-                if (combo === 'elite') totalComboBase += 55; // Inclus dans Ozias Élite
+            if (charCoche) {
+                if (combo === 'elite') totalComboBase += 55;
                 else totalHorsCombo += 55;
             }
 
-            // --- 5. CALCUL DES BACS ROULANTS ---
-            const qtyBacs = parseInt(document.getElementById('bacs-qty').value);
+            // 6. Bacs roulants
             let bacsCost = 0;
             if (qtyBacs === 1) bacsCost = 15;
             else if (qtyBacs === 2) bacsCost = 25;
             else if (qtyBacs === 3) bacsCost = 30;
 
-            if (combo === 'clarte') {
-                totalComboBase += bacsCost; // Les bacs font partie de ce combo
-            } else {
-                totalHorsCombo += bacsCost; // Option à la carte plein prix pour les autres
-            }
+            if (combo === 'clarte') totalComboBase += bacsCost;
+            else totalHorsCombo += bacsCost;
 
-            // --- 6. APPLICATION DU POURCENTAGE SUR LE COMBO UNIQUEMENT ---
-            if (combo === 'clarte') {
-                totalComboBase = totalComboBase * 0.90; // 10% de réduction sur la base du combo
-            } else if (combo === 'elite') {
-                totalComboBase = totalComboBase * 0.85; // 15% de réduction sur la base du combo
-            } else if (combo === 'paix') {
-                totalComboBase = totalComboBase * 0.80; // 20% de réduction sur la base du combo
-            }
+            // 7. Application des réductions uniquement si les conditions complètes sont maintenues
+            if (combo === 'automne') totalComboBase = totalComboBase * 0.85;
+            else if (combo === 'clarte') totalComboBase = totalComboBase * 0.90;
+            else if (combo === 'elite') totalComboBase = totalComboBase * 0.85;
+            else if (combo === 'paix') totalComboBase = totalComboBase * 0.80;
 
-            // Le montant final est l'addition du combo réduit + les options hors-forfait pleines et intactes
             let totalGlobal = totalComboBase + totalHorsCombo;
+            if (totalGlobal > 0 && totalGlobal < 15) totalGlobal = 15;
 
-            if (totalGlobal > 0 && totalGlobal < 15) {
-                totalGlobal = 15;
-            }
-
-            document.getElementById('total-amount').innerText = totalGlobal.toFixed(2);
+            const totalEl = document.getElementById('total-amount');
+            if (totalEl) totalEl.innerText = totalGlobal.toFixed(2);
         }
-        
-        window.onload = function() {
-            changerLangue('fr');
-        };
+
+        changerLangue('fr');
+        calculerTotal();
     </script>
 </body>
 </html>
